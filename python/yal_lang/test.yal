@@ -1,0 +1,72 @@
+-- Welcome to the language YAL(Yet Another Language)
+-- Here, you can write a mixture of Python and the .yal language
+-- The compiler is the Python compiler, and in order to compute your code
+-- You have to use the Python application
+-- Enjoy the better and faster version of Python, with different keywords!
+-- NOTE: YAL has all Python modules!
+
+-[ Please take note: When you import a module, or a name from a module, make sure you import it within the function, or class, of which you're using it in. thanks! ]-
+
+create class numbers() then
+  -- Inside a class, you can either use class func, or you can use a regular func method to create a function of a class
+  class init(this,my_age) then
+    this.age = my_age
+    print(this.age)
+  class func return_methods(this) then
+    return_value(this.age)
+  func say_hey(this) then
+    print_value('hey!')
+
+  class_msg_start
+  A Class Error is like any other Error, but it is specified only for a class
+  In order to specify a Class Error, please do the following: 
+    1. Create a variable: this.classname. This will be the class of which the Error belongs to
+    2. Create variable: this.for_. This is the "Title" of the Error, lets the user know what the Error is
+    3. Create variable: this.msg. This will be the message the user gets
+    4. Create variable: this.look_for. This will give the Class Error a hint as to what it needs to look for.
+
+  class_msg_end
+
+  class func Errors(this,min_age) then
+    if value of this.age < min_age then
+      this.er = true
+    else then
+      this.er = false
+    this.classname = "numbers"
+    this.for_ = "age is too low"
+    this.msg = "sorry, your age is too low"
+    
+  -- NOTE: Make a function that will hold Class Error. Do not just type it randomly, make sure it is inside a class-function
+  def _return_class_err(this) then
+    class error
+
+-- Note, the same notation of calling a method from the class is the same as Python!
+age = INTEGER(gather_input('Age: '))
+num = numbers(age)
+num.return_methods()
+-- Note, as well, that the func method does the same as class func. Use which ever one you prefer!
+num.say_hey()
+-- If you created a class Error, then you'll have to run it lastly.
+-- It will go through everything being ran and if it triggers a Error you're looking for
+-- Then it will print a Error, otherwise it won't
+num.Errors(10)
+num._return_class_err()
+
+func keep_data(data) then
+  from module time import name sleep
+  if not value of data is equal to 'aidan is awesome' then
+    err Exception('Must be aidan is awesome')
+  write_file('data.txt','w') use as file then
+    file.send(data)
+    file.close()
+  if value of open_file('data.txt','r').read_value() is equal to '' then
+    print_value('oops, there was a error')
+    sleep(1)
+  else then
+    sleep(2)
+    print_value(open_file('data.txt','r').read_value())
+func gather() then 
+  print_value("we're all done here")
+
+keep_data(gather_input())
+gather()
