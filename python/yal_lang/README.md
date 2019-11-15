@@ -31,7 +31,8 @@ func gather_name(name) then
   -- "then" is used to indicate the start of the "if" statement within yal
   if not value of name is equal to 'aidan' then
     -- This will raise an error
-    -- Notice: There is no special error name in yal. All errors are the same as python, just a different name to assign a error
+    -- Notice: There is no special error name in yal. All errors are the same as python 
+    -- But, instead of using "raise" we use the keyword "err" to indicate we want a error
     err Exception('The name is not Aidan')
     -- "return_value" is the same as "return" within python. It can be used as "return_value(false)" or "return_value false"
     return_value false
