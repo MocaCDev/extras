@@ -11,7 +11,7 @@ create class numbers() then
   -- Inside a class, you can either use class func, or you can use a regular func method to create a function of a class
   class init(this,my_age) then
     this.age = my_age
-    print(this.age)
+    print_value(this.age)
   class func return_methods(this) then
     return_value(this.age)
   func say_hey(this) then
