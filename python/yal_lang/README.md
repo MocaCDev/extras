@@ -8,5 +8,5 @@
 <p>I have always wanted to make a language. I had seen many other people make interesting languages using Python. So, I decided to make a language of my own</p>
 
 # How does it work
-*Note: The yal language is of the same syntax as Python, but many key-ideals within the language of Python are different within the language yal*
+*Note: The yal language is of the same syntax as Python, but many key-ideals within the language of Python are different within the language yal*</br>
 *Also note: yal is not a actual language. You cannot just write, or create, a project of the file type .yal. </br> In order to write a program in the yal language, you have to create a python project, import os, then write the command:</br>***os.system('git clone https://github.com/ARACADERISE/extra/python/yal_lang****
