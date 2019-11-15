@@ -21,7 +21,7 @@
 
 -- This is a function in yal, also known as a "def" in python
 -- Notice, we type "then" instead of ":" to indicate that we are starting the function.
--- "then" will be replaces with the ":" when the file is compiled into a .py file
+-- "then" will be replaced with the ":" when the file is compiled into a .py file
 func gather_name(name) then
   -- print_value will just print to the console. Also known as "print" within python
   print_value(name)
