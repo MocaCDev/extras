@@ -18,6 +18,11 @@
 -[ This represents a multi-line message within a .py file ]-
 
 -- PLEASE NOTE: When you are gathering a integer as input, please type INTEGER(gather_input())
+-[ 
+  PLEASE NOTE: The yal language is a key-sensitive language. If you write any keywords in a message
+  or anywhere else within the language, it will compile it as lines of Python code and will most likely
+  return an error 
+]-
 
 -- This is a function in yal, also known as a "def" in python
 -- Notice, we type "then" instead of ":" to indicate that we are starting the function.
@@ -47,5 +52,38 @@ func gather_name(name) then
  -- "STRING" is the same as "str" within Python
  -- "gather_input" is the same as "input" within Python. It gathers input from the user
  gather_name(STRING(gather_input('name: '))
-  
+ 
+ -- Classes within yal are a bit different, look belowe
+ 
+ -- In order to start a class, you must type "create class" to indicate you're wanting to make a class
+ create class my_class:
+  -- In a class, you can use a "class_msg_start" & "class_msg_end" to create a "multi-line" python comment
+  -- or you can just use what I have been
+  -- Here is an example of a class_msg
+  class_msg_start
+  PUT YOUR MESSAGE IN HERE
+  class_msg_end
+  -- A "class init" is the same as "def __init__" within Python, but simpler
+  -- "this" is the same as "self" within Python, the "class init" can take any argument
+  class init(this,age,name) then
+    -- Notice, "this" is going to be assigned the value of "age". So we write "this.age"
+    -- Same as "self.age"
+    this.age = age
+    this.name = name
+  -- Now, we can either use "func" or "class func"
+  -- Whichever one you prefere, you use. There is no difference
+  -- I am going to use both
+  class func return_values(this) then
+    return_value(this.name,STRING(this.age))
+  func say_hey(this) then
+    -- concatenating is the same as within Python
+    print_value('Hello ' + this.name + '. I see you are ' + STRING(this.age)) 
+  -- There is something known as a "class error" within yal. It is a error you can raise for the class
+  -- Here is an example of how you raise a "class error"
+  class func gather_info(this) then
+    this.
+-- Calling a class, and the classes functions, are the same as Python. Nothing different
+n = my_class(STRING(gather_input('Name: '),INTEGER(gather_input('Age: '))
+n.return_values()
+n.say_hey()
 ```
