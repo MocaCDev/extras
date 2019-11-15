@@ -29,6 +29,8 @@ func gather_name(name) then
   -- Notice, we say "if not value of name", which is the same as "if not name" within python
   -- "is equal to" is the same as "==" within python
   -- "then" is used to indicate the start of the "if" statement within yal
+  -- Take note: within yal, the "t" in "true" and the "f" in "false" are not capitalized
+  -- It will be converted from "true" --> "True", and "false" --> "False"
   if not value of name is equal to 'aidan' then
     -- This will raise an error
     -- Notice: There is no special error name in yal. All errors are the same as python 
