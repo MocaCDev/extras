@@ -85,7 +85,7 @@ func gather_name(name) then
       this.er = true
     else then
       this.er = false
-    this.classname = "numbers"
+    this.classname = "my_class"
     this.for_ = "age is too low"
     this.msg = "sorry, your age is too low"
   -- Now, you don't just type "class error". you have to make a class function that holds "class error" within it
@@ -105,3 +105,42 @@ n.Errors(INTEGER(gather_input('Min Age: '))
 -- If it finds a value similar to what we're looking for, then it will display a error
 n.raise_if_er()
 ```
+
+# FUNCTION
+```
+func user_info(name,age) then
+  print_value("Hello " + name + " I see you're " + STRING(age))
+  return_value(name,STRING(age))
+```
+# CLASS
+```
+create class user_info:
+  class init(this,name,age) then
+    this.name = name
+    this.age = age
+  class func return_vals(this) then
+    return_value(this.name,STRING(this.age))
+  func say_hey(this) then
+    print_value("Hello " + this.name + " I see you're " + STRING(this.age))
+    return true
+u = user_info(STRING(gather_input('Name: '),INTEGER(gather_input('Age: '))
+u.return_vals()
+u.say_hey()
+```
+# CLASS ERROR
+```
+create class my_cl_er:
+  class init(this,age) then
+    this.age = age
+  class func gather_err_info(this,min_age) then
+    if value of this.age < min_age then
+      this.er = true
+    else then
+      this.er = false
+    this.classname = "my_cl_er"
+    this.for_ = "age is too low"
+    this.msg = "sorry, your age is too low"
+  class func return_c_er(this) then
+    class error
+m = my_cl_er(INTEGER(gather_input('Age: '))
+m.gather_err
