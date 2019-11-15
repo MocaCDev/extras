@@ -80,10 +80,20 @@ func gather_name(name) then
     print_value('Hello ' + this.name + '. I see you are ' + STRING(this.age)) 
   -- There is something known as a "class error" within yal. It is a error you can raise for the class
   -- Here is an example of how you raise a "class error"
-  class func gather_info(this) then
-    this.
+  class func Errors(this,min_age) then
+    if value of this.age < min_age then
+      this.er = true
+    else then
+      this.er = false
+    this.classname = "numbers"
+    this.for_ = "age is too low"
+    this.msg = "sorry, your age is too low"
+    
 -- Calling a class, and the classes functions, are the same as Python. Nothing different
 n = my_class(STRING(gather_input('Name: '),INTEGER(gather_input('Age: '))
 n.return_values()
 n.say_hey()
+-- If you want the "class error" to be compiled to check the values
+-- then call it after you are done calling all the functions you want to run within the class
+n.Errors(INTEGER(gather_input('Min Age: '))
 ```
