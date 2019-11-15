@@ -26,7 +26,7 @@ func gather_name(name) then
   -- print_value will just print to the console. Also known as "print" within python
   print_value(name)
   -- This is a if statement
-  -- Notice, we say "if not value of", which is the same as "if not name" within python
+  -- Notice, we say "if not value of name", which is the same as "if not name" within python
   -- "is equal to" is the same as "==" within python
   -- "then" is used to indicate the start of the "if" statement within yal
   if not value of name is equal to 'aidan' then
