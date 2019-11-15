@@ -143,4 +143,5 @@ create class my_cl_er:
   class func return_c_er(this) then
     class error
 m = my_cl_er(INTEGER(gather_input('Age: '))
-m.gather_err
+m.gather_err()
+```  
