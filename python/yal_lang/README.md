@@ -101,7 +101,7 @@ n.say_hey()
 -- If you want the "class error" to be compiled to check the values
 -- then call it after you are done calling all the functions you want to run within the class
 n.Errors(INTEGER(gather_input('Min Age: '))
--- Calling the class function name we created that will display a class error
--- If it finds a value similar to what we're looking for
+-- Calling the class function name we created
+-- If it finds a value similar to what we're looking for, then it will display a error
 n.raise_if_er()
 ```
