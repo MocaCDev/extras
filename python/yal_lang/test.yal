@@ -1,5 +1,5 @@
 -- Welcome to the language YAL(Yet Another Language)
--- Here, you can write a mixture of Python and the .yal language
+-- Here, you can write a mixture of Python in the .yal language keywords/notation
 -- The compiler is the Python compiler, and in order to compute your code
 -- You have to use the Python application
 -- Enjoy the better and faster version of Python, with different keywords!
@@ -11,7 +11,7 @@ create class numbers() then
   -- Inside a class, you can either use class func, or you can use a regular func method to create a function of a class
   class init(this,my_age) then
     this.age = my_age
-    print_value(this.age)
+    print(this.age)
   class func return_methods(this) then
     return_value(this.age)
   func say_hey(this) then
@@ -35,7 +35,7 @@ create class numbers() then
     this.classname = "numbers"
     this.for_ = "age is too low"
     this.msg = "sorry, your age is too low"
-    
+
   -- NOTE: Make a function that will hold Class Error. Do not just type it randomly, make sure it is inside a class-function
   def _return_class_err(this) then
     class error
