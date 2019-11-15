@@ -145,3 +145,13 @@ create class my_cl_er:
 m = my_cl_er(INTEGER(gather_input('Age: '))
 m.gather_err()
 ```  
+# IMPORTING NAME ONLY
+```
+-- We are going to be importing json and os
+import name json, os
+```
+# IMPORTING FROM MODULE
+```
+-- We are going to import sleep from time
+from module time import name sleep
+```
