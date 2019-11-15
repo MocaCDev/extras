@@ -88,7 +88,12 @@ func gather_name(name) then
     this.classname = "numbers"
     this.for_ = "age is too low"
     this.msg = "sorry, your age is too low"
-    
+  -- Now, you don't just type "class error". you have to make a class function that holds "class error" within it
+  -- Example
+  class func raise_if_er(this) then
+    -- Now, instead of having to look for the function name of "class error" you just call the class function name
+    -- YOU created!
+    class error
 -- Calling a class, and the classes functions, are the same as Python. Nothing different
 n = my_class(STRING(gather_input('Name: '),INTEGER(gather_input('Age: '))
 n.return_values()
@@ -96,4 +101,7 @@ n.say_hey()
 -- If you want the "class error" to be compiled to check the values
 -- then call it after you are done calling all the functions you want to run within the class
 n.Errors(INTEGER(gather_input('Min Age: '))
+-- Calling the class function name we created that will display a class error
+-- If it finds a value similar to what we're looking for
+n.raise_if_er()
 ```
