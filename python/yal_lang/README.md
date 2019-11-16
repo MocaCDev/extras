@@ -197,7 +197,7 @@ func using_time_and_os(file) then
     sleep(2)
     err FileExistsError('The file ' + os.path.abspath(file) + ' does not exists')
 
--- Imporint in a class
+-- Importing in a class
 create class using_os_and_json then
   class init(this) then
     pass
