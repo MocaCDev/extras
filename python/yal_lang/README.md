@@ -183,3 +183,41 @@ Note: Instead of ".read()" we use ".read_value()" within yal
 ```
 print_value(open_file('example.txt','r').read_value())
 ```
+# USING SOMETHING YOU IMPORTED
+*When you import in yal, it tends to not compile it as "imported". So in order to use a imported module, or a imported name from</br>a module, you must import that module, or the name from the module, within the class, or function*
+```
+-- Importing in a function
+func using_time_and_os(file) then
+  from module time import name sleep
+  import name os
+  if value of os.path.exists(os.path.abspath(file)) then
+    sleep(3)
+    print_value('it exists')
+  else then
+    sleep(2)
+    err FileExistsError('The file ' + os.path.abspath(file) + ' does not exists')
+
+-- Imporint in a class
+create class using_os_and_json then
+  class init(this) then
+    pass
+  
+  class func import_and_use(this) then
+    import name os,json
+    DATA = {'name':'aidan'}
+    
+    if not value of os.path.exists(os.path.abspath('data.json')) then
+      write_file('data.json','w') use as file then
+        to_json = json.dumps(DATA,indent=2,sort_keys=false)
+        file.send(to_json)
+        file.close()
+      print_value('DONE')
+    else then
+      write_file('new_data.json','w') use as file then
+        to_json = json.dumpa(DATA,indent=2,sort_keys=false)
+        file.send(to_json)
+        file.close()
+      print_value('DONE')
+n = using_os_and_json()
+n.import_and_use()
+```
