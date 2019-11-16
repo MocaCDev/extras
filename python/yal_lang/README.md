@@ -160,12 +160,12 @@ from module time import name sleep
 ```python 
 as
 ```
-within Python*</br>
+*within Python*</br>
 *Note: Instead of 
 ```python 
 file.write()
 ``` 
-it is ```file.send()```</br>
+*it is ```file.send()```</br>
 *Note: Closing the file is same as in Python, "file.close()"*
 ***You can use another keyword other than "file". I just use "file" by default***
 ```
