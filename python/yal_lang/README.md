@@ -166,7 +166,7 @@ Note: Instead of
 file.write()
 ``` 
 it is ```file.send()```</br>
-Note: Closing the file is same as in Python, "file.close()"
+Note: Closing the file is same as in Python, "file.close()"</br>
 ***You can use another keyword other than "file". I just use "file" by default***
 ```
 write_file('example.txt','w') use as file then
