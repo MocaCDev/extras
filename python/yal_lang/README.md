@@ -156,8 +156,16 @@ import name json, os
 from module time import name sleep
 ```
 # WRITING TO FILE
-*Note: ```use as``` is a keyword in yal that indicates the keyword ```python as``` within Python*</br>
-*Note: Instead of ```python file.write()``` it is ```file.send()```</br>
+*Note: ```use as``` is a keyword in yal that indicates the keyword 
+```python 
+as
+```
+within Python*</br>
+*Note: Instead of 
+```python 
+file.write()
+``` 
+it is ```file.send()```</br>
 *Note: Closing the file is same as in Python, "file.close()"*
 ***You can use another keyword other than "file". I just use "file" by default***
 ```
