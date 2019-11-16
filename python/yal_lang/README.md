@@ -58,7 +58,7 @@ func gather_name(name) then
  -- In order to start a class, you must type "create class" to indicate you're wanting to make a class
  create class my_class:
   -- In a class, you can use a "class_msg_start" & "class_msg_end" to create a "multi-line" python comment
-  -- or you can just use what I have been
+  -- or you can just use what I have been, "--" or "-[ ]-"
   -- Here is an example of a class_msg
   class_msg_start
   PUT YOUR MESSAGE IN HERE
