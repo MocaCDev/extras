@@ -160,13 +160,13 @@ Note: ```use as``` is a keyword in yal that indicates the keyword
 ```python 
 as
 ```
-within Python*</br>
+within Python</br>
 Note: Instead of 
 ```python 
 file.write()
 ``` 
 it is ```file.send()```</br>
-Note: Closing the file is same as in Python, "file.close()"*
+Note: Closing the file is same as in Python, "file.close()"
 ***You can use another keyword other than "file". I just use "file" by default***
 ```
 write_file('example.txt','w') use as file then
@@ -178,8 +178,8 @@ Note: Instead of Python keyword
 ```python 
 open
 ``` 
-we use ```open_file``` in yal to open the file we want*</br>
-Note: Instead of ".read()" we use ".read_value()" within yal*
+we use ```open_file``` in yal to open the file we want</br>
+Note: Instead of ".read()" we use ".read_value()" within yal
 ```
 print_value(open_file('example.txt','r').read_value())
 ```
