@@ -13,7 +13,7 @@
 
 # Examples of the language
 
-```
+```yal
 -- This represents a message in yal. This will convert to "#" within a .py file
 -[ This represents a multi-line message within a .py file ]-
 
