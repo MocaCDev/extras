@@ -53,7 +53,7 @@ func gather_name(name) then
  -- "gather_input" is the same as "input" within Python. It gathers input from the user
  gather_name(STRING(gather_input('name: '))
  
- -- Classes within yal are a bit different, look belowe
+ -- Classes within yal are a bit different, look below
  
  -- In order to start a class, you must type "create class" to indicate you're wanting to make a class
  create class my_class:
