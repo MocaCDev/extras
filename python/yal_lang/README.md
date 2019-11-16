@@ -199,11 +199,13 @@ func using_time_and_os(file) then
 
 -- Importing in a class
 create class using_os_and_json then
+  -- NOTE: You can import either globaly, meaning not within a class-function, or within a class-function
+  -- Both will work
+  import name os,json
   class init(this) then
     pass
   
   class func import_and_use(this) then
-    import name os,json
     DATA = {'name':'aidan'}
     
     if not value of os.path.exists(os.path.abspath('data.json')) then
