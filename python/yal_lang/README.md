@@ -107,13 +107,13 @@ n.raise_if_er()
 ```
 
 # FUNCTION
-```
+```yal
 func user_info(name,age) then
   print_value("Hello " + name + " I see you're " + STRING(age))
   return_value(name,STRING(age))
 ```
 # CLASS
-```
+```yal
 create class user_info:
   class init(this,name,age) then
     this.name = name
@@ -128,7 +128,7 @@ u.return_vals()
 u.say_hey()
 ```
 # CLASS ERROR
-```
+```yal
 create class my_cl_er:
   class init(this,age) then
     this.age = age
@@ -146,13 +146,13 @@ m = my_cl_er(INTEGER(gather_input('Age: '))
 m.gather_err()
 ```  
 # IMPORTING NAME ONLY
-```
+```yal
 -- We are going to be importing json and os
 import name json, os
 ```
 ***When you are importing in yal, make sure you import WITHIN the function, or WITHIN the class function, otherwise</br> what you imported tends to not be recognized***
 # IMPORTING FROM MODULE
-```
+```yal
 -- We are going to import sleep from time
 from module time import name sleep
 ```
@@ -169,7 +169,7 @@ file.write()
 it is ```file.send()```</br>
 Note: Closing the file is same as in Python, "file.close()"</br>
 ***You can use another keyword other than "file". I just use "file" by default***
-```
+```yal
 write_file('example.txt','w') use as file then
   file.send('this is an example of a written file in yal')
   file.close()
@@ -186,7 +186,7 @@ print_value(open_file('example.txt','r').read_value())
 ```
 # USING SOMETHING YOU IMPORTED
 *When you import in yal, it tends to not compile it as "imported". So in order to use a imported module, or a imported name from</br>a module, you must import that module, or the name from the module, inside the function, or the class-function*
-```
+```yal
 -- Importing in a function
 func using_time_and_os(file) then
   from module time import name sleep
@@ -226,7 +226,7 @@ n.import_and_use()
 ```
 # IF STATEMENT
 *Checking if the value is true*
-```
+```yal
 name = STRING(gather_input('Name: '))
 if value of name is equal to 'aidan' then
   print_value('Hello Aidan')
@@ -234,14 +234,14 @@ else then
   print_value('Hello ' + name)
 ```
 *Checking if the value is false*
-```
+```yal
 if not value of name is equal to 'aidan' then
   print_value('Your name is not Aidan, but instead it is ' + name)
 else then
   print_value('Your name is aidan!')
 ```
 *Or statement*
-```
+```yal
 -- Note: Instead of putting "if value of" again, we just get straight to the argument:
 -- name is equal to 'jeff'
 -- "||" stands for "or" in Python
@@ -251,7 +251,7 @@ else then
   print_value('Your name is ' + name)
 ```
 *And statement*
-```
+```yal
 age = INTEGER(gather_input('Age: '))
 if value of name is equal to 'aidan' && age < 50 then
   print_value('Hello ' + name + ', I see you are ' + age + ' years old')
@@ -259,7 +259,7 @@ else then
   print_value('Too old')
 ```
 # LENGTH
-```
+```yal
 name = STRING(gather_input('Name: '))
 get_len = get_length(name)
 if value of get_len > 10 then
@@ -268,7 +268,7 @@ else then
   print_value('Then length of your name is less than 10, it is + STRING(get_len))
 ```
 # BOOLEANS
-```
+```yal
 -- "True" in Python
 a = true
 -- "False" in Python
