@@ -257,4 +257,12 @@ if value of name is equal to 'aidan' && age < 50 then
 else then
   print_value('Too old')
 ```
-if value of name
+# LENGTH
+```
+name = STRING(gather_input('Name: '))
+get_len = get_length(name)
+if value of get_len > 10 then
+  print_value('The length of your name is greater than 10, it is ' + STRING(get_len))
+else then
+  print_value('Then length of your name is less than 10, it is + STRING(get_len))
+```
