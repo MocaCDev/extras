@@ -3,6 +3,8 @@ from lang import read_
 
 get_file = input('File: ')
 
+get_file = os.path.abspath(get_file)
+
 if not '.yal' in get_file:
   raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
 
