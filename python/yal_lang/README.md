@@ -223,3 +223,38 @@ create class using_os_and_json then
 n = using_os_and_json()
 n.import_and_use()
 ```
+# IF STATEMENT
+*Checking if the value is true*
+```
+name = STRING(gather_input('Name: '))
+if value of name is equal to 'aidan' then
+  print_value('Hello Aidan')
+else then
+  print_value('Hello ' + name)
+```
+* Checking if the value is false*
+```
+if not value of name is equal to 'aidan' then
+  print_value('Your name is not Aidan, but instead it is ' + name)
+else then
+  print_value('Your name is aidan!')
+```
+*Or statement*
+```
+-- Note: Instead of putting "if value of" again, we just get straight to the argument:
+-- name is equal to 'jeff'
+-- "||" stands for "or" in Python
+if value of name is equal to 'aidan' || name is equal to 'jeff' then
+  print_value('Your name is either Aidan or Jeff')
+else then
+  print_value('Your name is ' + name)
+```
+*And statement*
+```
+age = INTEGER(gather_input('Age: '))
+if value of name is equal to 'aidan' && age < 50 then
+  print_value('Hello ' + name + ', I see you are ' + age + ' years old')
+else then
+  print_value('Too old')
+```
+if value of name
