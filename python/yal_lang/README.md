@@ -232,7 +232,7 @@ if value of name is equal to 'aidan' then
 else then
   print_value('Hello ' + name)
 ```
-* Checking if the value is false*
+*Checking if the value is false*
 ```
 if not value of name is equal to 'aidan' then
   print_value('Your name is not Aidan, but instead it is ' + name)
