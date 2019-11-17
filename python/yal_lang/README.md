@@ -185,7 +185,7 @@ Note: Instead of ".read()" we use ".read_value()" within yal
 print_value(open_file('example.txt','r').read_value())
 ```
 # USING SOMETHING YOU IMPORTED
-*When you import in yal, it tends to not compile it as "imported". So in order to use a imported module, or a imported name from</br>a module, you must import that module, or the name from the module, within the class, or function*
+*When you import in yal, it tends to not compile it as "imported". So in order to use a imported module, or a imported name from</br>a module, you must import that module, or the name from the module, inside the function, or the class-function*
 ```
 -- Importing in a function
 func using_time_and_os(file) then
