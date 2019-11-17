@@ -9,7 +9,7 @@
 
 # How does it work
 *Note: The yal language is of the same syntax as Python, but many key-ideals within the language of Python are different within the language yal*</br>
-*Also note: yal is not a actual language. You cannot just write, or create, a project of the file type .yal. </br> In order to write a program in the yal language, you have to create a python project, import os, then write the command:</br>***os.system('git clone https://github.com/ARACADERISE/extras/tree/master/python/yal_lang')****
+*Also note: yal is not a actual language. You cannot just write, or create, a project of the file type .yal. </br> In order to write a program in the yal language, you have to create a python project, import os, then write the command:</br>***os.system('git clone https://github.com/ARACADERISE/extras')***</br>See bottom of documentation to see step-by-step on how to compile your .yal file*
 
 # Example of the language
 
@@ -274,4 +274,24 @@ a = true
 b = false
 -- "None" in Python
 c = nil
+```
+# How to Write, and execute, a .yal file
+*Step 1: import os*
+```python
+import os
+```
+*Step 2: use os.system to git the resporitory*
+``` python
+os.system('git clone https://github.com/ARACADERISE/extras')
+```
+*Step 3: use os.system to run "file.py"*
+```python
+import os
+# If we don't have an if statement checking if the path of "extras" exists, we will always get
+# an error
+if not os.path.exists('extras'):
+  os.system('git clone https://github.com/ARACADERISE/extras')
+# This will cd into the "extras" folder, then into the "python" folder, and then into "yal_lang" folder
+# then will execute "file.py"
+os.system('cd extras/python/yal_lang && python file.py')
 ```
