@@ -150,6 +150,7 @@ m.gather_err()
 -- We are going to be importing json and os
 import name json, os
 ```
+***When you are importing in yal, make sure you import WITHIN the function, or WITHIN the class function, otherwise</br> what you imported tends to not be recognized***
 # IMPORTING FROM MODULE
 ```
 -- We are going to import sleep from time
