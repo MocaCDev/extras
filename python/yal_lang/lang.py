@@ -11,7 +11,7 @@ def read_(file_to_read):
   open_file = open_file.replace('class init','def __init__')
   open_file = open_file.replace('true','True')
   open_file = open_file.replace('false','False')
-  open_file = open_file.reaplce('nil','None')
+  open_file = open_file.replace('nil','None')
   open_file = open_file.replace('class error', open('templates/class_error.txt','r').read())
   open_file = open_file.replace('this','self')
   open_file = open_file.replace('class func','def')
