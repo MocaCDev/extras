@@ -293,3 +293,5 @@ if not os.path.exists('extras'):
 # then will execute "file.py"
 os.system('cd extras/python/yal_lang && python file.py')
 ```
+***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INcLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
+## Good Luck and ENJOY !
