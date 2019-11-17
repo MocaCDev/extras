@@ -282,15 +282,13 @@ import os
 ```
 *Step 2: use os.system to git the resporitory*
 ``` python
-os.system('git clone https://github.com/ARACADERISE/extras')
-```
-*Step 3: use os.system to run "file.py"*
-```python
-import os
 # If we don't have an if statement checking if the path of "extras" exists, we will always get
 # an error
 if not os.path.exists('extras'):
   os.system('git clone https://github.com/ARACADERISE/extras')
+```
+*Step 3: use os.system to run "file.py"*
+```python
 # This will cd into the "extras" folder, then into the "python" folder, and then into "yal_lang" folder
 # then will execute "file.py"
 os.system('cd extras/python/yal_lang && python file.py')
