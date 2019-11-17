@@ -295,4 +295,35 @@ if not os.path.exists('extras'):
 os.system('cd extras/python/yal_lang && python file.py')
 ```
 ***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INCLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
+## Disclaimer
+*When you write a file in the yal language, it writes it to the folder extras/python/yal_lang</br>If you do not want this, then please do the following when writing a file:*
+## For a class
+```yal
+create class write_ then
+  class inite(this) then
+    import name os
+    this.main_path = os.environ.get('HOME')
+  class func write_to_file(this) then
+    write_file(this.main_path + '/' + 'name_of_your_file_here.whatever_lang_its_in','w') use as file then
+      file.send('information you want to send')
+      file.close()
+```
+## For function
+```yal
+func write_() then
+  import name os
+  main_path = os.environ.get('HOME')
+  write_file(this.main_path + '/' + 'name_of_your_file_here.whatever_lang_its_in','w') use as file then
+      file.send('information you want to send')
+      file.close()
+```
+# Outside of a function and class
+```yal
+import name os
+main_path = os.environ.get('HOME')
+write_file(this.main_path + '/' + 'name_of_your_file_here.whatever_lang_its_in','w') use as file then
+      file.send('information you want to send')
+      file.close()
+```
+***Note, it is pretty much the same syntax for each one, but I still wanted to show you guys :)***
 ## Good Luck and ENJOY !
