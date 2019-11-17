@@ -266,3 +266,12 @@ if value of get_len > 10 then
 else then
   print_value('Then length of your name is less than 10, it is + STRING(get_len))
 ```
+# BOOLEANS
+```
+-- "True" in Python
+a = true
+-- "False" in Python
+b = false
+-- "None" in Python
+c = nil
+```
