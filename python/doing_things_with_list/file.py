@@ -2,7 +2,12 @@ import os, sys, subprocess, json, csv
 from math import floor
 from colorama import Fore,Style
 
+"downloading the module for .yal language"
+if not os.path.exists('extras'):
+  os.system('git clone https://github.com/ARACADERISE/extras')
+
 "will store data in different styles"
+"just deals with numbers and files"
 
 get_range = int(input('Range: '))
 
@@ -63,3 +68,6 @@ with open('data.toml','w') as file:
     if append_range[i] == get_range-1:
       file.close()
       break
+
+"calling the file that will compile the .yal file"
+os.system('cd extras/python/yal_lang && python file.py')
