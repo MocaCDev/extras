@@ -16,14 +16,14 @@ divide_by = int(input('Divide each number by: '))
 
 for i in append_range:
   if append_range[i] % 3 == 0:
-    append_range[i] = [3,True,{'divided_by':3,'returns':floor(append_range[i]/3)}]
+    append_range[i] = [i,True,{'divided_by':3,'returns':floor(append_range[i]/3)}]
   else:
     if append_range[i] % divide_by == 0:
       append_range[i] = [i,True,{'divided_by':divide_by,'returns':append_range[i]/divide_by}]
     else:
       append_range[i] = [i,False,{'divided_by':divide_by,'returns':append_range[i]/divide_by}]
 
-with open('data.json','w') as file:
+with open('data_.json','w') as file:
   to_json = json.dumps(append_range,indent=2,sort_keys=False)
   file.write(to_json)
   file.close()
