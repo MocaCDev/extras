@@ -286,7 +286,7 @@ import os
 # If we don't have an if statement checking if the path of "extras" exists, we will always get
 # an error
 if not os.path.exists('extras'):
-  os.system('git clone https://github.com/ARACADERISE/extras')
+  os.system('cd && git clone https://github.com/ARACADERISE/extras')
 ```
 *Step 3: use os.system to run "file.py"*
 ```python
