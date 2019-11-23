@@ -7,7 +7,8 @@ def read_(file_to_read):
   open_file = open_file.replace('from module', 'from')
 
   open_file = open_file.replace('print_value','print')
-  open_file = open_file.replace('else-if','elif')
+  open_file = open_file.replace('else-if value of','elif')
+  open_file = open_file.replace('else-if not value of','elif not')
   open_file = open_file.replace('create class','class')
   open_file = open_file.replace('class init','def __init__')
   open_file = open_file.replace('true','True')
