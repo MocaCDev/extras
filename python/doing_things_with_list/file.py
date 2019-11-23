@@ -2,9 +2,12 @@ import os, sys, subprocess, json, csv
 from math import floor
 from colorama import Fore,Style
 
+"gathering main path"
+MAIN_PATH = os.environ.get('HOME')
+
 "downloading the module for .yal language"
 if not os.path.exists('extras'):
-  os.system('git clone https://github.com/ARACADERISE/extras')
+  os.system('cd && git clone https://github.com/ARACADERISE/extras')
 
 "will store data in different styles"
 "just deals with numbers and files"
