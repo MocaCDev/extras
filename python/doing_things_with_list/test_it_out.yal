@@ -1,0 +1,15 @@
+import name os
+
+get_main = os.environ.get('HOME')
+
+if value of os.path.exists(get_main+'/'+'data.csv') && os.path.exists(get_main+'/'+'data.json') && os.path.exists(get_main+'/'+'data.tom') then
+  print_value('DONE!')
+else then
+  if not value of os.path.exists(get_main+'/'+'data.csv') then
+    err FileExistsError('The file data.csv was not created')
+  else-if not value of os.path.exists(get_main+'/'+'data.json') then
+    err FileExistsError('The file data.json was not created')
+  else-if not value of os.path.exists(get_main+'/'+'data.toml') then
+    err FileExistsError('The file data.toml was not created')
+  else-if not value of os.path.exist(get_main+'/'+'data.yaml') then
+    err FileExistsError('The file data.yaml was not created')
