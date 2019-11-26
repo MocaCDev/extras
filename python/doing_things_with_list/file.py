@@ -58,18 +58,30 @@ with open('data.csv','w',newline='') as file:
       break
 
 "Opens in .toml format"
-with open('data.toml','w') as file:
-  file.write('[number_DATA]')
+with open('data.toml','w') as toml_file:
+  toml_file.write('[number_DATA]')
   for i in range(len(append_range)):
     if i == 225:
-      file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(225/divide_by))
+      toml_file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(225/divide_by))
     else:
       if append_range[i][0] / divide_by == i / divide_by:
-        file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(append_range[i][0]/divide_by))
+        toml_file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(append_range[i][0]/divide_by))
       else:
-        file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(i/divide_by))
+        toml_file.write('\n' + ' [divide]\n  number = ' + str(i) + '\n  divide_by = ' + str(divide_by) + '\n  returns = ' + str(i/divide_by))
     if append_range[i] == get_range-1:
-      file.close()
+      toml_file.close()
+      break
+
+"Opens in .yaml format"
+with open('data.yaml','w') as yaml_file:
+  yaml_file.write('- Number Data:\n')
+  for i in range(len(append_range)):
+    if append_range[i][0]/divide_by == i/divide_by:
+      yaml_file.write('   - Number:\n' + '      - ' + str(i) + '\n      - Divide By:\n        - ' + str(divide_by) + '\n      - Returns:\n        - ' + str(append_range[i][0]/divide_by) + '\n')
+    else:
+      yaml_file.write('   - Number:\n' + '      - ' + str(i) + '\n      - Divide By:\n        - ' + str(divide_by) + '\n      - Returns:\n        - ' + str(i/divide_by) + '\n')
+    if append_range[i] == get_range-1:
+      yaml_file.close()
       break
 
 "calling the file that will compile the .yal file"
