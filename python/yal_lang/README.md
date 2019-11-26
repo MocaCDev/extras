@@ -294,6 +294,33 @@ if not os.path.exists('extras'):
 # then will execute "file.py"
 os.system('cd extras/python/yal_lang && python file.py')
 ```
+*Note: Within extra/python/yal_lang, instead of having the user input the .yal filename, you can just open up file.py, and change get_file to the file name of your .yal file*
+```python
+# Here is an example
+"it was"
+MAIN_PATH = os.environ.get('HOME')
+
+get_file = input('File: ')
+
+get_file = MAIN_PATH + '/' + get_file
+
+if not '.yal' in get_file:
+  raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
+
+read_(get_file)
+
+"now it is"
+MAIN_PATH = os.environ.get('HOME')
+
+get_file = 'test.yal'
+
+get_file = MAIN_PATH + '/' + get_file
+
+if not '.yal' in get_file:
+  raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
+
+read_(get_file)
+```
 ***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INCLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
 ## Disclaimer
 *When you write a file in the yal language, it writes it to the folder extras/python/yal_lang</br>If you do not want this, then please do the following when writing a file:*
