@@ -297,7 +297,7 @@ os.system('cd extras/python/yal_lang && python file.py')
 *Note: Within extra/python/yal_lang, instead of having the user input the .yal filename, you can just open up file.py, and change get_file to the file name of your .yal file*
 ```python
 # Here is an example
-"it was"
+"this would ask the user for the filename"
 MAIN_PATH = os.environ.get('HOME')
 
 get_file = input('File: ')
@@ -309,7 +309,8 @@ if not '.yal' in get_file:
 
 read_(get_file)
 
-"now it is"
+"now get_file is already assigned the file name"
+"this is recommended if you're implementing a .yal file/application in your project"
 MAIN_PATH = os.environ.get('HOME')
 
 get_file = 'test.yal'
