@@ -317,7 +317,10 @@ get_file = 'test.yal'
 
 get_file = MAIN_PATH + '/' + get_file
 
-"these lines of code are useless when assigning get_file the .yal filename, so you can either keep these few lines of code or delete them, no harm will be done"
+"""
+this lines of code are useless when assigning get_file the .yal filename, so you can either keep these 
+few lines of code or delete them, no harm will be done
+"""
 if not '.yal' in get_file:
   raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
 
