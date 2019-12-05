@@ -114,7 +114,7 @@ func user_info(name,age) then
 ```
 # CLASS
 ```yal
-create class user_info:
+create class user_info then
   class init(this,name,age) then
     this.name = name
     this.age = age
@@ -129,7 +129,7 @@ u.say_hey()
 ```
 # CLASS ERROR
 ```yal
-create class my_cl_er:
+create class my_cl_er then
   class init(this,age) then
     this.age = age
   class func gather_err_info(this,min_age) then
