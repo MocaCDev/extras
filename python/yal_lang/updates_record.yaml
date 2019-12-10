@@ -1,0 +1,12 @@
+- releases:
+  - version 1.0.1:
+    - released 11/20/19
+    - info:
+      - original release
+  - version 1.0.2:
+    - released 12/9/19
+    - info:
+      - The compiler will now compile through all files and take out the .yal files without needing user input
+      - no more importing one file into another
+      - KEEP IN MIND:
+        - you still need to import a module name if you want to use something other than a .yal file in another .yal file
