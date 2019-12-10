@@ -12,3 +12,6 @@
         - Think of it like this:
           - 2 files are the application, full of function, classes, etc, and then you have a rendering .yal file where
           - all you have to do is call the class-function or the function, !NO IMPORTING
+        - Keep in mind:
+          - You still need to import a module name if it isn't a .yal file. The only things you do not need to import
+          - are functions or class-functions within a .yal file
