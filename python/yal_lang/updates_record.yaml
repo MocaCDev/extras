@@ -6,7 +6,9 @@
   - version 1.0.2:
     - released 12/9/19
     - info:
-      - The compiler will now compile through all files and take out the .yal files without needing user input
-      - no more importing one file into another
-      - KEEP IN MIND:
-        - you still need to import a module name if you want to use something other than a .yal file in another .yal file
+      - The application will go through each file and take out each .yal file
+      - Had problems importing one .yal file into another? No need anymore!:
+        - all files are compiled at once. This makes it to where you don't need to import one .yal file into another .yal file
+        - Think of it like this:
+          - 2 files are the application, full of function, classes, etc, and then you have a rendering .yal file where
+          - all you have to do is call the class-function or the function, !NO IMPORTING
