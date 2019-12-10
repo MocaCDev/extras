@@ -1,0 +1,12 @@
+-- Now. Since all the .yal files are compiled all at once, there is no need for importing
+-- so..we can go straight from doing something in one file and calling the function or class-function
+-- within this file without having to import ANYTING
+
+write_()
+
+-- And since each .yal file is compiled at once, it doesn't matter what is in one file or the other
+-- it is virtually in your hands and can be called, used, or checked anytime, in any file
+if value of 'nil' in example_list then
+  print_value('found')
+else then
+  print_value('not found')
