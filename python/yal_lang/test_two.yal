@@ -1,0 +1,15 @@
+-- Now. Within this file we are going to make a function but we aren't going to use
+-- the function within the file but instead within another file
+
+func write_() then
+  write_file('example.txt','w') use as file then
+    file.send('this is an example')
+    file.close()
+ 
+-- For another example, we are going to make a list within this file and use the list in the other file
+
+example_list = [
+  'true',
+  'false',
+  'nil'
+]
