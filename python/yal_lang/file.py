@@ -1,13 +1,15 @@
 import os
 from lang import read_
 
-MAIN_PATH = os.environ.get('HOME')
+main_path = os.environ.get('HOME')
+os.chdir(main_path)
+get_file = []
 
-get_file = input('File: ')
+for i in range(len(os.listdir())):
+  if '.yal' in os.listdir()[i]:
+    get_file.append(main_path + '/' + os.listdir()[i])
 
-get_file = MAIN_PATH + '/' + get_file
+#if not '.yal' in get_file:
+  #raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
 
-if not '.yal' in get_file:
-  raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
-
-read_(get_file)
+read_(files=get_file)
