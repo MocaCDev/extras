@@ -8,6 +8,7 @@ def read_(**file_to_read):
     open_file = open_file.replace('import name', 'import')
     open_file = open_file.replace('from module', 'from')
 
+    open_file = open_file.replace('keep_track',open(f'{os.environ.get("HOME")}/extras/python/yal_lang/templates/keep_track_of_import.txt','r').read())
     open_file = open_file.replace('print_value','print')
     open_file = open_file.replace('create class','class')
     open_file = open_file.replace('for','for')
