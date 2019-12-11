@@ -1,0 +1,42 @@
+def keep_track(from_file,name_being_imported,type_,to_run):
+  import os
+
+  info = f'''- IMPORT DATA:
+  - !NOTE:
+    - The first import is recorded twice
+  - Importing from file:
+    - {from_file}
+  - Name being imported:
+    - {name_being_imported}
+  - Type:
+    - {type_}
+  - Run:
+    - {to_run}
+  '''
+
+  if not os.path.exists('import_data.yaml'):
+    with open('import_data.yaml','w') as file:
+      file.write(info)
+      file.close()
+  else:
+    open_and_read = open(os.environ.get('HOME') + '/' + 'import_data.yaml','r').read()
+    new_info = f'''\n
+  - Importing from file:
+    - {from_file}
+  - Name being imported:
+    - {name_being_imported}
+  - Type:
+    - {type_}
+  - Run:
+    - {to_run}
+    '''
+    if new_info in open(os.environ.get('HOME') + '/' + 'import_data.yaml','r').read():
+      pass
+    else:
+      if not new_info in open(os.environ.get('HOME') + '/' + 'import_data.yaml','r').read():
+        with open(os.environ.get('HOME') + '/' + 'import_data.yaml','w') as file:
+          file.write(open_and_read)
+          file.write(new_info)
+          file.close()
+
+keep_track
