@@ -7,9 +7,9 @@ get_file = []
 
 for i in range(len(os.listdir())):
   if '.yal' in os.listdir()[i]:
-    if 'main.yal' == os.listdir()[i]:
-      os.remove
-      raise NameError('The name ' + os.listdir()[i] + ' cannot be used')
+    if os.listdir()[i] == 'file.yal' or 'main.yal':
+      raise NameError('The name ' + os.listdir()[i] + ' cannot be used\n\nThe file ' + os.listdir()[i] + ' has been deleted')
+      os.remove('main.yal')
     get_file.append(main_path + '/' + os.listdir()[i])
 
 
