@@ -1,13 +1,19 @@
 import os
+from time import sleep
 def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
     open_file = open(file_to_read['files'][i], 'r').read()
     
-    with open(os.environ.get('HOME') + '/extras/python/yal_lang' + '/bach.yaml','w') as bach_file:
+    with open(os.environ.get('HOME') + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file:
       bach_file.write('[file.info]\n')
-      bach_file.write(f'   filename = {file_to_read["files"][i]}')
+      bach_file.write(f'   - compiling {file_to_read["files"][i]}')
       bach_file.close()
+    
+    read_data = open(os.environ.get('HOME') + '/extras/python/yal_lang/' + 'bach.bach').read()
+    sleep(1.8)
+   
+                      
                       
 
     # IMPORTANT
