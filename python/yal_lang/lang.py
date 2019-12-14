@@ -11,6 +11,7 @@ def read_(**file_to_read):
       bach_file.close()
     
     read_data = open(os.environ.get('HOME') + '/extras/python/yal_lang/' + 'bach.bach').read()
+    print(read_data)
     sleep(1.8)
    
                       
