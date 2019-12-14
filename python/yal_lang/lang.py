@@ -6,7 +6,7 @@ def read_(**file_to_read):
     
     with open('bach.yaml','w') as bach_file:
       bach_file.write('[file.info]\n')
-      bach_file.write(f'   [{file_to_read["files"][i]}]')
+      bach_file.write(f'   filename = {file_to_read["files"][i]}')
       bach_file.close()
                       
 
