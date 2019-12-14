@@ -19,6 +19,7 @@ def read_(**file_to_read):
     
     read_data = open(os.environ.get('HOME') + '/extras/python/yal_lang/' + 'bach.bach').read()
     print(read_data)
+    os.system('clear')
     sleep(1.8)
    
                       
@@ -81,5 +82,5 @@ def read_(**file_to_read):
       file.write(open_file)
 
     os.system('clear')
-    print(Fore.WHITE + 'EXECUTING_MAIN ->' + file_to_read['files'][i])
+    print(Fore.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i])
     exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
