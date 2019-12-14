@@ -3,6 +3,12 @@ def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
     open_file = open(file_to_read['files'][i], 'r').read()
+    
+    with open('bach.yaml','w') as bach_file:
+      bach_file.write('[file.info]\n')
+      bach_file.write(f'   [{file_to_read["files"][i]}]')
+      bach_file.close()
+                      
 
     # IMPORTANT
     open_file = open_file.replace('import name', 'import')
