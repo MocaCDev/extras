@@ -11,9 +11,9 @@ def read_(**file_to_read):
         bach_file.write('[file.info]\n')
         bach_file.write(f'   - compiling {file_to_read["files"][i]}')
         bach_file.close()
-    else:
+    if os.path.isfile(os.environ.get('HOME') + '/extras/python/yal_lang' + '/bach.bach'):
       open_bach = open(os.environ.get('HOME') + '/extras/python/yal_lang' + '/bach.bach','r').read()
-      if not file_to_read['file'][i] in open_bach:
+      if not file_to_read['files'][i] in open_bach:
         with open(os.environ.get('HOME') + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file_:
           bach_file_.write(f'   - compiling {file_to_read["file"][i+1]}')
     
