@@ -1,25 +1,25 @@
 import os
 from time import sleep
 from colorama import Fore, Style
-def read_(**file_to_read,path):
+def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
     open_file = open(file_to_read['files'][i], 'r').read()
     
-    if not os.path.exists(path + '/extras/python/yal_lang' + '/bach.bach'):
-      with open(path + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file:
+    if not os.path.exists(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach'):
+      with open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file:
         bach_file.write('[file.info]\n')
         bach_file.write(f'   - compiling {file_to_read["files"][i]}')
         bach_file.close()
-    if os.path.isfile(path + '/extras/python/yal_lang' + '/bach.bach'):
-      open_bach = open(path + '/extras/python/yal_lang' + '/bach.bach','r').read()
+    if os.path.isfile(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach'):
+      open_bach = open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach','r').read()
       if not file_to_read['files'][i] in open_bach:
-        with open(path + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file_:
+        with open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file_:
           bach_file_.write(open_bach + '\n')
           bach_file_.write(f'   - compiling {file_to_read["files"][i]}')
           bach_file.close()
     
-    read_data = open(path + '/extras/python/yal_lang/' + 'bach.bach').read()
+    read_data = open(file_to_read['path'] + '/extras/python/yal_lang/' + 'bach.bach').read()
     print(read_data)
     sleep(1.8)
     os.system('clear')
