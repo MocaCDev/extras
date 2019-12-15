@@ -9,7 +9,7 @@ def read_(**file_to_read):
     # To make sure imports are not needed, the file named runner.yal will run lastly
     # NOTE: please name your main .yal file, or the rendering point for a .yal application, runner.yal
     # so it will be executed lastly
-    if file_to_read['files'][i] == 'runner.yal':
+    if 'runner.yal' in file_to_read['files']:
       del(file_to_read['files'][i])
       file_to_read['files'][i].append('runner.yal')
     
