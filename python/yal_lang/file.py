@@ -11,7 +11,7 @@ for i in range(len(os.listdir())):
     if os.listdir()[i] == 'file.yal':
       raise NameError('The name ' + os.listdir()[i] + ' cannot be used\n\nThe file ' + os.listdir()[i] + ' has been deleted')
       os.remove('file.yal')
-    get_file.append(main_path + '/' + os.listdir()[i])
+    get_file.append(path + '/' + os.listdir()[i])
 
 
 #if not '.yal' in get_file:
