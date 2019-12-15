@@ -36,7 +36,7 @@ def read_(**file_to_read):
     open_file = open_file.replace('!dict-','**')
     open_file = open_file.replace('!tup-','*')
 
-    open_file = open_file.replace('keep_track',open(f'{os.environ.get("HOME")}/extras/python/yal_lang/templates/keep_track_of_import.txt','r').read())
+    open_file = open_file.replace('keep_track',open(f'{file_to_read["path"]}/extras/python/yal_lang/templates/keep_track_of_import.txt','r').read())
     open_file = open_file.replace('print_value','print')
     open_file = open_file.replace('create class','class')
     open_file = open_file.replace('for','for')
@@ -46,7 +46,7 @@ def read_(**file_to_read):
     open_file = open_file.replace('true','True')
     open_file = open_file.replace('false','False')
     open_file = open_file.replace('nil','None')
-    open_file = open_file.replace('class error', open(f'{os.environ.get("HOME")}/extras/python/yal_lang/templates/class_error.txt','r').read())
+    open_file = open_file.replace('class error', open(f'{file_to_read["path"]}/extras/python/yal_lang/templates/class_error.txt','r').read())
     open_file = open_file.replace('this','self')
     open_file = open_file.replace('class func','def')
     open_file = open_file.replace('get_length','len')
