@@ -10,7 +10,7 @@ def read_(**file_to_read):
     # so it will be executed lastly
     if file_to_read['files'][i] == 'runner.yal':
       del(file_to_read['files'][i])
-      file_to_read['files'][i].append('runenr.yal')
+      file_to_read['files'][i].append('runner.yal')
     
     open_file = open(file_to_read['files'][i], 'r').read()
     
