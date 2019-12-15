@@ -1,7 +1,7 @@
 import os
 from time import sleep
 from colorama import Fore, Style
-def read_(**file_to_read):
+def read_(**file_to_read,path):
 
   for i in range(len(file_to_read['files'])):
     open_file = open(file_to_read['files'][i], 'r').read()
