@@ -12,7 +12,7 @@ def read_(**file_to_read):
         bach_file.write(f'   - compiling {file_to_read["files"][i]}')
         bach_file.close()
       with open(file_to_read['path'] + '/extras/python/yal_lang/bach.json','w') as json_file:
-        data = {f'file_{i}':file_to_read['files'][i]}
+        data = {f'file_{i+1}':file_to_read['files'][i]}
         to_json = json.dumps(data,indent=2,sort_keys=False)
         json_file.write(to_json)
         json_file.close()
@@ -26,7 +26,7 @@ def read_(**file_to_read):
           bach_file.close()
         with open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.json','w') as json_file:
           json_file.write(open_json)
-          data = {f'file_{i}':file_to_read['files'][i]}
+          data = {f'file_{i+1}':file_to_read['files'][i]}
           to_json = json.dumps(data,indent=2,sort_keys=False)
           json_file.write(to_json)
           json_file.close()
