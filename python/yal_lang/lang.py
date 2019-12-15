@@ -1,6 +1,7 @@
 import os,json
 from time import sleep
 from colorama import Fore, Style
+
 def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
@@ -94,5 +95,5 @@ def read_(**file_to_read):
       file.write(open_file)
 
     os.system('clear')
-    print(Fore.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i])
+    print(Fore.GREEN + Back.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i])
     exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
