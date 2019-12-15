@@ -276,7 +276,7 @@ b = false
 -- "None" in Python
 c = nil
 ```
-# How to Write, and execute, a .yal file
+# How to Write, and execute, a .yal file(!NEW!)
 *Step 1: import os*
 ```python
 import os
@@ -290,12 +290,12 @@ main = os.environ.get('HOME')
 # this checks if the directory extras already exists outside the active directory
 # if it doesn't then extras will be installed inside the active directory
 if not os.path.exists(main + '/extras'):
-	os.system('git clone https://github.com/ARACADERISE/extras')
-	os.system('cd extras/python/yal_lang && python file.py')
+  os.system('git clone https://github.com/ARACADERISE/extras')
+  os.system('cd extras/python/yal_lang && python file.py')
 else:
   # otherwise it will be ran even though it is not inside the directory
   # let the application take it from here :)
-	os.system(f'cd {main}/extras/python/yal_lang && python file.py')
+  os.system(f'cd {main}/extras/python/yal_lang && python file.py')
 ```
 ***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INCLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
 ## Disclaimer
