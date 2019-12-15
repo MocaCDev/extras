@@ -283,48 +283,19 @@ import os
 ```
 *Step 2: use os.system to git the resporitory*
 ``` python
-# If we don't have an if statement checking if the path of "extras" exists, we will always get
-# an error
-if not os.path.exists('extras'):
-  os.system('cd && git clone https://github.com/ARACADERISE/extras')
-```
-*Step 3: use os.system to run "file.py"*
-```python
-# This will cd into the "extras" folder, then into the "python" folder, and then into "yal_lang" folder
-# then will execute "file.py"
-os.system('cd extras/python/yal_lang && python file.py')
-```
-*Note: Within extra/python/yal_lang, instead of having the user input the .yal filename, you can just open up file.py, and change get_file to the file name of your .yal file*
-```python
-# Here is an example
-"this would ask the user for the filename"
-MAIN_PATH = os.environ.get('HOME')
+import os
 
-get_file = input('File: ')
+main = os.environ.get('HOME')
 
-get_file = MAIN_PATH + '/' + get_file
-
-if not '.yal' in get_file:
-  raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
-
-read_(get_file)
-
-"now get_file is already assigned the file name"
-"this is recommended if you're implementing a .yal file/application in your project"
-MAIN_PATH = os.environ.get('HOME')
-
-get_file = 'test.yal'
-
-get_file = MAIN_PATH + '/' + get_file
-
-"""
-this if statement is useless when assigning get_file the .yal filename, so you can either keep the 
-if statement or delete ir, no harm will be done
-"""
-if not '.yal' in get_file:
-  raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
-
-read_(get_file)
+# this checks if the directory extras already exists outside the active directory
+# if it doesn't then extras will be installed inside the active directory
+if not os.path.exists(main + '/extras'):
+	os.system('git clone https://github.com/ARACADERISE/extras')
+	os.system('cd extras/python/yal_lang && python file.py')
+else:
+  # otherwise it will be ran even though it is not inside the directory
+  # let the application take it from here :)
+	os.system(f'cd {main}/extras/python/yal_lang && python file.py')
 ```
 ***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INCLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
 ## Disclaimer
