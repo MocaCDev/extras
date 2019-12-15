@@ -297,7 +297,7 @@ else:
   # let the application take it from here :)
   os.system(f'cd {main}/extras/python/yal_lang && python file.py')
 ```
-***It should compile "file.py" onto your Python terminal. It will ask for the name of your .yal file(MAKE SURE YOU INCLUDE .yal IN THE FILE NAME IT ASKS YOU FOR)***
+***It should automatically pick up all .yal files and execute runner.yal(WHICH IS THE RENDERER FILE) lastly***
 ## Disclaimer
 *When you write a file in the yal language, it writes it to the folder extras/python/yal_lang</br>If you do not want this, then please do the following when writing a file:*
 ### For a class
