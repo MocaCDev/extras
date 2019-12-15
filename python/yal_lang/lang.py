@@ -95,5 +95,5 @@ def read_(**file_to_read):
       file.write(open_file)
 
     os.system('clear')
-    print(Fore.GREEN + Back.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i])
+    print(Fore.GREEN + Back.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i] + Style.RESET_ALL)
     exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
