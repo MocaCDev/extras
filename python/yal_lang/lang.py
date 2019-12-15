@@ -87,4 +87,5 @@ def read_(**file_to_read):
 
     os.system('clear')
     print(Fore.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i])
-    exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
+    if i == len(file_to_read['files']-1:
+      exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
