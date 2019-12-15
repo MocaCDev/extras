@@ -15,3 +15,18 @@
         - Keep in mind:
           - You still need to import a module name if it isn't a .yal file. The only things you do not need to import
           - are functions or class-functions within a .yal file
+  - version 1.0.2.1:
+    - released 12/15/19
+    - info:
+      - resolved pathing issues
+      - rendering .yal file is now to be named runner.yal
+      - Had issues with the directory extras? Not anymore:
+        - no matter where the directory extras is, it will be removed and re-downloaded in your active directory
+      - More compatible with termux terminal
+      - want to add:
+        - what if the user writes in one file, then calls the function in another file, then runs both files in the runner.yal
+        - would this cause an error or would it compile correctly?
+        - is there a way the user could write some python code to help the compiler compile certain files
+        - before other?
+        - !TODO:
+          - make it to where the user can write a few lines of python so certain files are compiled before others
