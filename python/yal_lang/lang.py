@@ -4,10 +4,13 @@ from colorama import Fore, Style
 def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
+    
+    # To make sure imports are not needed, the file named runner.yal will run lastly
+    # NOTE: please name your main .yal file, or the rendering point for a .yal application, runner.yal
+    # so it will be executed lastly
     if file_to_read['files'][i] == 'runner.yal':
       del(file_to_read['files'][i])
       file_to_read['files'][i].append('runenr.yal')
-      print(file_to_read)
     
     open_file = open(file_to_read['files'][i], 'r').read()
     
