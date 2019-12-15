@@ -4,6 +4,11 @@ from colorama import Fore, Style
 def read_(**file_to_read):
 
   for i in range(len(file_to_read['files'])):
+    if file_to_read['files'][i] == 'runner.yal':
+      del(file_to_read['files'][i])
+      file_to_read['files'][i].append('runenr.yal')
+      print(file_to_read)
+    
     open_file = open(file_to_read['files'][i], 'r').read()
     
     if not os.path.exists(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach'):
