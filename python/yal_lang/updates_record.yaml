@@ -29,4 +29,7 @@
         - is there a way the user could write some python code to help the compiler compile certain files
         - before other?
         - !TODO:
-          - make it to where the user can write a few lines of python so certain files are compiled before others
+          - is there a way we can make the compiler compile one file before another, or make one file more important then
+          - any other?
+          - !POSSIBLY:
+            - have the user write some python code to compile one file before any other file?
