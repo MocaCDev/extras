@@ -2,7 +2,8 @@ import os
 from lang import read_
 
 main_path = os.environ.get('HOME')
-print(os.getcwd())
+path = os.getcwd().split('/',' ')
+print(path)
 get_file = []
 
 for i in range(len(os.listdir())):
