@@ -1,4 +1,4 @@
-import os
+import os,json
 from time import sleep
 from colorama import Fore, Style
 def read_(**file_to_read):
@@ -11,13 +11,25 @@ def read_(**file_to_read):
         bach_file.write('[file.info]\n')
         bach_file.write(f'   - compiling {file_to_read["files"][i]}')
         bach_file.close()
+      with open(file_to_read['path'] + '/extras/python/yal_lang/bach.json','w') as json_file:
+        data = {f'file_{i}':file_to_read['files'][i]}
+        to_json = json.dumps(data,indent=2,sort_keys=False)
+        json_file.write(to_json)
+        json_file.close()
     if os.path.isfile(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach'):
       open_bach = open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach','r').read()
+      open_json = open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.json','r').read()
       if not file_to_read['files'][i] in open_bach:
         with open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.bach','w') as bach_file_:
           bach_file_.write(open_bach + '\n')
           bach_file_.write(f'   - compiling {file_to_read["files"][i]}')
           bach_file.close()
+        with open(file_to_read['path'] + '/extras/python/yal_lang' + '/bach.json','w') as json_file:
+          json_file.write(open_json)
+          data = {f'file_{i}':file_to_read['files'][i]}
+          to_json = json.dumps(data,indent=2,sort_keys=False)
+          json_file.write(to_json)
+          json_file.close()
     
     read_data = open(file_to_read['path'] + '/extras/python/yal_lang/' + 'bach.bach').read()
     print(read_data)
