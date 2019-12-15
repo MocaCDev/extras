@@ -2,7 +2,7 @@ import os
 from lang import read_
 
 main_path = os.environ.get('HOME')
-path = os.getcwd().split('/',' ')
+path = os.getcwd().replace('/',' ')
 print(path)
 get_file = []
 
