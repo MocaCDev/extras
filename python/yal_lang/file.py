@@ -17,4 +17,4 @@ for i in range(len(os.listdir())):
 #if not '.yal' in get_file:
   #raise Exception('Cannot open and execute ' + get_file + '\nNot a .yal file')
 
-read_(files=get_file)
+read_(files=get_file,path)
