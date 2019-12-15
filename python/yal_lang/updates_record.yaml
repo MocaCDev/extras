@@ -20,7 +20,7 @@
     - info:
       - resolved pathing issues
       - rendering .yal file is now to be named runner.yal
-      - New way of importing the application extras, !SEE DOCUMENTATION
+      - New way of importing the application extras(SEE DOCUMENTATION)
       - Had issues with the directory extras? Not anymore:
         - no matter where the directory extras is, it will be removed and re-downloaded in your active directory
       - More compatible with termux terminal
