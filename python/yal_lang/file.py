@@ -1,9 +1,10 @@
 import os
 from lang import read_
 
+os.system('clear')
+
 main_path = os.environ.get('HOME')
 path = os.getcwd().replace('/extras/python/yal_lang','')
-print(path)
 os.chdir(path)
 get_file = []
 
