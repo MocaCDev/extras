@@ -10,8 +10,9 @@ def read_(**file_to_read):
     # NOTE: please name your main .yal file, or the rendering point for a .yal application, runner.yal
     # so it will be executed lastly
     if 'runner.yal' in file_to_read['files']:
-      del(file_to_read['files'][i])
-      file_to_read['files'][i].append('runner.yal')
+      find_this = file_to_read['files'].index('runner.yal')
+      del(file_to_read['files'][find_this])
+      file_to_read['files'].append('runner.yal')
     
     open_file = open(file_to_read['files'][i], 'r').read()
     
@@ -95,5 +96,5 @@ def read_(**file_to_read):
       file.write(open_file)
 
     os.system('clear')
-    print(Fore.GREEN + Back.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i] + Style.RESET_ALL)
+    print(Fore.GREEN + Back.WHITE + 'EXECUTING_MAIN -> ' + file_to_read['files'][i] + Style.RESET_ALL + '\n')
     exec(open(file_to_read['files'][i].replace('.yal','.py'),'r').read())
