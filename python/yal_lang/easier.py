@@ -67,7 +67,7 @@ class yal:
     if os.path.isfile(os.path.abspath('new_os_name.json')):
       open_ = json.loads(open('new_os_name.json','r').read())
 
-      self.os_name = open_['new_name']
+      os.name = open_['new_name']
 
       return (True,os.name)
     else:return False
