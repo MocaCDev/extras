@@ -1,7 +1,75 @@
 import os, json
 from time import sleep
 
+primary_plats = ()
+local_plats = ()
+
+def _json_write_(file_name,data):
+
+  """
+    This is a function that is to only be used if you are writing data that has been loaded by the json module:
+      json.load
+      json.loads
+  """
+
+  with open(file_name,'w') as file:
+    file.write(json.dumps(data,indent=2))
+    file.close()
+
 class yal:
+
+  # This will be primary systems for yal(all made up by .yal language)
+  global primary_plats
+  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000))
+  global local_plats
+  local_plats = (('posix',12000),('nt',22000))
+
+  def _setup_platform_(self,plat_to_use):
+
+    """
+      This will setup a primary or local platform name.
+    """
+
+    if plat_to_use == local_plats[0][0]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0][0],os.name)
+    if plat_to_use == local_plats[1][1]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1][1],os.name)
+    if plat_to_use == primary_plats[0][0]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0][0],os.name)
+    if plat_to_use == primary_plats[1][1]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1][1],os.name)
+    if plat_to_use == primary_plats[2][2]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2][2],os.name)
+    else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
+  
+  def has_platform(self):
+
+    """
+      This is used in a if statement and if it is true then it will return os.name
+    """
+
+    if os.path.isfile(os.path.abspath('new_os_name.json')):
+      open_ = json.loads(open('new_os_name.json','r').read())
+
+      self.os_name = open_['new_name']
+
+      return (True,os.name)
+    else:return False
 
   def _render_path_(self,**paths_to_render):
 
@@ -31,6 +99,7 @@ class yal:
     for i in range(len(self.path_to_render)):
       if os.path.isfile(os.path.abspath(self.path_to_render[i])):self.is_dir=True
       else:self.is_dir=False
+          
       self.render_msg.append("<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {},\nIs A Dir: {}>".format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.path_to_render[i],os.path.abspath(self.path_to_render[i]).replace(os.environ.get('HOME'),''),self.path_to_render[i],self.is_dir))
       self.is_rendered_path.append(self.path_to_render[i])
     
@@ -69,7 +138,6 @@ class yal:
       for i in range(len(paths_to_see['check'])):
         if self.validated:return f'{paths_to_see["check"][i]}:{True}'
         else:return f'{paths_to_see["check"][i]}:{False}'
-
   
   def _return_rendered_(self,timer=4):
 
