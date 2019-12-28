@@ -36,14 +36,17 @@ class yal:
     """
       This will return a Render Message
     """
+    
+    self.return_render_msg = []
 
     if os.path.isfile('render_info.json'):
       op = json.loads(open('render_info.json','r').read())
 
       for i in range(len(op)):
         print(op[i] + '\n')
+        self.return_render_msg.append(op[i])
       
       sleep(timer)
       
-      return 0
+      return self.return_render_msg
     else:pass
