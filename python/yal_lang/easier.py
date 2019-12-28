@@ -10,12 +10,13 @@ class yal:
       and return a Render Message, which just returns
       the main path, the main path + the rendered path,
       the directory path of the rendered path, and the
-      primary path.
+      primary path. Last but not least, Is A Dir.
       EXAMPLE:
       Main path : /home/runner
       Main Path + rendered path: /home/runner/hey/t.txt
       Directory Path: /hey/t.txt
       Primary Path: hey/t.xt
+      Is A Dir: False
     """
 
     self.path_to_render = []
@@ -28,7 +29,9 @@ class yal:
         self.path_to_render.append(paths_to_render['path'][i])
     
     for i in range(len(self.path_to_render)):
-      self.render_msg.append("<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {}>".format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.path_to_render[i],os.path.abspath(self.path_to_render[i]).replace(os.environ.get('HOME'),''),self.path_to_render[i]))
+      if os.path.isfile(os.path.abspath(self.path_to_render[i])):self.is_dir=True
+      else:self.is_dir=False
+      self.render_msg.append("<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {},\nIs A Dir: {}>".format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.path_to_render[i],os.path.abspath(self.path_to_render[i]).replace(os.environ.get('HOME'),''),self.path_to_render[i],self.is_dir))
       self.is_rendered_path.append(self.path_to_render[i])
     
     with open('render_info.json','w') as render_info:
