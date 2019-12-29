@@ -1,4 +1,4 @@
-import os, json
+import os, json, sys
 from time import sleep
 
 primary_plats = ()
@@ -21,7 +21,6 @@ class yal:
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
   primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000))
-  # This will be local systems for yal
   global local_plats
   local_plats = (('posix',12000),('nt',22000))
 
@@ -67,7 +66,7 @@ class yal:
     if os.path.isfile(os.path.abspath('new_os_name.json')):
       open_ = json.loads(open('new_os_name.json','r').read())
 
-      os.name = open_['new_name']
+      self.os_name = open_['new_name']
 
       return (True,os.name)
     else:return False
@@ -104,6 +103,8 @@ class yal:
       self.render_msg.append("<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {},\nIs A Dir: {}>".format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.path_to_render[i],os.path.abspath(self.path_to_render[i]).replace(os.environ.get('HOME'),''),self.path_to_render[i],self.is_dir))
       self.is_rendered_path.append(self.path_to_render[i])
     
+    sys.path.append(self.is_rendered_path)
+
     with open('render_info.json','w') as render_info:
       render_info.write(json.dumps(self.render_msg,indent=2,sort_keys=False))
       render_info.close()
@@ -119,6 +120,8 @@ class yal:
       use it in a if statement and continue from there
     """
 
+    self.validated = []
+
     if 'look_for' in paths_to_see:
       if type(paths_to_see['look_for']) == list:
         raise TypeError('Cannot use a list to look for a certain rendered path')
@@ -128,8 +131,8 @@ class yal:
       if self.check_for in self.is_rendered_path:self.pre_validated=[f'{self.check_for}:{True}',True]
       else:self.pre_validated=[f'{self.check_for}:{False}',False]
     for i in range(len(paths_to_see['check'])):
-      if paths_to_see['check'][i] in self.is_rendered_path:self.validated = True
-      else:self.validated = False
+      if paths_to_see['check'][i] in self.is_rendered_path:self.validated.append(True)
+      else:self.validated.append(False)
     
     if 'look_for' in paths_to_see:
       for i in range(len(paths_to_see['check'])):
@@ -156,7 +159,7 @@ class yal:
         self.return_render_msg.append(op[i])
       
       sleep(timer)
-      
+
       os.system('clear')
 
       return self.return_render_msg
