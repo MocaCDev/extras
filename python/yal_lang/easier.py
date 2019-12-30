@@ -70,6 +70,37 @@ class yal:
 
       return (True,os.name)
     else:return False
+  
+  def _render_yal_files_(self):
+
+    """
+      This will render .yal files only in the same way it rendered the other files
+    """
+
+    self.yal_files = []
+    self.render_yal_file_msg = []
+    self.is_yal_file = None
+
+    for i in range(len(os.listdir())):
+      if '.yal' in os.listdir()[i]:
+        self.yal_files.append(os.listdir()[i])
+    
+    for i in range(len(self.yal_files)):
+
+      if os.path.isfile(os.path.abspath(os.listdir()[i])):
+        self.is_yal_file = True
+      
+      if self.is_yal_file:
+        message_to_admit = '''-- This file has been rendered by the Yal Language Application(easier.py)\n--Message admitted by ARACADERISE'''
+        old_info = open(os.path.abspath(self.yal_files[i]),'r').read()
+        if message_to_admit in open(os.path.abspath(self.yal_files[i]),'r').read():pass
+        else:
+          with open(os.path.abspath(self.yal_files[i]),'w') as update_file:
+            update_file.write(message_to_admit)
+            update_file.write('\n'+old_info)
+            update_file.close()
+      
+      self.render_yal_file_msg.append('<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {},\nIs A Dir: {}>'.format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.yal_files[i],os.path.abspath(self.yal_files[i]).replace(os.environ.get('HOME'),''),self.yal_files[i],self.is_yal_file))
 
   def _render_path_(self,**paths_to_render):
 
@@ -117,31 +148,43 @@ class yal:
         check: must be a list of at least a length of 1
         look_for: must be a string of which you are looking for a certain rendered path, if it exists
       You can print this to get the returned data, or
-      use it in a if statement and continue from there
+      use it in a if statement and continue from there.
+
+      NOTE:
+        The majority count will control what way the if statement goes.
+        Example:
+        2 True, 1 False, the if statement is True and will compile
+        If it is 1 True 1 False it will return a "Static Render Msg"
     """
 
     self.validated = []
+    self.TRUE = 0
+    self.FALSE = 0
+    self.return_ = tuple
 
     if 'look_for' in paths_to_see:
-      if type(paths_to_see['look_for']) == list:
-        raise TypeError('Cannot use a list to look for a certain rendered path')
-
+      if type(paths_to_see['look_for']) != str:
+        raise TypeError('The type of "look_for" must be of type str, not ' + str(type(paths_to_see['look_for'])))
+      
       self.check_for = paths_to_see['look_for']
 
       if self.check_for in self.is_rendered_path:self.pre_validated=[f'{self.check_for}:{True}',True]
       else:self.pre_validated=[f'{self.check_for}:{False}',False]
+
     for i in range(len(paths_to_see['check'])):
       if paths_to_see['check'][i] in self.is_rendered_path:self.validated.append(True)
       else:self.validated.append(False)
     
-    if 'look_for' in paths_to_see:
-      for i in range(len(paths_to_see['check'])):
-        if self.validated:return ((f'{paths_to_see["check"][i]}:{True}',True),(self.pre_validated[0],self.pre_validated[1]))
-        else:return ((f'{paths_to_see[i]}:{False}',False),(self.pre_validated[0],self.pre_validated[1]))
-    else:
-      for i in range(len(paths_to_see['check'])):
-        if self.validated:return f'{paths_to_see["check"][i]}:{True}'
-        else:return f'{paths_to_see["check"][i]}:{False}'
+    for i in range(len(self.validated)):
+      if self.validated[i] is True:self.TRUE += 1
+      else:self.FALSE += 1
+    
+    if self.TRUE > self.FALSE:return True
+    if self.FALSE > self.TRUE:return False
+    if self.TRUE == self.FALSE:
+      print("Static Render Msg\n<Could not contribute to True or False,\nTRUE:{},\nFALSE:{}>".format(self.TRUE,self.FALSE))
+      return False
+    
   
   def _return_rendered_(self,timer=4):
 
