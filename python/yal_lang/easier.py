@@ -179,8 +179,12 @@ class yal:
       if self.validated[i] is True:self.TRUE += 1
       else:self.FALSE += 1
     
-    if self.TRUE > self.FALSE:return True
-    if self.FALSE > self.TRUE:return False
+    if self.TRUE > self.FALSE:
+      if 'look_for' in paths_to_see:
+        return (True,(self.pre_validated[0],self.pre_validated[1]))
+    if self.FALSE > self.TRUE:
+      if 'look_for' in paths_to_see:
+        return (False(self.pre_validated[0],self.pre_validated[1]))
     if self.TRUE == self.FALSE:
       print("Static Render Msg\n<Could not contribute to True or False,\nTRUE:{},\nFALSE:{}>".format(self.TRUE,self.FALSE))
       return False
