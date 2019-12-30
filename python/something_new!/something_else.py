@@ -16,7 +16,7 @@ class server(Generic[T]):
 
 print(server._gather_(['180'],['180',True]))
 
-def _call_(server:server[str]):
+def _call_(server:server[str]) -> str:
   
   return server
 
