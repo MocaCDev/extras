@@ -20,7 +20,7 @@ class yal:
 
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
-  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_LANG',880000))
+  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_ORIGINAL',880000))
   global local_plats
   local_plats = (('posix',12000),('nt',22000))
 
@@ -35,31 +35,31 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0][0],os.name)
-    if plat_to_use == local_plats[1][1]:
+    if plat_to_use == local_plats[1][0]:
       os.name = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1][1],os.name)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1][0],os.name)
     if plat_to_use == primary_plats[0][0]:
       os.name = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0][0],os.name)
-    if plat_to_use == primary_plats[1][1]:
+    if plat_to_use == primary_plats[1][0]:
       os.name = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1][1],os.name)
-    if plat_to_use == primary_plats[2][2]:
+      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1][0],os.name)
+    if plat_to_use == primary_plats[2][0]:
       os.name = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2][2],os.name)
-    if plat_to_use == primary_plats[3][3]:
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2][0],os.name)
+    if plat_to_use == primary_plats[3][0]:
       os.name = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3][3],os.name)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3][0],os.name)
     else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
   
   def has_platform(self):
@@ -73,8 +73,14 @@ class yal:
 
       self.os_name = open_['new_name']
 
-      return (True,os.name)
+      return True
     else:return False
+  
+  "this function goes along with has_platform"
+  def _return_platform_name_(self):
+
+    "this will just return the platform name"
+    return os.name
   
   def _render_yal_files_(self):
 
