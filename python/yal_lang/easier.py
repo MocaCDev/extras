@@ -21,6 +21,7 @@ class yal:
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
   primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_ORIGINAL',880000))
+  # This will be local systems for yal
   global local_plats
   local_plats = (('posix',12000),('nt',22000))
 
