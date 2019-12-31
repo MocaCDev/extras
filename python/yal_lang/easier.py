@@ -23,13 +23,14 @@ class yal:
   primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_ORIGINAL',880000))
   # This will be local systems for yal
   global local_plats
-  local_plats = (('posix',12000),('nt',22000))
+  local_plats = (('posix',12000,'AVAILABLE'),('nt',22000,'AVAILABLE'))
 
   def _setup_platform_(self,plat_to_use):
 
     """
       This will setup a primary or local platform name.
     """
+
 
     if plat_to_use == local_plats[0][0]:
       os.name = plat_to_use
@@ -61,6 +62,8 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3][0],os.name)
+      print(primary_plats)
+      sleep(10)
     else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
   
   def has_platform(self):
@@ -172,9 +175,6 @@ class yal:
     """
       Checks to see if a path is rendered.
       Arguments:
-        NOTE: You must use one or the other. If you are looking to check multiple files use check,
-              if you're looking for just one then use look_for. It is rare to use both due to the fact
-              if you use both the argument check is overriding the look_for argument.
         check: must be a list of at least a length of 1
         look_for: must be a string of which you are looking for a certain rendered path, if it exists
       You can print this to get the returned data, or
