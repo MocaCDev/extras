@@ -20,7 +20,7 @@ class yal:
 
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
-  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000))
+  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_LANG',880000))
   global local_plats
   local_plats = (('posix',12000),('nt',22000))
 
@@ -55,6 +55,11 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2][2],os.name)
+    if plat_to_use == primary_plats[3][3]:
+      os.name = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3][3],os.name)
     else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
   
   def has_platform(self):
@@ -79,6 +84,7 @@ class yal:
 
     self.yal_files = []
     self.render_yal_file_msg = []
+    self.rendered_yal_files = []
     self.is_yal_file = None
 
     for i in range(len(os.listdir())):
@@ -101,6 +107,20 @@ class yal:
             update_file.close()
       
       self.render_yal_file_msg.append('<Rendered from main {},\nRendered into {},\nFrom Directory Path {},\nPrimary Path {},\nIs A Dir: {}>'.format(os.environ.get('HOME'),os.environ.get('HOME')+'/'+self.yal_files[i],os.path.abspath(self.yal_files[i]).replace(os.environ.get('HOME'),''),self.yal_files[i],self.is_yal_file))
+      self.rendered_yal_files.append(self.yal_files[i])
+    
+    with open('render_yal_files.json','w') as file:
+      file.write(json.dumps(self.rendered_yal_files,indent=2))
+      file.close()
+    
+  def _return_rendered_yal_files_(self):
+
+    "this will just return the list of rendered yal files"
+
+    if os.path.isfile(os.path.abspath('render_yal_files.json')):
+      return self.rendered_yal_files
+    else:
+      print('You have not rendered any .yal files through yal._render_yal_files_')
 
   def _render_path_(self,**paths_to_render):
 
