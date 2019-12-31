@@ -172,6 +172,9 @@ class yal:
     """
       Checks to see if a path is rendered.
       Arguments:
+        NOTE: You must use one or the other. If you are looking to check multiple files use check,
+              if you're looking for just one then use look_for. It is rare to use both due to the fact
+              if you use both the argument check is overriding the look_for argument.
         check: must be a list of at least a length of 1
         look_for: must be a string of which you are looking for a certain rendered path, if it exists
       You can print this to get the returned data, or
