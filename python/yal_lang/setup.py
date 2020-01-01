@@ -10,7 +10,7 @@ setup(
     author = "ARACADERISE",
     description = "Lightweight version of Python, easily compiled, easily written.",
     long_description = long_desc,
-    packages = ["extras/python/yal_lang","extras/python/yal_lang.client_plugin","extras/python/yal_lang.templates"],
+    packages = [],
     include_package_data = True,
     platforms = "LINUX",
     install_requires = ['colorama'],
