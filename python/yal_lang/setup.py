@@ -11,7 +11,7 @@ setup(
     packages = ["extras","extras.client_plugin","extras.templates"],
     include_package_data = True,
     platforms = "LINUX",
-    install_requires = requirements.txt,
+    install_requires = ['colorama'],
     classifiers = [
         "Development Status :: 1 - Beta",
         "Environment :: Console",
