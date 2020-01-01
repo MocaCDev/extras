@@ -1,3 +1,5 @@
+long_desc = open('README.md','r').read()
+
 setup(
     name = "Yal Lang",
     version = '1.0.2.1',
@@ -5,8 +7,8 @@ setup(
     license = "MIT License",
     author = "ARACADERISE",
     description = "Lightweight version of Python, easily compiled, easily written.",
-    long_description = "Secondary version of Python. Uses same compiler as Python, same syntax code as Python, just different keywords, key args, and compiled separetly than Python files",
-    packages = [],
+    long_description = long_desc,
+    packages = ["extras","extras.client_plugin","extras.templates"],
     include_package_data = True,
     platforms = "LINUX",
     install_requires = requirements.txt,
