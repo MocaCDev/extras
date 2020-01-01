@@ -3,7 +3,7 @@ long_desc = open('README.md','r').read()
 from setuptools import setup
 
 setup(
-    name = "Yal Lang",
+    name = "YalLang",
     version = '1.0.2.1',
     url = "https://github.com/ARACADERISE/extras",
     license = "MIT License",
