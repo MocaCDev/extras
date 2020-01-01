@@ -1,5 +1,7 @@
 long_desc = open('README.md','r').read()
 
+from setuptools import setup
+
 setup(
     name = "Yal Lang",
     version = '1.0.2.1',
