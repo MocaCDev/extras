@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     name = "YalLang",
     version = '1.0.2.1',
-    url = "https://github.com/ARACADERISE/extras",
+    url = "https://github.com/ARACADERISE/extras/tree/master/python/yal_lang",
     license = "MIT License",
     author = "ARACADERISE",
     description = "Lightweight version of Python, easily compiled, easily written.",
