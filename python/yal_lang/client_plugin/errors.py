@@ -22,5 +22,5 @@ class SlugTimeError(TimeoutError):
       The time rate increases as the file gets bigger.
 
       FUNCTION:
-        def _slug_read_(self,file_name,timout:'int'=25)
+        def _slug_read_(self,file_name,timeout:'int'=25)
   """
