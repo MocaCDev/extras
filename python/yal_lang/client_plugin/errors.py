@@ -13,10 +13,14 @@ class SlugTimeError(TimeoutError):
 
   """
     The _slug_read_ function basically opens a file, and returns the result at a default time rate of 25 seconds.
-
     The user can change the default time rate to whatever they want, but must be under 150.
     
     NOTE:
       The soul purpose of the _slug_read_ function is to compile the file completely if it is greater than
-      200 bytes, using os.stat().st_size, which just gets the total size(bytes) of a file.
+      200 bytes, using os.stat().st_size, which just gets the total size of a file.
+
+      The time rate increases as the file gets bigger.
+
+      FUNCTION:
+        def _slug_read_(self,file_name,timout:'int'=25)
   """
