@@ -58,13 +58,8 @@ class yal_client_plugin:
         after completing the plaform setup
     """
     
-    if os.path.isfile(os.path.abspath('new_os.json')):
-      open_new_os = json.loads(open('new_os.json','r').read())
-    else:
-      open_new_os = json.loads(open('new_os_name.json','r').read())
-    
     sleep(2.5)
     
     return (
-      print(os.name + ' setup complete'),sleep(1),os.system('clear') if os.path.isfile(os.path.abspath('new_os.json')) else print("You haven't completely setup the platform: {}".format(open_new_os['new_name']))
+      print(os.name + ' setup complete'),sleep(1),os.system('clear') if os.path.isfile(os.path.abspath('new_os.json')) else print("You haven't completely setup the platform: {}".format(json.loads(open('new_os.json','r').read()['new_name'])))
     )
