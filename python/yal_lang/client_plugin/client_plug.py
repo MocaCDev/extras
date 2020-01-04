@@ -64,7 +64,7 @@ class yal_client_plugin:
       print(os.name + ' setup complete'),sleep(1),os.system('clear') if os.path.isfile(os.path.abspath('new_os.json')) else print("You haven't completely setup the platform: {}".format(json.loads(open('new_os.json','r').read()['new_name'])))
     )
   def _use_platform_(self):
-    """this just returns the name is new_os.json if it exists
+    """this just returns the name in new_os.json if the path exists
         
         It is the same as _return_patform_, but it should be used when re-assigning os.name or sys.platform in your .py file
     """
