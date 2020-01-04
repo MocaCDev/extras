@@ -85,12 +85,14 @@ class yal:
 
     """
       This is used in a if statement and if it is true then it will return os.name
+
+      Since y_c_p._complete_platform_ deletes new_os_name.json, we will just check if the file new_os.json exists
     """
 
-    if os.path.isfile(os.path.abspath('new_os_name.json')):
+    if os.path.isfile(os.path.abspath('new_os.json')):
       open_ = json.loads(open('new_os_name.json','r').read())
 
-      self.os_name = open_['new_name']
+      self.os_name = open_['os_name'][1]
 
       return True
     else:return False
