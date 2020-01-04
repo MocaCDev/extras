@@ -71,4 +71,4 @@ class yal_client_plugin:
     
     if os.path.isfile(os.path.abspath('new_os.json')):
       return(json.loads(open('new_os.json','r').read()['os_name'][1]) # this will return
-    else:return(os.name) # this will just assing os.name to os.name(same thing), or sys.platform to os.name(which will also be the same value)
+    else:return(os.name)#will re-assing os.name to os.name(same value), as well as sys.platform
