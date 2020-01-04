@@ -8,7 +8,7 @@ from typing import (
   List
 )
 
-complete_info = [int,[str,str]]
+complete_info = List[int,[str,str]]
 
 class yal_client_plugin:
 
