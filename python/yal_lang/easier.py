@@ -1,5 +1,8 @@
 import os, json, sys
 from time import sleep
+from client_plugin.client_plug import yal_client_plugin
+
+y_c_p = yal_client_plugin()
 
 primary_plats = ()
 local_plats = ()
@@ -20,10 +23,10 @@ class yal:
 
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
-  primary_plats = (('AOP',12000),('NAWK',22000),('LA',32000),('YAL_ORIGINAL',880000))
+  primary_plats = ('AOP','NAWK','LA','YAL_ORIGINAL')
   # This will be local systems for yal
   global local_plats
-  local_plats = (('posix',12000,'AVAILABLE'),('nt',22000,'AVAILABLE'))
+  local_plats = ('posix','nt')
 
   def _setup_platform_(self,plat_to_use):
 
@@ -32,37 +35,49 @@ class yal:
     """
 
 
-    if plat_to_use == local_plats[0][0]:
-      os.name = plat_to_use
+    if plat_to_use == local_plats[0]:
+      os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0][0],os.name)
-    if plat_to_use == local_plats[1][0]:
-      os.name = plat_to_use
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0],os.name)
+    if plat_to_use == local_plats[1]:
+      os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1][0],os.name)
-    if plat_to_use == primary_plats[0][0]:
-      os.name = plat_to_use
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1],os.name)
+    if plat_to_use == primary_plats[0]:
+      os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0][0],os.name)
-    if plat_to_use == primary_plats[1][0]:
-      os.name = plat_to_use
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0],os.name)
+    if plat_to_use == primary_plats[1]:
+      os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1][0],os.name)
-    if plat_to_use == primary_plats[2][0]:
-      os.name = plat_to_use
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1],os.name)
+    if plat_to_use == primary_plats[2]:
+      os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2][0],os.name)
-    if plat_to_use == primary_plats[3][0]:
-      os.name = plat_to_use
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
+    if plat_to_use == primary_plats[3]:
+      os.name = primary_plats[3]
+      sys.platform = primary_plats[3]
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3][0],os.name)
-      print(primary_plats)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3],os.name)
       sleep(10)
     else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
   
