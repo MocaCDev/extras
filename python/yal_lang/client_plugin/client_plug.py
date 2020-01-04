@@ -50,7 +50,11 @@ class yal_client_plugin:
   
   def _return_platform_(self):
 
-    "this will just return os.name and sys.platform if it is found in new_os.json"
+    """this will just return os.name and sys.platform if it is found in new_os.json
+        
+        It isn't needed, but is usefull to return the value of os.name, which is the same as sys.plaform,
+        after competing the plaform
+    """
     
     if os.path.isfile(os.path.abspath('new_os.json')):
       open_new_os = json.loads(open('new_os.json','r').read())
