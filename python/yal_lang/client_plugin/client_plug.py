@@ -66,7 +66,7 @@ class yal_client_plugin:
   def _use_platform_(self):
     """this just returns the name is new_os.json if it exists
         
-        It is the same as _return_patform_, but it should be used when re-assigning os.name or sys.platform in you .py file
+        It is the same as _return_patform_, but it should be used when re-assigning os.name or sys.platform in your .py file
     """
     
     if os.path.isfile(os.path.abspath('new_os.json')):
