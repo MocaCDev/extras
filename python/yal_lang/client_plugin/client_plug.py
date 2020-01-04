@@ -5,12 +5,14 @@
 import os,json,sys
 from time import sleep
 from typing import (
-  List, Tuple, Dict
+  List
 )
+
+complete_info = [int,[str,str]]
 
 class yal_client_plugin:
 
-  def _complete_platform_(self,storage_amount:'int'=500000) -> List[int,[str,str]]:
+  def _complete_platform_(self,storage_amount:'int'=500000) -> complete_info:
 
     """this will complete the platform setup
 
