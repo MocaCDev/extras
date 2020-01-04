@@ -8,7 +8,7 @@ from typing import List
 
 class yal_client_plugin:
 
-  def _complete_platform_(self,storage_amount:'int'=500000) -> List:
+  def _complete_platform_(self,storage_amount:'int'=500000) -> list([int,[str,str]]):
 
     """this will complete the platform setup
 
