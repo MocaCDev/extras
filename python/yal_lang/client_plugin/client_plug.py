@@ -53,7 +53,7 @@ class yal_client_plugin:
     """this will just return os.name and sys.platform if it is found in new_os.json
         
         It isn't needed, but is usefull to return the value of os.name, which is the same as sys.plaform,
-        after competing the plaform
+        after completing the plaform setup
     """
     
     if os.path.isfile(os.path.abspath('new_os.json')):
