@@ -16,8 +16,8 @@ class SlugTimeError(TimeoutError):
     The user can change the default time rate to whatever they want, but must be under 150.
     
     NOTE:
-      The soul purpose of the _slug_read_ function is to compile the file in a fixed time rate if it is greater than
-      200 bytes, using os.stat().st_size, which just gets the total size of a file.
+      The soul purpose of the _slug_read_ function is to compile the file in a fixed time rate if the size is greater
+      than 200, using os.stat().st_size, which just gets the total size of a file.
 
       The time rate increases as the file gets bigger.
 
