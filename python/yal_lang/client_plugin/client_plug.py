@@ -52,4 +52,6 @@ class yal_client_plugin:
     else:
       open_new_os = json.loads(open('new_os_name.json','r').read())
     
-    return (os.name if os.name == sys.platform else print("You haven't completely setup the platform: {}".format(open_new_json['new_name'])))
+    return (
+      os.name if os.name == sys.platform else print("You haven't completely setup the platform: {}".format(open_new_json['new_name']))
+    )
