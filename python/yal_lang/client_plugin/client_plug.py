@@ -4,10 +4,13 @@
 
 import os,json,sys
 from time import sleep
+from typing import (
+  List, Tuple, Dict
+)
 
 class yal_client_plugin:
 
-  def _complete_platform_(self,storage_amount:'int'=500000):
+  def _complete_platform_(self,storage_amount:'int'=500000) -> List[int,[str,str]:
 
     """this will complete the platform setup
 
@@ -43,6 +46,7 @@ class yal_client_plugin:
         indent=2
       ))
       new_os.close()
+    return [self.total_storage,[os.name,sys.platform]]
   
   def _return_platform_(self):
 
