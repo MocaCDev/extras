@@ -46,10 +46,10 @@ class yal_client_plugin:
   def _return_platform_(self):
 
     "this will just return os.name and sys.platform if it is found in new_os.json"
-
-    open_new_os = json.loads(open('new_os.json','r').read())
-
-    if os.name == open_new_os['os_name'][1] and sys.platform == open_new_os['sys_name'][1]:
-      return (os.name if os.name == sys.platform else 'Could not return a specific platform')
+    
+    if os.path.isdir(os.path.abspath('new_os.json'):
+      open_new_os = json.loads(open('new_os.json','r').read())
     else:
-      print('You have not ran the function _complete_platform_\nPlease run the function in order to compete platform setup')
+      open_new_os = json.loads(open('new_os_name.json','r').read())
+    
+    return (os.name if os.name == sys.platform else print("You haven't completely setup the platform: {}".format(open_new_json['new_name'])))
