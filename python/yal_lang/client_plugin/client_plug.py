@@ -52,7 +52,7 @@ class yal_client_plugin:
   
   def _return_platform_(self):
 
-    """this will just return os.name and sys.platform if it is found in new_os.json
+    """this will just return os.name if the path new_os.json exists, which just means the platform has been setup completely
         
         It isn't needed, but is usefull to return the value of os.name, which is the same as sys.plaform,
         after completing the plaform setup
