@@ -4,15 +4,11 @@
 
 import os,json,sys
 from time import sleep
-from typing import (
-  List
-)
-
-complete_info = List[int,[str,str]]
+from typing import List
 
 class yal_client_plugin:
 
-  def _complete_platform_(self,storage_amount:'int'=500000) -> complete_info:
+  def _complete_platform_(self,storage_amount:'int'=500000) -> List:
 
     """this will complete the platform setup
 
