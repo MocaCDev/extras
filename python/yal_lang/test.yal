@@ -37,7 +37,7 @@ create class numbers() then
     this.msg = "sorry, your age is too low"
 
   -- NOTE: Make a function that will hold Class Error. Do not just type it randomly, make sure it is inside a class-function
-  def _return_class_err(this) then
+  func _return_class_err(this) then
     class error
 
 -- Note, the same notation of calling a method from the class is the same as Python!
