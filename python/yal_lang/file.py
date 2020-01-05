@@ -5,6 +5,9 @@ from easier import yal
 # we want the platform to be the YAL_ORIGINAL for the compilation of the .yal file
 yal._setup_platform_('YAL_ORIGINAL')
 
+# we want to render all the .yal files
+yal._render_yal_files_()
+
 os.system('clear')
 
 path = os.getcwd().replace('/extras/python/yal_lang','')
