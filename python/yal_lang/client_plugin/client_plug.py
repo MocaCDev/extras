@@ -69,6 +69,7 @@ class yal_client_plugin:
     return (
       print(os.name + ' setup complete'),sleep(1),os.system('clear') if os.path.isfile(os.path.abspath('new_os.json')) else print("You haven't completely setup the platform: {}".format(json.loads(open('new_os.json','r').read()['new_name'])))
     )
+  
   def _use_platform_(self):
     """this just returns the name in new_os.json if the path exists
         
