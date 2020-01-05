@@ -15,6 +15,10 @@ class yal_client_plugin:
 
         You can change the storage amount of the platform,
         depending on what you're going to use the platform for.
+        
+        NOTE:
+          The storage amount must be above 800, or another words the platform should be able to process
+          at least one large file.
     """
 
     # the storage can't be below 800, the platform needs to be able to process at least 1 large files
