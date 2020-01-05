@@ -17,7 +17,7 @@ class yal_client_plugin:
         depending on what you're going to use the platform for.
     """
 
-    # the storage can't be below 800, the platform needs to be able to process at least 2 files
+    # the storage can't be below 800, the platform needs to be able to process at least 1 large files
     if storage_amount < 800:
       print('\n\n')
       raise LessThan800StorageAmount('\n\nThe storage amount must be above 799.\nYou requested ' + str(storage_amount) + ' which cannot be accepted.')
