@@ -17,7 +17,7 @@ class SlugTimeError(TimeoutError):
     
     NOTE:
       The soul purpose of the _slug_read_ function is to compile the file completely if it is greater than
-      200 bytes, using os.stat().st_size, which just gets the total size of a file.
+      200 bytes, using os.stat('FILENAME').st_size, which just gets the total size of a file.
 
       The time rate increases as the file gets bigger.
 
