@@ -26,7 +26,4 @@ class SlugTimeError(TimeoutError):
   """
 
 class LessThan800StorageAmount(Exception):
-
-  """
-    This will be raised if the user assigns there platform a storage amount less than 800
-  """
+  "This will be raised if the user assigns there platform a storage amount less than 800"
