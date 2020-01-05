@@ -4,7 +4,7 @@
 
 import os,json,sys
 from time import sleep
-from typing import List
+from typing import Tuple
 from client_plugin.errors import LessThan800StorageAmount
 
 class yal_client_plugin:
@@ -70,12 +70,12 @@ class yal_client_plugin:
       print(os.name + ' setup complete'),sleep(1),os.system('clear') if os.path.isfile(os.path.abspath('new_os.json')) else print("You haven't completely setup the platform: {}".format(json.loads(open('new_os.json','r').read()['new_name'])))
     )
   
-  def _use_platform_(self):
+  def _use_platform_(self) -> Tuple[str]:
     """this just returns the name in new_os.json if the path exists
         
         It is the same as _return_patform_, but it should be used when re-assigning os.name or sys.platform in your .py file
     """
     
     if os.path.isfile(os.path.abspath('new_os.json')):
-      return(json.loads(open('new_os.json','r').read()['os_name'][1]))#returns name in os_name index of 1, see line 34,35,45
-    else:return(os.name)#will re-assing os.name to os.name(same value), as well as sys.platform
+      return (json.loads(open('new_os.json','r').read()['os_name'][1]))#returns name in os_name index of 1, see line 34,35,45
+    else:return (os.name)#will re-assing os.name to os.name(same value), as well as sys.platform
