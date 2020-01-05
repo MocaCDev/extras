@@ -5,7 +5,7 @@
 import os,json,sys
 from time import sleep
 from typing import List
-
+from client_plugin.errors import LessThan800StorageAmount
 
 class yal_client_plugin:
 
@@ -16,6 +16,11 @@ class yal_client_plugin:
         You can change the storage amount of the platform,
         depending on what you're going to use the platform for.
     """
+
+    # the storage can't be below 800, the platform needs to be able to process at least 2 files
+    if storage_amount < 800:
+      print('\n\n')
+      raise LessThan800StorageAmount('\n\nThe storage amount must be above 799.\nYou requested ' + str(storage_amount) + ' which cannot be accepted.')
 
     # this will be the total amount of file data the platform will be able to handle
     self.total_storage = storage_amount
