@@ -12,8 +12,8 @@ class SlugTimeError(TimeoutError):
   "this will be raised if the user sets a slug read timer for over 50 seconds"
 
   """
-    The _slug_read_ function basically opens a file, and returns the result at a default time rate of 25 seconds.
-    The user can change the default time rate to whatever they want, but must be under 150.
+    The _slug_read_ function basically opens a file, and returns the result at a default time rate of 5 seconds.
+    The user can change the default time rate to whatever they want, but must be under 50.
     
     NOTE:
       The soul purpose of the _slug_read_ function is to compile the file completely if it is greater than
