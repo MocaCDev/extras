@@ -9,7 +9,7 @@ class IsAPrivateFile(Exception):
   """
 
 class SlugTimeError(TimeoutError):
-  "this will be raised if the user sets a slug read timer for over 150 seconds"
+  "this will be raised if the user sets a slug read timer for over 50 seconds"
 
   """
     The _slug_read_ function basically opens a file, and returns the result at a default time rate of 25 seconds.
@@ -22,7 +22,7 @@ class SlugTimeError(TimeoutError):
       The time rate increases as the file gets bigger.
 
       FUNCTION:
-        def _slug_read_(self,file_name,timout:'int'=25)
+        def _slug_read_(self,file_name,timout:'int'=5)
   """
 
 class LessThan800StorageAmount(Exception):
