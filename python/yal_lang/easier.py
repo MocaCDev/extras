@@ -168,7 +168,7 @@ class yal:
       file.write(json.dumps(self.rendered_yal_files,indent=2))
       file.close()
     
-  def _return_rendered_yal_files_(self):
+  def _return_rendered_yal_files_(self) -> list:
 
     "this will just return the list of rendered yal files"
 
@@ -215,7 +215,7 @@ class yal:
       render_info.write(json.dumps(self.render_msg,indent=2,sort_keys=False))
       render_info.close()
   
-  def is_a_rendered_path(self,**paths_to_see):
+  def is_a_rendered_path(self,**paths_to_see) -> list:
 
     """
       Checks to see if a path is rendered.
@@ -269,7 +269,7 @@ class yal:
       return False
     
   
-  def _return_rendered_(self,timer=4):
+  def _return_rendered_(self,timer=4) -> list:
 
     """
       This will return a Render Message
