@@ -103,6 +103,34 @@ class yal:
     "this will just return the platform name"
     return os.name
   
+  def _yal_filenames_(self) -> tuple:
+
+    """This will gather all yal filenames.
+       
+       This function will be important later on in case the developer wants to do stuff with the list of .yal files it finds
+    """
+
+    self.files = ()
+    self.append_files = []
+
+    for i in range(len(os.listdir())):
+      if '.yal' in os.listdir()[i]:
+        self.append_files.append(os.listdir()[i])
+    
+    self.files = tuple(self.append_files)
+    
+    return self.files
+  
+  def _is_yal_file_(self,filename) -> bool:
+
+    """This is used in a if statement
+
+       This will be used to check if the filename of which is given to the argument filename is in self.files.
+    """
+
+    if filename in self.files:return True
+    else:return False
+  
   def _render_yal_files_(self):
 
     """
