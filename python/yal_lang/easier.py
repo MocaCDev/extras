@@ -215,7 +215,7 @@ class yal:
       render_info.write(json.dumps(self.render_msg,indent=2,sort_keys=False))
       render_info.close()
   
-  def is_a_rendered_path(self,**paths_to_see) -> list:
+  def is_a_rendered_path(self,**paths_to_see):
 
     """
       Checks to see if a path is rendered.
@@ -266,7 +266,7 @@ class yal:
         return False
     if self.TRUE == self.FALSE:
       print("Static Render Msg\n<Could not contribute to True or False,\nTRUE:{},\nFALSE:{}>".format(self.TRUE,self.FALSE))
-      return False
+      return (False,'Static Render Message')
     
   
   def _return_rendered_(self,timer=4) -> list:
