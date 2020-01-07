@@ -1,2 +1,3 @@
 RELEASE_VERSION='1.0.1'
-__version__='1.0.2.1'
+__RECENT_VERSION__='1.0.2.1'
+__version__=__RECENT_VERSION__
