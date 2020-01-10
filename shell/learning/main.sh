@@ -12,3 +12,8 @@ echo ${#array[0]}
 echo ${#array}
 # printing the array off
 echo ${array}
+
+# Second Array example
+arr = ("yes" "no" "maybe" "true" "false)
+# printing index of no
+echo ${arr[${#arr[@]}-3]}
