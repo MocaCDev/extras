@@ -62,4 +62,3 @@ html_version = f"<h1>ID:{id}</h1>"
 @app.route('/')
 def hoster():
   return html_version
-os.system('env FLASK_APP=rando.py flask run')
