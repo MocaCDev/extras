@@ -12,8 +12,12 @@
 import random, os
 from flask import Flask
 
-# this is if the user doesn't have flask installed
-os.system('pip install flask')
+install_flask = input('DO YOU WANT TO INSTALL FLASK?[y/n]: ')
+
+if install_flask == 'y':
+  # this is if the user doesn't have flask installed
+  os.system('pip install flask')
+else:pass
 
 # setting up flask
 app = Flask(__name__)
