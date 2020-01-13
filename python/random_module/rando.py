@@ -59,6 +59,11 @@ while True:
 # this will make a html version to use with flask
 html_version = f"<h1>ID:{id}</h1>"
 
+# writing the information into a .html file
+with open('flask_hoster.html','a') as file:
+  file.write(html_version)
+  file.close()
+
 @app.route('/')
 def hoster():
   return html_version
