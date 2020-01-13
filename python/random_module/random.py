@@ -1,13 +1,19 @@
 """
   This is just a random Python project using 2 moudles:
-    Flask and random
+    Flask, os and random
   
   What's the point?
     Basically all I want to do is create a random id each time the application is ran, and host it using Flask.
+  
+  NOTE:
+    the module os is used just to pip install flask in the console
 """
 
-import random
+import random, os
 from flask import Flask
+
+# this is if the user doesn't have flask installed
+os.system('pip install flask')
 
 # setting up flask
 app = Flask(__name__)
