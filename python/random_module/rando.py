@@ -1,5 +1,5 @@
 """
-  This is just a random Python project using 2 moudles:
+  This is just a random Python project using 3 moudles:
     Flask, os and random
   
   What's the point?
