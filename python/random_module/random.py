@@ -1,4 +1,16 @@
+"""
+  This is just a random Python project using 2 moudles:
+    Flask and random
+  
+  What's the point?
+    Basically all I want to do is create a random id each time the application is ran, and host it using Flask.
+"""
+
 import random
+from flask import Flask
+
+# setting up flask
+app = Flask(__name__)
 
 list_of_variables = [
   '1',
@@ -34,4 +46,9 @@ while True:
   if len(id) > 9:
     break
 
-print(id)
+# this will make a html version to use with flask
+html_version = f"<h1>ID:{id}</h1>"
+
+@app.route('/')
+def hoster():
+  return html_version
