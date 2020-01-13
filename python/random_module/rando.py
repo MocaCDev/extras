@@ -67,3 +67,5 @@ with open('flask_hoster.html','a') as file:
 @app.route('/')
 def hoster():
   return html_version
+
+app.run()
