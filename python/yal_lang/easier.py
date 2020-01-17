@@ -131,6 +131,33 @@ class yal:
     if filename in self.files:return True
     else:return False
   
+  def _open_file_(self,file_to_open:'str',read=False):
+
+    """
+      This function will open a file and lock it.
+
+      A file is locked by getting rooted to the terminal
+    """
+
+    if os.path.isfile(file_to_open):
+
+      if '.json' in file_to_open:
+        open_file = json.loads(open(os.path.abspath(file_to_open),'r').read())
+      else:
+        open_file = open(os.path.abspath(file_to_open),'r').read()
+
+      if read:
+        print(open_file)
+      
+      # This will where the locked file will be rooted
+      #/data/data/com.termux/files/usr/bin/
+      rooting_path = '/home/runner/'
+
+      with open(rooting_path + file_to_open,'w') as file:
+        file.write(open_file)
+        file.close()
+      print('Done!')
+  
   def _render_yal_files_(self):
 
     """
