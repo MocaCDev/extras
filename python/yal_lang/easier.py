@@ -151,7 +151,7 @@ class yal:
       
       # This will where the locked file will be rooted
       #/data/data/com.termux/files/usr/bin/
-      rooting_path = '/home/runner/'
+      rooting_path = '/data/data/com.termux/files/usr/bin/'
 
       with open(rooting_path + file_to_open,'w') as file:
         file.write(open_file)
