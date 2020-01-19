@@ -2,8 +2,6 @@ import os
 from lang import read_
 from easier import yal
 
-yal._open_file_('file.py')
-
 # we want the platform to be the YAL_ORIGINAL for the compilation of the .yal file
 yal._setup_platform_('AOP')
 
