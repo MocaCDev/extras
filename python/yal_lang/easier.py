@@ -28,13 +28,15 @@ class yal:
   global local_plats
   local_plats = ['posix','nt']
 
-  def _setup_platform_(self,plat_to_use):
+  def __init__(self,plat_to_use):
 
     """
       This will setup a primary or local platform name.
     """
     
-    print(plat_to_use)
+    self.plat_to_use = plat_to_use
+    
+    print(self.plat_to_use)
   
   def has_platform(self):
 
