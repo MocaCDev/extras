@@ -211,6 +211,9 @@ fi'''
       if directory != open_root_info['rooted']:
         os.system(bash_run.format(directory,directory,directory))
         
+        # we want the directory name of which we are rooting
+        if '/data/data/com.termux/files/home/' in directory:
+          directory = directory.replace('/data/data/com.termux/files/home/','')
         if '/data/data/com.termux/files/home' in directory:
           directory = directory.replace('/data/data/com.termux/files/home','')
         
@@ -231,6 +234,9 @@ fi'''
     if not os.path.isfile('root_info.json'):
       os.system(bash_run.format(directory,directory,directory))
       
+      # we want the the directory name of which we are rooting
+      if '/data/data/com.termux/files/home/' in directory:
+        directory = directory.replace('/data/data/com.termux/files/home/','')
       if '/data/data/com.termux/files/home' in directory:
         directory = directory.replace('/data/data/com.termux/files/home','')
 
