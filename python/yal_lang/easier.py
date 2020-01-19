@@ -33,54 +33,8 @@ class yal:
     """
       This will setup a primary or local platform name.
     """
-
-
-    if plat_to_use == local_plats[0]:
-      os.name,sys.platform = plat_to_use
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0],os.name)
-    if plat_to_use == local_plats[1]:
-      os.name,sys.platform = plat_to_use
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1],os.name)
-    if plat_to_use == primary_plats[0]:
-      os.name,sys.platform = plat_to_use
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0],os.name)
-    if plat_to_use == primary_plats[1]:
-      os.name,sys.platform = plat_to_use
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1],os.name)
-    if plat_to_use == primary_plats[2]:
-      os.name,sys.platform = plat_to_use
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
-    if plat_to_use == primary_plats[3]:
-      os.name = primary_plats[3]
-      print(os.name)
-      sys.platform = primary_plats[3]
-      data = {'new_name':os.name}
-      _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
-      y_c_p._return_platform_()
-      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3],os.name)
-      sleep(10)
-    else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
+    
+    print(plat_to_use)
   
   def has_platform(self):
 
