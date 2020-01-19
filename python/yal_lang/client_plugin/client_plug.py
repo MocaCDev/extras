@@ -78,7 +78,7 @@ class yal_client_plugin:
       upd_file.write(update_file)
       upd_file.close()
     
-    return update_file['platform_available_storage'],print(Fore)
+    return update_file['platform_available_storage'],print(Fore.CYAN + Style.BRIGHT + 'Updated storage: ' + str(update_file['platform_available_storage']))
 
   
   def _return_storage_amount_(self) -> int:
