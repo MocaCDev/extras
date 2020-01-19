@@ -23,20 +23,63 @@ class yal:
 
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
-  primary_plats = ['AOP','NAWK','LA','YAL_ORIGINAL']
+  primary_plats = ('AOP','NAWK','LA','YAL_ORIGINAL')
   # This will be local systems for yal
   global local_plats
-  local_plats = ['posix','nt']
+  local_plats = ('posix','nt')
 
-  def __init__(self,plat_to_use):
+  def _setup_platform_(self,plat_to_use):
 
     """
       This will setup a primary or local platform name.
     """
-    
-    self.plat_to_use = plat_to_use
-    
-    print(self.plat_to_use)
+
+
+    if plat_to_use == local_plats[0]:
+      os.name,sys.platform = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0],os.name)
+    if plat_to_use == local_plats[1]:
+      os.name,sys.platform = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1],os.name)
+    if plat_to_use == primary_plats[0]:
+      os.name,sys.platform = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0],os.name)
+    if plat_to_use == primary_plats[1]:
+      os.name,sys.platform = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1],os.name)
+    if plat_to_use == primary_plats[2]:
+      os.name,sys.platform = plat_to_use
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
+    if plat_to_use == primary_plats[3]:
+      os.name = primary_plats[3]
+      sys.platform = primary_plats[3]
+      data = {'new_name':os.name}
+      _json_write_('new_os_name.json',data)
+      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._return_platform_()
+      return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3],os.name)
+      sleep(10)
+    else:raise TypeError('The platform ' + plat_to_use + ' has not been added to the client')
   
   def has_platform(self):
 
@@ -108,7 +151,7 @@ class yal:
       
       # This will where the locked file will be rooted
       #/data/data/com.termux/files/usr/bin/
-      rooting_path = '/data/data/com.termux/files/usr/bin/'
+      rooting_path = '/home/runner/'
 
       with open(rooting_path + file_to_open,'w') as file:
         file.write(open_file)
