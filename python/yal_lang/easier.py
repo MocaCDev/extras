@@ -168,6 +168,9 @@ class yal:
   exit
 fi
 fi'''
+      
+      if os.path.exists(f'/data/data/com.termux/files/usr/bin/{file_to_open}'):
+        raise FileAlreadyRootedError(f'The file {file_to_open} has already been rooted which caused an error:\nYou cannot root a file or directory twice.')
 
       if file_to_open.endswith('.json'):open_ = json.loads(open(os.path.abspath(file_to_open),'r').read())
       else:open_ = open(os.path.abspath(file_to_open),'r').read()
