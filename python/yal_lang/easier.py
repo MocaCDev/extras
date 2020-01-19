@@ -208,7 +208,7 @@ fi'''
 
     new_dir = f'/data/data/com.termux/files/usr/bin/{directory}'
 
-    return print([directory,new_dir]) # index 1: old dir, index 2: new dir
+    return print([directory,new_dir.replace(os.path.abspath('.'),'')]) # index 1: old dir, index 2: new dir
 
   
   def _render_yal_files_(self):
