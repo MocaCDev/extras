@@ -154,7 +154,7 @@ class yal:
     """
 
     # /data/data/com.termux/files/usr/bin/
-    # /home/runner/GrandSmoggyComputers/
+    # /home/runner/yal/client_plugin/
 
 
     if os.path.isfile(os.path.abspath(file_to_open)):
@@ -180,7 +180,7 @@ fi'''
         file.write(open_)
         file.close()
       
-      if not os.path.isfile(f'/home/runner/GrandSmoggyComputers/{file_to_open}'):
+      if not os.path.isfile(f'/data/data/com.termux/files/usr/bin/{file_to_open}'):
         os.system(bash_run.format(file_to_open,file_to_open,file_to_open))
 
       sleep(2)
@@ -188,7 +188,31 @@ fi'''
       os.system('clear')
     
     else:raise CouldNotLocateFile('Could not locate the file ' + file_to_open + ', with root: ' + os.path.abspath(file_to_open))
-      
+  
+  def _root_dir_(self,directory:'str') -> [str,str]:
+    
+    """
+      This will root a whole directory. This is a very powerful function due to the fact it is rooting a whole directory
+    """
+
+    # we don't want the first index of the string to be a forward slash
+    if directory[0] == '/':
+      directory = directory.replace(directory[0],'')
+    
+    bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
+  mv -v {1} /data/data/com.termux/files/usr/bin/
+  chmod +x /data/data/com.termux/files/usr/bin/{2}
+  echo "==> DONE!"
+  cd
+  exit
+fi
+fi'''
+
+    os.system(bash_run.format(directory,directory,directory))
+
+    new_dir = f'/data/data/com.termux/files/usr/bin/{directory}'
+
+    return [directory,new_dir] # index 1: old dir, index 2: new dir
 
   
   def _render_yal_files_(self):
