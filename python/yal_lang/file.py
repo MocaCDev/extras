@@ -3,7 +3,7 @@ from lang import read_
 from easier import yal
 
 # we want the platform to be the YAL_ORIGINAL for the compilation of the .yal file
-yal._setup_platform_('AOP')
+yal('AOP')
 
 # we want to render all the .yal files
 yal._render_yal_files_()
