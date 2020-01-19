@@ -194,10 +194,6 @@ fi'''
     """
       This will root a whole directory. This is a very powerful function due to the fact it is rooting a whole directory
     """
-
-    # we don't want the first index of the string to be a forward slash
-    if directory[0] == '/':
-      directory = directory.replace(directory[0],'')
     
     bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin{0} ]; then
   mv -v {1} /data/data/com.termux/files/usr/bin
