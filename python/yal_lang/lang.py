@@ -2,7 +2,14 @@ import os,json
 from time import sleep
 from colorama import Fore, Style, Back
 from easier import yal
-    
+
+yal = yal()
+
+if yal.has_platform():
+  if os.path.isfile(os.path.abspath('new_os.json')):
+    op = json.loads(open(os.path.abspath('new_os.json'),'r').read())
+    os.name = op['os_name'][1]
+    sys.platform = os.name
     
 def read_(**file_to_read):
 
