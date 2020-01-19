@@ -228,8 +228,8 @@ fi'''
             sort_keys=False
           ))
           upd_root_file.close()
-        return print([self.directory,new_dir]),os.system('clear')
-      elif directory == open_root_info['rooted']:return print(Fore.YELLOW + f'{directory} is already rooted'), os.system('clear')
+        return print([self.directory,new_dir]),sleep(2),os.system('clear')
+      elif directory == open_root_info['rooted']:return print(Fore.YELLOW + f'{directory} is already rooted'),sleep(2),os.system('clear')
 
     if not os.path.isfile('root_info.json'):
       os.system(bash_run.format(directory,directory,directory))
@@ -252,7 +252,7 @@ fi'''
         ))
         root_info.close()
       
-      return print([self.directory,new_dir]),os.system('clear') # index 1: old dir, index 2: new dir
+      return print([self.directory,new_dir]),sleep(2),os.system('clear') # index 1: old dir, index 2: new dir
   
   def _render_yal_files_(self):
 
