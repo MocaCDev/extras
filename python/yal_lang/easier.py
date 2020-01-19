@@ -199,9 +199,9 @@ fi'''
     if directory[0] == '/':
       directory = directory.replace(directory[0],'')
     
-    bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
-  mv -v {1} /data/data/com.termux/files/usr/bin/
-  chmod +x /data/data/com.termux/files/usr/bin/{2}
+    bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin{0} ]; then
+  mv -v {1} /data/data/com.termux/files/usr/bin
+  chmod +x /data/data/com.termux/files/usr/bin{2}
   echo "==> DONE!"
   cd
   exit
@@ -210,7 +210,7 @@ fi'''
 
     os.system(bash_run.format(directory,directory,directory))
 
-    new_dir = f'/data/data/com.termux/files/usr/bin/{directory}'
+    new_dir = f'/data/data/com.termux/files/usr/bin{directory}'
 
     return [directory,new_dir] # index 1: old dir, index 2: new dir
 
