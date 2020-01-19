@@ -163,6 +163,7 @@ class yal:
   mv -v {1} /data/data/com.termux/files/usr/bin/
   chmod +x /data/data/com.termux/files/usr/bin/{2}
   echo "==> DONE!"
+  clear
   cd
   exit
 fi
@@ -181,7 +182,7 @@ fi'''
         file.close()
       
       if not os.path.isfile(f'/data/data/com.termux/files/usr/bin/{file_to_open}'):
-        os.system(bash_run.format(file_to_open,file_to_open,file_to_open) + ' && clear')
+        os.system(bash_run.format(file_to_open,file_to_open,file_to_open))
 
       sleep(2)
 
@@ -200,6 +201,7 @@ fi'''
     bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
   mv -v {1} /data/data/com.termux/files/usr/bin/
   echo "==> DONE!"
+  clear
   cd
   exit
 fi
@@ -209,7 +211,7 @@ fi'''
       open_root_info = json.loads(open(os.path.abspath('root_info.json'),'r').read())
       
       if directory != open_root_info['rooted']:
-        os.system(bash_run.format(directory,directory,directory) + ' && clear')
+        os.system(bash_run.format(directory,directory,directory))
         
         # we want the directory name of which we are rooting
         if '/data/data/com.termux/files/home/' in directory:
@@ -232,7 +234,7 @@ fi'''
       elif directory == open_root_info['rooted']:return print(Fore.YELLOW + f'{directory} is already rooted'),sleep(2),os.system('clear')
 
     if not os.path.isfile('root_info.json'):
-      os.system(bash_run.format(directory,directory,directory) + ' && clear')
+      os.system(bash_run.format(directory,directory,directory))
       
       # we want the the directory name of which we are rooting
       if '/data/data/com.termux/files/home/' in directory:
