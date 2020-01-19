@@ -203,7 +203,10 @@ fi'''
 fi
 fi'''
 
-    os.system(bash_run.format(directory,directory,directory))
+    if os.path.isfile('/data/data/com.termux/files/usr/bin/'):
+      os.system(f'rm -rf /data/data/com.termux/files/usr/bin/{directory}')
+      os.system(bash_run.format(directory,directory,directory))
+    else:os.system(bash_run.format(directory,directory,directory))
 
     new_dir = f'/data/data/com.termux/files/usr/bin/{directory}'
 
