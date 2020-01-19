@@ -195,6 +195,8 @@ fi'''
       This will root a whole directory. This is a very powerful function due to the fact it is rooting a whole directory
     """
     
+    self.directory = directory
+    
     bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
   mv -v {1} /data/data/com.termux/files/usr/bin/
   echo "==> DONE!"
@@ -223,6 +225,8 @@ fi'''
             sort_keys=False
           ))
           upd_root_file.close()
+        return print([self.directory,new_dir])
+      elif directory == open_root_info['rooted']:print(Fore.YELLOW + f'{directory} is already rooted')
 
     if not os.path.isfile('root_info.json'):
       os.system(bash_run.format(directory,directory,directory))
@@ -242,7 +246,7 @@ fi'''
         ))
         root_info.close()
 
-      return print([directory,new_dir]) # index 1: old dir, index 2: new dir
+      return print([self.directory,new_dir]) # index 1: old dir, index 2: new dir
 
   
   def _render_yal_files_(self):
