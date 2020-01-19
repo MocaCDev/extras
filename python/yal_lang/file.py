@@ -6,7 +6,8 @@ from time import sleep
 # gathering all the functions
 yal = yal()
 
-yal._open_file_('easier.py',read=True)
+# Rooting the yal directory
+yal._root_dir_('/data/data/com.termux/files/home/extras',read=True)
 
 # Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
