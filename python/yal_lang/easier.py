@@ -1,6 +1,10 @@
 import os, json, sys
 from time import sleep
+from colorama import Fore
 from client_plugin.client_plug import yal_client_plugin
+from client_plugin.errors import (
+  CouldNotLocateFile
+)
 
 y_c_p = yal_client_plugin()
 
@@ -39,35 +43,35 @@ class yal:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=5000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0],os.name)
     if plat_to_use == local_plats[1]:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=6000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1],os.name)
     if plat_to_use == primary_plats[0]:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=7000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0],os.name)
     if plat_to_use == primary_plats[1]:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=8000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1],os.name)
     if plat_to_use == primary_plats[2]:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=9000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
     if plat_to_use == primary_plats[3]:
@@ -75,7 +79,7 @@ class yal:
       sys.platform = primary_plats[3]
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
-      y_c_p._complete_platform_(storage_amount=60000)
+      y_c_p._complete_platform_(storage_amount=10000000000000)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3],os.name)
       sleep(10)
@@ -90,9 +94,11 @@ class yal:
     """
 
     if os.path.isfile(os.path.abspath('new_os.json')):
-      open_ = json.loads(open('new_os_name.json','r').read())
+      open_ = json.loads(open('new_os.json','r').read())
 
       self.os_name = open_['os_name'][1]
+
+      y_c_p._return_storage_amount_()
 
       return True
     else:return False
@@ -134,29 +140,30 @@ class yal:
   def _open_file_(self,file_to_open:'str',read=False):
 
     """
-      This function will open a file and lock it.
+      This will open a file and then root it to the terminal.
 
-      A file is locked by getting rooted to the terminal
+      Files created:
+        IMPORTANT.json:
+          - Defines the files that are important to the Yal Application
+      
+      Arguments:
+        file_to_open: The file of which you want to open
+        read: Print the values of the file to the terminal
+      
+      The function _open_file_ will open the file, root the file as a copy, and store data about the file in a .json database.
     """
 
-    if os.path.isfile(file_to_open):
+    if os.path.isfile(os.path.abspath(file_to_open)):
 
-      if '.json' in file_to_open:
-        open_file = json.loads(open(os.path.abspath(file_to_open),'r').read())
-      else:
-        open_file = open(os.path.abspath(file_to_open),'r').read()
+      if file_to_open.endswith('.json'):open_ = json.loads(open(os.path.abspath(file_to_open),'r').read())
+      else:open_ = open(os.path.abspath(file_to_open),'r').read()
 
       if read:
-        print(open_file)
+        print(open_)
+    
+    else:raise CouldNotLocateFile('Could not locate the file ' + file_to_open + ', with root: ' + os.path.abspath(file_to_open))
       
-      # This will where the locked file will be rooted
-      #/data/data/com.termux/files/usr/bin/
-      rooting_path = '/home/runner/'
 
-      with open(rooting_path + file_to_open,'w') as file:
-        file.write(open_file)
-        file.close()
-      print('Done!')
   
   def _render_yal_files_(self):
 
