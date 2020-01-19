@@ -7,7 +7,8 @@ from time import sleep
 yal = yal()
 
 # Rooting the yal directory
-yal._root_dir_('/data/data/com.termux/files/home/extras')
+if not os.path.exists('root_info.json')
+  yal._root_dir_('/data/data/com.termux/files/home/extras')
 
 # Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
