@@ -23,10 +23,10 @@ class yal:
 
   # This will be primary systems for yal(all made up by .yal language)
   global primary_plats
-  primary_plats = ('AOP','NAWK','LA','YAL_ORIGINAL')
+  primary_plats = ['AOP','NAWK','LA','YAL_ORIGINAL']
   # This will be local systems for yal
   global local_plats
-  local_plats = ('posix','nt')
+  local_plats = ['posix','nt']
 
   def _setup_platform_(self,plat_to_use):
 
