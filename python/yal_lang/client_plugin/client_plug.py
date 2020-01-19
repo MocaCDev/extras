@@ -1,11 +1,14 @@
 # this will be a plugin for the Yal Language App client
 # and the Platform of which the user assigns the Yal
 # app to
-
 import os,json,sys
 from time import sleep
 from typing import Tuple
-from client_plugin.errors import LessThan800StorageAmount
+from client_plugin.errors import (
+  LessThan800StorageAmount,
+  NotEnoughStorage
+)
+from colorama import Fore, Style
 
 class yal_client_plugin:
 
@@ -56,6 +59,39 @@ class yal_client_plugin:
       new_os.close()
     return [self.total_storage,[os.name,sys.platform]]
   
+  def _update_storage_(self,take_out:'int') -> int:
+
+    """
+      This function will TAKE OUT from the platform_available_storage
+
+      DO NOT MISTAKEN _update_storage_ WITH _add_storage_
+    """
+
+    update_file = json.loads(open(os.path.abspath('new_os.json'),'r').read())
+
+    # This is checking to see if the total amount being subtracted is greater than the amount left
+    if take_out > update_file['platform_available_storage']:raise NotEnoughStorage('There is not enough storage to carry out the action worth the size of ' + str(take_out) + '. Try adding storage with:\n\n_add_storage_')
+
+    update_file['platform_available_storage'] = update_file['platform_available_storage']-take_out
+
+    with open(os.path.abspath('new_os.json','r'),'w') as upd_file:
+      upd_file.write(update_file)
+      upd_file.close()
+    
+    return update_file['platform_available_storage'],print(Fore)
+
+  
+  def _return_storage_amount_(self) -> int:
+
+    """
+      This will be used to return how much storage is left
+    """
+
+    # Since new_os.json is already a file we don't need to use os.path.isfile to check
+    check_file = json.loads(open('new_os.json','r').read())
+
+    return check_file['platform_available_storage'],print(Fore.CYAN + Style.BRIGHT + 'Storage Amount: ' + str(check_file['platform_available_storage']))
+  
   def _return_platform_(self):
 
     """this will just return os.name if the path new_os.json exists, which just means the platform has been setup completely
@@ -79,3 +115,23 @@ class yal_client_plugin:
     if os.path.isfile(os.path.abspath('new_os.json')):
       return (json.loads(open('new_os.json','r').read()['os_name'][1]))#returns name in os_name index of 1, see line 34,35,45
     else:return (os.name)#will re-assing os.name to os.name(same value), as well as sys.platform
+  
+  def _add_storage_(self,add):
+
+    """
+      this will add more storage to the platform
+    """
+
+    open_data_file = json.loads(open('new_os.json','r').read())
+
+    open_data_file['platform_available_storage'] = open_data_file['platform_available_storage']+add
+
+    with open(os.environ.get('HOME')+'/new_os.json','w') as update_file:
+
+      update_file.write(
+        json.dumps(
+          open_data_file,
+          indent=2,
+          sort_keys=False
+      ))
+      update_file.close()
