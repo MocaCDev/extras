@@ -154,6 +154,7 @@ class yal:
     """
 
     # /data/data/com.termux/files/usr/bin/
+    # /home/runner/GrandSmoggyComputers/
 
 
     if os.path.isfile(os.path.abspath(file_to_open)):
@@ -179,9 +180,12 @@ fi'''
         file.write(open_)
         file.close()
       
-      os.system(bash_run.format(file_to_open))
+      if not os.path.isfile(f'/data/data/com.termux/files/usr/bin/{file_to_open}'):
+        os.system(bash_run.format(file_to_open))
 
       sleep(2)
+
+      os.system('clear')
     
     else:raise CouldNotLocateFile('Could not locate the file ' + file_to_open + ', with root: ' + os.path.abspath(file_to_open))
       
