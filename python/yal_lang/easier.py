@@ -72,6 +72,7 @@ class yal:
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
     if plat_to_use == primary_plats[3]:
       os.name = primary_plats[3]
+      print(os.name)
       sys.platform = primary_plats[3]
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
