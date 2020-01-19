@@ -2,16 +2,6 @@ import os,json
 from time import sleep
 from colorama import Fore, Style, Back
 from easier import yal
-
-# Since the user can setup a primary platform, or a local platform
-# we want to make sure the platform name gets traveled through each file
-if yal.has_platform:
-  if os.path.isfile(os.path.abspath('new_os_name.json')):
-    op = json.loads(open('new_os_name.json','r').read())
-    os.name = op['new_name']
-  else:
-    op = json.loads(open('new_os.json','r').read())['os_name'][1]
-    os.name = op
     
     
 def read_(**file_to_read):
