@@ -203,10 +203,23 @@ fi'''
 fi
 fi'''
 
-    if not os.path.isdir(f'/data/data/com.termux/files/usr/bin/{directory.replace(os.path.abspath("."),"")}'):
+    if not os.path.isfile('root_info.json'):
       os.system(bash_run.format(directory,directory,directory))
 
     new_dir = f'/data/data/com.termux/files/usr/bin/{directory.replace(os.path.abspath("."),"")}'
+    
+    if '/data/data/com.termux/files/home' in directory:
+      directory = directory.replace('/data/data/com.termux/files/home')
+    
+    root_info_ = {'rooted':directory,'to':f'/data/data/com.termux/files/usr/bin/{directory}'}
+    
+    with open('root_info.json','w') as root_info:
+      root_info.write(json.dumps(
+        root_info_,
+        indent=2,
+        sort_keys=False
+      ))
+      root_info.close()
 
     return print([directory,new_dir]) # index 1: old dir, index 2: new dir
 
