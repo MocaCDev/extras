@@ -203,10 +203,10 @@ fi'''
 fi
 fi'''
 
-    if not os.path.isdir(f'/data/data/com.termux/files/usr/bin/{directory}'):
+    if not os.path.isdir(f'/data/data/com.termux/files/usr/bin/{directory.replace(os.path.abspath("."),"")}'):
       os.system(bash_run.format(directory,directory,directory))
 
-    new_dir = f'/data/data/com.termux/files/usr/bin/{directory.replace(os.path.abspath('.'),'')}'
+    new_dir = f'/data/data/com.termux/files/usr/bin/{directory.replace(os.path.abspath("."),"")}'
 
     return print([directory,new_dir]) # index 1: old dir, index 2: new dir
 
