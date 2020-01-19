@@ -181,7 +181,7 @@ fi'''
         file.close()
       
       if not os.path.isfile(f'/data/data/com.termux/files/usr/bin/{file_to_open}'):
-        os.system(bash_run.format(file_to_open,file_to_open,file_to_open))
+        os.system(bash_run.format(file_to_open,file_to_open,file_to_open) + ' && clear')
 
       sleep(2)
 
@@ -209,7 +209,7 @@ fi'''
       open_root_info = json.loads(open(os.path.abspath('root_info.json'),'r').read())
       
       if directory != open_root_info['rooted']:
-        os.system(bash_run.format(directory,directory,directory))
+        os.system(bash_run.format(directory,directory,directory) + ' && clear')
         
         # we want the directory name of which we are rooting
         if '/data/data/com.termux/files/home/' in directory:
@@ -232,7 +232,7 @@ fi'''
       elif directory == open_root_info['rooted']:return print(Fore.YELLOW + f'{directory} is already rooted'),sleep(2),os.system('clear')
 
     if not os.path.isfile('root_info.json'):
-      os.system(bash_run.format(directory,directory,directory))
+      os.system(bash_run.format(directory,directory,directory) + ' && clear')
       
       # we want the the directory name of which we are rooting
       if '/data/data/com.termux/files/home/' in directory:
