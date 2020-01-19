@@ -159,9 +159,9 @@ class yal:
 
     if os.path.isfile(os.path.abspath(file_to_open)):
 
-      bash_run = '''if [ ! -d /home/runner/GrandSmoggyComputers/{0} ]; then
-  mv -v {1} /home/runner/GrandSmoggyComputers/
-  chmod +x /home/runner/GrandSmoggyComputers/{2}
+      bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
+  mv -v {1} /data/data/com.termux/files/usr/bin/
+  chmod +x /data/data/com.termux/files/usr/bin/{2}
   echo "==> DONE!"
   cd
   exit
