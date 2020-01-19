@@ -3,22 +3,16 @@ from lang import read_
 from easier import yal
 from time import sleep
 
-
+# gathering all the functions
 yal = yal()
 
-yal._open_file_('data.txt')
+yal._open_file_('data.txt',read=True)
 
+# Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
 
-yal._yal_filenames_()
-
+# Rendering all yal files
 yal._render_yal_files_()
-
-yal._render_path_(path=['templates/keep_track_of_import.txt','d.txt','d.json','t'])
-
-if yal.is_a_rendered_path(check=['d.txt','d.json']):
-  yal._return_rendered_(5)
-sleep(10)
 
 os.system('clear')
 
