@@ -197,7 +197,6 @@ fi'''
     
     bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
   mv -v {1} /data/data/com.termux/files/usr/bin/
-  chmod +x /data/data/com.termux/files/usr/bin/{2}
   echo "==> DONE!"
   cd
   exit
