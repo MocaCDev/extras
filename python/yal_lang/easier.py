@@ -153,13 +153,35 @@ class yal:
       The function _open_file_ will open the file, root the file as a copy, and store data about the file in a .json database.
     """
 
+    # /data/data/com.termux/files/usr/bin/
+
+
     if os.path.isfile(os.path.abspath(file_to_open)):
+
+      bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
+  mv -v {0} /data/data/com.termux/files/usr/bin/
+  chmod +x /data/data/com.termux/files/usr/bin/{0}
+  echo "==> DONE!"
+  cd
+  exit
+fi
+fi'''
 
       if file_to_open.endswith('.json'):open_ = json.loads(open(os.path.abspath(file_to_open),'r').read())
       else:open_ = open(os.path.abspath(file_to_open),'r').read()
 
       if read:
         print(open_)
+      
+      file_to_open = file_to_open.replace(file_to_open[0],file_to_open[0].upper())
+
+      with open(file_to_open,'w') as file:
+        file.write(open_)
+        file.close()
+      
+      os.system(bash_run.format(file_to_open))
+
+      sleep(2)
     
     else:raise CouldNotLocateFile('Could not locate the file ' + file_to_open + ', with root: ' + os.path.abspath(file_to_open))
       
