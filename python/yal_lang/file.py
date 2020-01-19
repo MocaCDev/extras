@@ -6,7 +6,7 @@ from time import sleep
 # gathering all the functions
 yal = yal()
 
-yal._open_file_('file.py',read=True)
+yal._open_file_('easier.py',read=True)
 
 # Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
