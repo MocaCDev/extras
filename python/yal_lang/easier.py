@@ -216,7 +216,7 @@ fi'''
         
         new_dir = f'/data/data/com.termux/files/usr/bin/{directory}'
         
-        new_root_info = {open_root_info,'other':[{'rooted':directory,'to':f'/data/data/com.termux/files/usr/bin/{directory}'}]}
+        new_root_info = {'<-:->':open_root_info,'other':[{'rooted':directory,'to':f'/data/data/com.termux/files/usr/bin/{directory}'}]}
         
         with open('root_info.json','w') as upd_root_file:
           upd_root_file.write(json.dumps(
