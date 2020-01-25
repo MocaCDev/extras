@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace myProject {
-    public class main {
+    public class somethingWithNumbers {
         public static void MakeTo(ref int numToChange, out int changed) {
             // This will be a estimated expression to change a number to
             // 100 if it is greater than 500, 500 if greater than 1000 etc
@@ -30,7 +30,7 @@ namespace myProject {
                 // We want to keep this around under 10000
                 changed_ = numToChange / (initialAdd * initialMult / 2) * -doubled / -initialSub + (initialAdd * initialMult / 2) / numToChange;
             } else {
-                // Anything the is a million plus will automatically be
+                // Anything that is a million plus will automatically be
                 // reassigned to the max variable and will always end up
                 // with the same result, being 2066446.
                 if(numToChange == 1000000) {
