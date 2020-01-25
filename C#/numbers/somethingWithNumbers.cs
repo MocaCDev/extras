@@ -55,6 +55,7 @@ namespace myProject {
                 int b;
                 MakeTo(ref a, out b);
                 Console.WriteLine(b);
+                Console.WriteLine("\n\n\n\nRan into a error during compilation\nThe error consisted of:\n\n" + OFE);
             }
         }
     }
