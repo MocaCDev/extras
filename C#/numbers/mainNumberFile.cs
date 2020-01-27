@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace aProject {
-  public class mainNumberFile {
+  public class main {
     public static void Main(string[] args) {
       Console.Write("Number: ");
       int a = Convert.ToInt32(Console.ReadLine());
@@ -23,8 +23,10 @@ namespace aProject {
         } else {
           if(a >= 500 && a < 1000) {
             a = a * a / 2 + (a * a / 2) - 10;
-          }else if(a >= 1000) {
+          }else if(a >= 1000 && a < 10000) {
             a = a * (a * a - 5000) + a * (a / 10) + 10;
+          } else if(a >= 10000) {
+            a = a - (a * a / 40);
           }
           if(a >= 100) {
               a = a / 2 * (a * a / 4) + (4 / 2 * 4) / 450;
@@ -34,6 +36,8 @@ namespace aProject {
               Console.WriteLine("Exit with status -> " + a);
               break;
             }
+          } else {
+            Console.WriteLine("Exit with status -> " + a);
           }
         }
         a -= 2;
