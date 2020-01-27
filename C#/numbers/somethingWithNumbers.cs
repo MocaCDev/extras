@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myProject {
     public class somethingWithNumbers {
-        public static void MakeTo(ref int numToChange, out int changed) {
+        public static void MakeTo(int numToChange, out int changed) {
             // This will be a estimated expression to change a number to
             // 100 if it is greater than 500, 500 if greater than 1000 etc
             
@@ -48,12 +48,12 @@ namespace myProject {
             try {
                 int a = Convert.ToInt32(Console.ReadLine());
                 int b;
-                MakeTo(ref a, out b);
+                MakeTo(a, out b);
                 Console.WriteLine(b);
             } catch (System.OverflowException OFE) {
                 int a = 1000001 - 1;
                 int b;
-                MakeTo(ref a, out b);
+                MakeTo(a, out b);
                 Console.WriteLine(b);
                 Console.WriteLine("\n\n\n\nRan into a error during compilation\nThe error consisted of:\n\n" + OFE);
             }
