@@ -11,6 +11,8 @@ from client_plugin.errors import (
 from colorama import Fore, Style
 
 class yal_client_plugin:
+  
+  def __init__(self):self.platform_is_rendered=bool
 
   def _complete_platform_(self,storage_amount:'int'=500000) -> list([int,[str,str]]):
 
