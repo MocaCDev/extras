@@ -190,6 +190,9 @@ fi'''
     
     else:raise CouldNotLocateFile('Could not locate the file ' + file_to_open + ', with root: ' + os.path.abspath(file_to_open))
   
+  def _encode_(self,file_:str,encoding:str,hosts:list) -> list([str,str,str]):
+    pass
+  
   def _root_dir_(self,directory:'str') -> [str,str]:
     
     """
@@ -208,6 +211,9 @@ fi
 fi'''
     
     if os.path.isfile('root_info.json'):
+
+      y_c_p._update_storage_(os.stat(os.path.abspath(directory)).st_size)
+
       open_root_info = json.loads(open(os.path.abspath('root_info.json'),'r').read())
       
       if directory != open_root_info['rooted']:
@@ -234,6 +240,9 @@ fi'''
       elif directory == open_root_info['rooted']:return print(Fore.YELLOW + f'{directory} is already rooted'),sleep(2),os.system('clear')
 
     if not os.path.isfile('root_info.json'):
+
+      y_c_p._update_storage_(os.stat(os.path.abspath(directory)).st_size)
+
       os.system(bash_run.format(directory,directory,directory))
       
       # we want the the directory name of which we are rooting
