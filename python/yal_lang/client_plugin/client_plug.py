@@ -11,8 +11,6 @@ from client_plugin.errors import (
 from colorama import Fore, Style
 
 class yal_client_plugin:
-  
-  def __init__(self):self.platform_is_rendered = bool
 
   def _complete_platform_(self,storage_amount:'int'=500000) -> list([int,[str,str]]):
 
@@ -101,7 +99,7 @@ class yal_client_plugin:
   
   def _update_storage_(self,take_out:'int') -> int:
 
-    if not self.platform_is_rendered:
+    if self.platform_is_rendered == False:
       raise Exception('\n\nCannot add storage to a platform that has not been rendred\n\nPlease run yal._render_platform_ to render the platform')
 
     """
@@ -140,7 +138,7 @@ class yal_client_plugin:
   
   def _return_platform_(self):
 
-    if not self.platform_is_rendered:
+    if self.platform_is_rendered == False:
       raise Exception('\n\nCannot return the platorm of a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
 
     """this will just return os.name if the path new_os.json exists, which just means the platform has been setup completely
@@ -157,7 +155,7 @@ class yal_client_plugin:
   
   def _use_platform_(self) -> Tuple[str]:
 
-    if not self.platform_is_rendered:
+    if self.platform_is_rendered == False:
       raise Exception('\n\nCannot use a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
 
     """this just returns the name in new_os.json if the path exists
@@ -171,7 +169,7 @@ class yal_client_plugin:
   
   def _add_storage_(self,add):
 
-    if not self.platform_is_rendered:
+    if self.platform_is_rendered == False:
       raise Exception('\n\nCannot add storage to a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
 
     """
