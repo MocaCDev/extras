@@ -1,3 +1,8 @@
+"""
+  There are mutiple loading screens due to the fact this is the main file for the application and it does,
+  and runs many important items to setup the application.
+"""
+
 import os
 from lang import read_
 from easier import yal
@@ -7,8 +12,7 @@ from time import sleep
 yal = yal()
 
 # Rooting the yal directory
-if not os.path.exists('root_info.json'):
-  yal._root_dir_('/data/data/com.termux/files/home/extras')
+yal._open_file_('main.py')
 
 # Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
