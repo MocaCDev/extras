@@ -12,7 +12,7 @@ from time import sleep
 yal = yal()
 
 # Rooting the yal directory
-yal._open_file_('main.py')
+yal._root_dir_(os.environ.get('HOME')+'/extras/python/yal_lang')
 
 # Setting up a platform
 yal._setup_platform_('YAL_ORIGINAL')
