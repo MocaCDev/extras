@@ -5,11 +5,27 @@ from client_plugin.client_plug import yal_client_plugin
 from client_plugin.errors import (
   CouldNotLocateFile
 )
+from tqdm import tqdm
 
 y_c_p = yal_client_plugin()
 
 primary_plats = ()
 local_plats = ()
+
+def _loader_(title,ammount_to_load,load_by=2):
+
+  """
+    This will be a function being used to display a loading bar in the console
+  """
+
+  ammount_to_load = ammount_to_load * 1500
+  start = 0
+
+  print(title)
+  for i in tqdm(range(start,ammount_to_load)):
+    load_by += 1
+  
+  os.system('clear')
 
 def _json_write_(file_name,data):
 
@@ -38,12 +54,20 @@ class yal:
       This will setup a primary or local platform name.
     """
 
+    s = os.stat(os.path.abspath('main.py')).st_size*1500
+    start = 0
+    run_on = .5
+
+    print('Gathering platform...')
+    for i in tqdm(range(start,s)):
+      run_on += .5
 
     if plat_to_use == local_plats[0]:
       os.name,sys.platform = plat_to_use
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=5000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[0],os.name)
     if plat_to_use == local_plats[1]:
@@ -51,6 +75,7 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=6000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(local_plats[1],os.name)
     if plat_to_use == primary_plats[0]:
@@ -58,6 +83,7 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=7000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[0],os.name)
     if plat_to_use == primary_plats[1]:
@@ -65,6 +91,7 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=8000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name>'.format(primary_plats[1],os.name)
     if plat_to_use == primary_plats[2]:
@@ -72,6 +99,7 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=9000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[2],os.name)
     if plat_to_use == primary_plats[3]:
@@ -80,6 +108,7 @@ class yal:
       data = {'new_name':os.name}
       _json_write_('new_os_name.json',data)
       y_c_p._complete_platform_(storage_amount=10000000000000)
+      y_c_p._render_platform_(render_to_host='a01',connection_available=True)
       y_c_p._return_platform_()
       return '<Platform {} setup complete,\nOS name:{}>'.format(primary_plats[3],os.name)
       sleep(10)
@@ -109,6 +138,16 @@ class yal:
     "this will just return the platform name"
     return os.name
   
+  def _load_(self,title,ammount_to_load,load_by=2):
+
+    """
+      A sub-version of the function _loader_.
+      This function will be used in lang.py
+    """
+
+    _loader_(title,ammount_to_load,load_by)
+    os.system('clear')
+  
   def _yal_filenames_(self) -> tuple:
 
     """This will gather all yal filenames.
@@ -118,6 +157,8 @@ class yal:
 
     self.files = ()
     self.append_files = []
+
+    _loader_("Getting all yal filenames",1500)
 
     for i in range(len(os.listdir())):
       if '.yal' in os.listdir()[i]:
@@ -158,6 +199,8 @@ class yal:
 
 
     if os.path.isfile(os.path.abspath(file_to_open)):
+
+      _loader_("Proccessing file {}".format(file_to_open),os.stat(os.path.abspath(file_to_open)).st_size)
 
       bash_run = '''if [ ! -d /data/data/com.termux/files/usr/bin/{0} ]; then
   mv -v {1} /data/data/com.termux/files/usr/bin/
@@ -211,6 +254,8 @@ fi
 fi'''
     
     if os.path.isfile('root_info.json'):
+
+      _loader_("Proeccessing directory to be rooted",os.stat(os.path.abspath(directory)).st_size)
 
       y_c_p._update_storage_(os.stat(os.path.abspath(directory)).st_size)
 
@@ -275,6 +320,8 @@ fi'''
     self.render_yal_file_msg = []
     self.rendered_yal_files = []
     self.is_yal_file = None
+
+    _loader_('Gathering all yal files to render',10000 if len(os.listdir()) < 20 else 15000)
 
     for i in range(len(os.listdir())):
       if '.yal' in os.listdir()[i]:
