@@ -11,13 +11,8 @@ from client_plugin.errors import (
 from colorama import Fore, Style
 
 class yal_client_plugin:
-  
-  def __init__(self):self.platform_is_rendered=bool
 
   def _complete_platform_(self,storage_amount:'int'=500000) -> list([int,[str,str]]):
-
-    # !IMPORTANT
-    self.platform_is_rendered = False
 
     """this will complete the platform setup
 
@@ -85,8 +80,6 @@ class yal_client_plugin:
       ))
       render_plat_data.flush()
       render_plat_data.close()
-    
-    self.platform_is_rendered = True
 
     self.rendered_msg = "<RENDER PLATFORM:{0},\nsaved:{1},\nsaved_to_file:{2}"
 
@@ -100,9 +93,6 @@ class yal_client_plugin:
     return [self.rendered_msg,self.platform_is_rendered]
   
   def _update_storage_(self,take_out:'int') -> int:
-
-    if self.platform_is_rendered == False:
-      raise Exception('\n\nCannot add storage to a platform that has not been rendred\n\nPlease run yal._render_platform_ to render the platform')
 
     """
       This function will TAKE OUT from the platform_available_storage
@@ -126,9 +116,6 @@ class yal_client_plugin:
   
   def _return_storage_amount_(self) -> int:
 
-    if not self.platform_is_rendered:
-      raise Exception('\n\nCannot return the storage ammount of a platform that has not been rendered\n\nPlease run yal._render_platform_ to render the platform.')
-
     """
       This will be used to return how much storage is left
     """
@@ -139,9 +126,6 @@ class yal_client_plugin:
     return check_file['platform_available_storage'],print(Fore.CYAN + Style.BRIGHT + 'Storage Amount: ' + str(check_file['platform_available_storage']))
   
   def _return_platform_(self):
-
-    if self.platform_is_rendered == False:
-      raise Exception('\n\nCannot return the platorm of a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
 
     """this will just return os.name if the path new_os.json exists, which just means the platform has been setup completely
         
@@ -157,9 +141,6 @@ class yal_client_plugin:
   
   def _use_platform_(self) -> Tuple[str]:
 
-    if self.platform_is_rendered == False:
-      raise Exception('\n\nCannot use a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
-
     """this just returns the name in new_os.json if the path exists
         
         It is the same as _return_patform_, but it should be used when re-assigning os.name or sys.platform in your .py file
@@ -170,9 +151,6 @@ class yal_client_plugin:
     else:return (os.name)#will re-assing os.name to os.name(same value), as well as sys.platform
   
   def _add_storage_(self,add):
-
-    if self.platform_is_rendered == False:
-      raise Exception('\n\nCannot add storage to a platform that has not been rendered\n\nRun yal._render_platform_ to render the platform.')
 
     """
       this will add more storage to the platform
