@@ -54,12 +54,13 @@ class yal_client_plugin:
       data = {'os_name':['module::os',os.name],'sys_name':['module::sys',sys.platform],'platform_available_storage':self.total_storage}
       new_os.write(json.dumps(
         data,
-        indent=2
+        indent=2,
+        sort_keys=False
       ))
       new_os.close()
     return [self.total_storage,[os.name,sys.platform]]
   
-  def _render_platform_(self,render_to_host:str,connection_available:bool) -> list([str,bool]):
+  def _render_platform_(self,render_to_host:'str',connection_available:'bool') -> list([str,bool]):
 
     "this will render the platform and set a host and a connection avaiability variable to it"
 
@@ -69,7 +70,7 @@ class yal_client_plugin:
     data = {'platform':os.name,'platform_renderes_to_host':self.render_host,'available':self.connection_available}
 
     if self.connection_available:
-      data.update({['Connection is unavailable. Other hosts and or platform names cannot connect to it through the yal application. You must creat a mod of your own if you want to connect to it.']})
+      data.update({'':['Connection is unavailable. Other hosts and or platform names cannot connect to it through the yal application. You must creat a mod of your own if you want to connect to it.']})
 
     with open('render_platform.json','w') as render_plat_data:
 
@@ -78,19 +79,18 @@ class yal_client_plugin:
         indent=2,
         sort_keys=False
       ))
-      render_plat_data.flush()
       render_plat_data.close()
 
     self.rendered_msg = "<RENDER PLATFORM:{0},\nsaved:{1},\nsaved_to_file:{2}"
 
     with open('rendered_info.bach','w') as file:
 
-      self.rendered_msg = self.rendere_msg.format([os.name,sys.platform],True if self.platform_is_rendered else False,os.path.abspath('rendered_info.bach'))
+      self.rendered_msg = self.rendered_msg.format([os.name,sys.platform],True if os.path.exists('render_platforms.json') else False,os.path.abspath('rendered_info.bach'))
 
-      file.write(self.rendere_msg)
+      file.write(self.rendered_msg)
       file.close()
     
-    return [self.rendered_msg,self.platform_is_rendered]
+    return [self.rendered,True if os.path.exists('rendered_info.bach') else False]
   
   def _update_storage_(self,take_out:'int') -> int:
 
