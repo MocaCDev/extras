@@ -55,7 +55,7 @@ def _to_stats_(type_:str,tage:str='$',print_:bool=True,stats_by:int=2) -> type:
 					code=f'{rando}-[{values}]-"{double_space}<:>{double_spaced_r*2 if len(arg) >= 1 and len(arg) < 150 else doubled_spaced_return}_{arg +"<"+double_both+">"+ tage if len(arg) >= 1 and len(arg) < 150 else arg + "->as_err"}'
 					space_ = '  ' * div_2
 					new_char = f' @_-{d/4+12}-{double_space if d % 2 == 0 else False}_ '
-					data += 'r-'+space+'d-'+space+'._.'+space_+new_char+f'{indent if d % 10 == 0 else double_space}|_{tage}:{len(arg)*d/40}_|--{bytes_}--'+doubled_spaced_return+f'_{double_spaced_t if d % 20 == 0 else double_both}'+values*2+f'({new_char}<->{make_new})'+f':"{rando*2 if div_2 % 4 == 0 else rando*3}":{space}'
+					data += 'r-'+space+'d-'+space+'._.'+space_+new_char+f'{indent if d % 10 == 0 else double_space}|_{tage}:{len(arg)*d/40}_|--{bytes_}--'*2+doubled_spaced_return+f'_{double_spaced_t if d % 20 == 0 else double_both}'+values*2+f'({new_char}<->{make_new})'+f':"{rando*2 if div_2 % 4 == 0 else rando*3}":{space}'
 					r = i * 2 if i * 2 < 1000 else floor(i /2)
 
 					# this will end with the bytes. All the other is extra
