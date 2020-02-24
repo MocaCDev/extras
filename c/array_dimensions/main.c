@@ -7,6 +7,7 @@ static bool two_d = true;
 static bool print_ = true;
 
 bool is_two_d(bool y);
+bool print(bool p);
 
 int main() {
     
@@ -82,4 +83,11 @@ bool is_two_d(bool y) {
     }
 
 		return y;
+}
+bool print(bool p) {
+	if(p) {
+		print_ = true;
+	} else {
+		print_ = false;
+	}
 }
