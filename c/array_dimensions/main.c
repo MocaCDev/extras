@@ -90,4 +90,6 @@ bool print(bool p) {
 	} else {
 		print_ = false;
 	}
+
+	return p;
 }
