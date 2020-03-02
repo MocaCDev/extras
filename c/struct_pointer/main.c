@@ -43,7 +43,7 @@ void * sort(struct Make_Available *l) {
     
     for(int i = 0; i < sum; i++) {
         if(l->arr[i] == 0) {
-            l->arr[i] = (int)l->arr[i-1]*2;
+            l->arr[i] = (int)l->arr[i-1]*2+sum;
         }
     }
     
@@ -51,7 +51,7 @@ void * sort(struct Make_Available *l) {
 }
 
 void print_all(loggin l,char eq[100],struct Make_Available *s) {
-    printf("\n\tDATA:\n\tPassword:\t%s\n\tOriginal Number:\t%d\n\tNumber:\t%d\n\tEquation to get %d:\t%s\n\tNumbers:",l.password,original,new_,new_,eq);
+    printf("\n\tDATA:\n\t  Password:\t%s\n\t  Original Number:\t%d\n\t  Number:\t%d\n\t  Equation to get %d:\t%s\n\t  Numbers:",l.password,original,new_,new_,eq);
     
     int sum = sizeof(s->arr)/sizeof(s->arr[0]);
     printf("%s","->");
