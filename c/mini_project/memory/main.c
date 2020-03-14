@@ -5,7 +5,8 @@
 
 static int *main_;
 static int *secondary;
-static int mem_id;
+// Can hold 400 ids
+static int mem_id[400];
 // 2 types:
 // mem_label: for memory location
 // memory_storage_label: for memory storage
@@ -31,6 +32,7 @@ void * read_(const int*);
 void * free_(int*);
 void * setup_location(database *db);
 void * setup_storage(database *db);
+int update_id();
 
 int main(void) {
     database db;
@@ -86,7 +88,7 @@ void * free_(int *t) {
 void * setup_location(database *db) {
     db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*50);
     db->memory_location.memory_id[0] = 1;
-		mem_id = db->memory_location.memory_id[0];
+		mem_id[0] = db->memory_location.memory_id[0];
     free(db->memory_location.memory_id);
     
     db->memory_location.memory_label = malloc(sizeof(char)*sizeof(char)*10);
@@ -111,7 +113,7 @@ void * setup_location(database *db) {
 void * setup_storage(database *db) {
     db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*10);
     db->memory_storage_locaion.memory_id[0] = 1;
-    mem_id = db->memory_storage_locaion.memory_id[0];
+    mem_id[0] = db->memory_storage_locaion.memory_id[0];
     free(db->memory_storage_locaion.memory_id);
     
     db->memory_storage_locaion.memory_storage_label = malloc(sizeof(char)*sizeof(char)*10);
@@ -133,4 +135,17 @@ void * setup_storage(database *db) {
     mem_storage_label = db->memory_storage_locaion.memory_storage_label;
     
     return 0;
+}
+int update_id() {
+
+	/*
+		Takes mem_id[0] + 1
+	*/
+
+	mem_id[1] = mem_id[0]+1;
+
+	if(mem_id[1] == mem_id[0]+1) 
+		return 0;
+	else
+		return 1;
 }
