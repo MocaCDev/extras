@@ -8,7 +8,7 @@ static int *secondary;
 static int mem_id;
 // 2 types:
 // mem_label: for memory location
-// mem_storage_label: for memory storage
+// memory_storage_label: for memory storage
 static char *mem_label;
 static char *mem_storage_label;
 
@@ -59,6 +59,8 @@ int main(void) {
     } else {
         setup_storage(&db);
     }
+
+		printf("%d",mem_id);
 }
 
 void * read_(const int *reading) {
@@ -84,9 +86,9 @@ void * free_(int *t) {
     }
 }
 void * setup_location(database *db) {
-    db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*10);
-    db->memory_location.memory_id[0] = sizeof(db->numbers_to_keep)*sizeof(int);
-    mem_id = db->memory_location.memory_id[0];
+    db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*50);
+    db->memory_location.memory_id[0] = 1;
+		mem_id = db->memory_location.memory_id[0];
     free(db->memory_location.memory_id);
     
     db->memory_location.memory_label = malloc(sizeof(char)*sizeof(char)*10);
@@ -110,7 +112,7 @@ void * setup_location(database *db) {
 }
 void * setup_storage(database *db) {
     db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*10);
-    db->memory_storage_locaion.memory_id[0] = sizeof(db->numbers_to_keep)*sizeof(int)+sizeof(db->numbers_to_keep[0]);
+    db->memory_storage_locaion.memory_id[0] = 1;
     mem_id = db->memory_storage_locaion.memory_id[0];
     free(db->memory_storage_locaion.memory_id);
     
