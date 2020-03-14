@@ -5,18 +5,24 @@
 
 static int *main_;
 static int *secondary;
+static int mem_id;
+// 2 types:
+// mem_label: for memory location
+// memory_storage_label: for memory storage
+static char *mem_label;
+static char *mem_storage_label;
 
 typedef struct {
     int *numbers_to_keep;
     bool memory_ammount;
     // Used if memory_ammount is true
     union {
-        int memory_id;
+        int *memory_id;
         char *memory_label;
     } memory_location;
     // Used if memory_ammount is false
     union {
-        int memory_id;
+        int *memory_id;
         char *memory_storage_label;
     } memory_storage_locaion;
 } database;
@@ -78,7 +84,11 @@ void * free_(int *t) {
     }
 }
 void * setup_location(database *db) {
-    db->memory_location.memory_id = sizeof(db->numbers_to_keep)*sizeof(int);
+    db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*10);
+    db->memory_location.memory_id[0] = sizeof(db->numbers_to_keep)*sizeof(int);
+    mem_id = db->memory_location.memory_id[0];
+    free(db->memory_location.memory_id);
+    
     db->memory_location.memory_label = malloc(sizeof(char)*sizeof(char)*10);
     
     char new_id[100];
@@ -94,10 +104,16 @@ void * setup_location(database *db) {
     
     sprintf(new_id,"%s", chars);
     strcpy(db->memory_location.memory_label,new_id);
+    mem_storage_label = db->memory_storage_locaion.memory_storage_label;
+    
     return 0;
 }
 void * setup_storage(database *db) {
-    db->memory_storage_locaion.memory_id = sizeof(db->numbers_to_keep)*sizeof(int)+sizeof(db->numbers_to_keep[0]);
+    db->memory_location.memory_id = calloc(1,sizeof(int)*sizeof(int)*10);
+    db->memory_storage_locaion.memory_id[0] = sizeof(db->numbers_to_keep)*sizeof(int)+sizeof(db->numbers_to_keep[0]);
+    mem_id = db->memory_storage_locaion.memory_id[0];
+    free(db->memory_storage_locaion.memory_id);
+    
     db->memory_storage_locaion.memory_storage_label = malloc(sizeof(char)*sizeof(char)*10);
     
     char new_id[100];
@@ -114,5 +130,7 @@ void * setup_storage(database *db) {
     
     sprintf(new_id, "%ld!%s", db->numbers_to_keep[0]*sizeof(db->numbers_to_keep), chars);
     strcpy(db->memory_storage_locaion.memory_storage_label, new_id);
+    mem_storage_label = db->memory_storage_locaion.memory_storage_label;
+    
     return 0;
 }
