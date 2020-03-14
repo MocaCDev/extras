@@ -8,7 +8,7 @@ static int *secondary;
 static int mem_id;
 // 2 types:
 // mem_label: for memory location
-// memory_storage_label: for memory storage
+// mem_storage_label: for memory storage
 static char *mem_label;
 static char *mem_storage_label;
 
