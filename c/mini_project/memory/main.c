@@ -59,8 +59,6 @@ int main(void) {
     } else {
         setup_storage(&db);
     }
-
-		printf("%d",mem_id);
 }
 
 void * read_(const int *reading) {
