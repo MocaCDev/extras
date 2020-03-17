@@ -51,14 +51,14 @@ static int * check_mated(checker *ch) {
 		tathered = true;
 		if(database_names[db.mate_id] == NULL) {
 			sprintf(new_db_name,"rand_db%d",rand()%4);
-			printf("Done\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",new_db_name,(tathered) ? "TRUE" : "FALSE");
+			printf("Done\n\t\t\tRANDOMLY_GENERATED_DATABASE\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",new_db_name,(tathered) ? "TRUE" : "FALSE");
 		} else {
-			printf("Done\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
+			printf("Done\n\t\tORIGINAL_GENERATED_DATABASE\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
 		}
 	} else {
 		tathered = false;
 		database_names[db.mate_id] = "NO_DATABASE_AVAILABLE";
-		printf("Done\n\tDATABASE:\t%s\n\tTATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
+		printf("Done\n\t\tERROR_GENERATING_DATABASE\n\tDATABASE:\t%s\n\tTATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
 	}
 
 	return 0;
@@ -76,7 +76,7 @@ int * set_mated_id(int mated_id) {
 checker *s(checker *s, int mated_id) {
 
 	s->checked = true;
-	s->chc_mod.mod_one.id = 5;
+	s->chc_mod.mod_one.id = 10;
 
 	db_delay db;
 
