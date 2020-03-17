@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 enum accountable {Start=1, end=0};
-int END(bool failed);
+int * END(bool failed);
 
 typedef struct {
 	bool checked;
