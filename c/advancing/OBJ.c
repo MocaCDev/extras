@@ -44,12 +44,17 @@ typedef struct {
 
 static int * check_mated(checker *ch) {
 	static bool tathered;
+	static char new_db_name[50];
 	db_delay db;
 
 	if(db.mate_id == ch->chc_mod.mod_one.id) {
 		tathered = true;
-		sprintf(database_names[db.mate_id],"rando_db_%d",rand());
-		printf("Done\n\tDATABASE:\t%s\n\tTATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
+		if(database_names[db.mate_id] == NULL) {
+			sprintf(new_db_name,"rand_db%d",rand()%4);
+			printf("Done\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",new_db_name,(tathered) ? "TRUE" : "FALSE");
+		} else {
+			printf("Done\n\tDATABASE:\t%s\n\tID TATHERED:\t%s",database_names[db.mate_id],(tathered) ? "TRUE" : "FALSE");
+		}
 	} else {
 		tathered = false;
 		database_names[db.mate_id] = "NO_DATABASE_AVAILABLE";
@@ -71,7 +76,7 @@ int * set_mated_id(int mated_id) {
 checker *s(checker *s, int mated_id) {
 
 	s->checked = true;
-	s->chc_mod.mod_one.id = 0;
+	s->chc_mod.mod_one.id = 5;
 
 	db_delay db;
 
