@@ -7,6 +7,8 @@ let list = {
 	list_:[1,2,3,4,5,6]
 };
 
+list.crewInfo.crewLeft(5);
+
 list.list_ = list.list_.filter(index => {
 	return index>=4;
 });
