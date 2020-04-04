@@ -6,7 +6,7 @@ let assi = {
 			this.addBy+=15;
 		}
 		for(let i = 0; i < 10; i++) {
-			this.values[i]=i*this.addBy/2;
+			this.values[i].push(i*this.addBy/2);
 		}
 		this.values = this.values.filter(index=> {
 			return index>0;
