@@ -14,10 +14,16 @@ let assi = {
 	},
 	get Values() {
 		return this.values;
+	},
+	MultBy(mult) {
+		this.values = this.values.map(index => {
+			return index*mult;
+		});
 	}
 };
 
 assi.Values=100;
+assi.MultBy(8);
 assi.Values;
 
 const keys = Object.assign({NAME:'AIDAN'},assi);
