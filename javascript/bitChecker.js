@@ -64,7 +64,7 @@ const uInt24 = (numbers) => {
 	if(FailedAttempts.length>0) {
 		FailedAttempts[1]['Failed int 24 check'].sort();
 		for(let t = 0; t < FailedAttempts[1]['Failed int 24 check'].length; t++) {
-			if(FailedAttempts[1]['Failed int 24 check'][t]==FailedAttempts[1]['Failed int 24 check'][t+1]) {
+			if(FailedAttempts[1]['Failed int 24 check'][t]===FailedAttempts[1]['Failed int 24 check'][t+1]) {
 				FailedAttempts[1]['Failed int 24 check'].splice(t,t+1);
 				break;
 			}
