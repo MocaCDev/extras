@@ -35,7 +35,12 @@ const uInt16 = (numbers) => {
 		}
 	}
 
-	return ReturnStatus;
+	return {
+		ReturnStatus,
+		FailedAttempts,
+		available16BitNumbers,
+		numbers
+	};
 };
 
 // takes a int and sees if it is greater than a int24
@@ -71,11 +76,22 @@ const uInt24 = (numbers) => {
 		}
 	}
 
-	return ReturnStatus;
+	return {
+		ReturnStatus,
+		FailedAttempts,
+		available24BitNumbers,
+		numbers
+	};
 }
 
-uInt16([10000,100,50,9000,180000,50,1900000]);
 uInt24([1000000,800000,-1,5000,40,2,1]);
+
+if(uInt16([10000,100,50,9000,180000,50,1900000]).ReturnStatus==1) {
+	throw new Error("Exit status 1");
+}
+if(uInt24([1000000,800000,-1,5000,40,2,1]).ReturnStatus==1) {
+	throw new Error("Exit status 1");
+}
 
 for(let d = 0; d < available16BitNumbers.length; d++) {
 	console.log('Picked up on: '+`${available16BitNumbers[d]}`);
