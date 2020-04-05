@@ -16,6 +16,7 @@ const uInt16 = (numbers) => {
 		}
 	}
 
+	/* Sorting */
 	available16BitNumbers.sort();
 	
 	for(let i = 0; i < available16BitNumbers.length; i++) {
@@ -50,6 +51,9 @@ const uInt24 = (numbers) => {
 			ReturnStatus=0;
 		}
 	}
+
+	/* Sorting */
+	available24BitNumbers.sort();
 
 	for(let i = 0; i < available24BitNumbers.length; i++) {
 		if(available24BitNumbers[i]===available24BitNumbers[i+1]) {
