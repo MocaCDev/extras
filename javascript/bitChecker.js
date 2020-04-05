@@ -87,10 +87,10 @@ const uInt24 = (numbers) => {
 uInt24([1000000,800000,-1,5000,40,2,1]);
 
 if(uInt16([10000,100,50,9000,180000,50,1900000]).ReturnStatus==1) {
-	throw new Error("Exit status 1");
+	throw new Error(`Exit status 1\n\nFailed attempts: ${uInt16([10000,100,50,9000,180000,50,1900000]).FailedAttempts[0]['Failed int 16 check']}`);
 }
 if(uInt24([1000000,800000,-1,5000,40,2,1]).ReturnStatus==1) {
-	throw new Error("Exit status 1");
+	throw new Error(`Exit status 1\n\nFailed attempts: ${uInt24([1000000,800000,-1,5000,40,2,1]).FailedAttempts[1]['Failed int 24 check']}`);
 }
 
 for(let d = 0; d < available16BitNumbers.length; d++) {
