@@ -1,18 +1,19 @@
 /* Passing array in as function argument */
 
-fun PARSE(items:Array<Int>, NewList:MutableList<Int>){
+fun PARSE(items:Array<Int>, RemainderOfZero:MutableList<Int>){
     items.forEach{ item -> 
     	if(item%2==0) {
             println("$item%2="+item%2)
-            NewList.add(item)
+            RemainderOfZero.add(item) // Appending items that have remainder of zero
         }
     }
 }
 
 fun main() {
     val myArr = arrayOf(1,2,3,4)
-    val NewList = mutableListOf(0)
-    PARSE(myArr,NewList)
+    var RemainderOfZero = mutableListOf(0)
+    PARSE(myArr,RemainderOfZero)
+    RemainderOfZero.remove(0)
     
-    NewList.forEachIndexed { index, value -> if(value != 0)println("$index->$value%2=0")}
+    RemainderOfZero.forEachIndexed { index, value -> println("Index $index->$value")}
 }
