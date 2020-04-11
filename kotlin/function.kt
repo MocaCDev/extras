@@ -1,13 +1,15 @@
 /* FUNCTIONS */
 
-var MyName: String? = null // Will be assigned in SayHi
+var UserName: String? = null // Will be assigned in SayHi
+var UserAge: Int? = null
 
-fun SayHi(usersName:String) {
-    MyName=usersName
+fun SayHi(usersName:String, usersAge:Int) {
+    UserName=usersName
+    UserAge=usersAge
     
-    println("Hello, "+MyName)
+    println("Hello, "+UserName+".\nI see you're "+UserAge+" years old!")
 }
 
 fun main() {
-    SayHi("ARACADERISE(GetStuffDone)")
+    SayHi("ARACADERISE(GetStuffDone)",15)
 }
