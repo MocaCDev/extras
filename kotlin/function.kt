@@ -1,10 +1,13 @@
-/* Creating function */
-val MyName = "ARACADERISE(GetStuffDone)"
+/* FUNCTIONS */
 
-fun SayHi(): String {
-    return "Hello " + MyName
+var MyName: String? = null // Will be assigned in SayHi
+
+fun SayHi(usersName:String) {
+    MyName=usersName
+    
+    println("Hello, "+MyName)
 }
 
 fun main() {
-    println(SayHi())
+    SayHi("ARACADERISE(GetStuffDone)")
 }
