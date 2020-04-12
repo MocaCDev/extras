@@ -13,7 +13,7 @@ typedef struct {
 char * GETCAT(char str[], char Symb, int Amm, SaveString *String) {
     static char NEW_STRING[500];
     if(!(strlen(str)>MAX_STRING_SIZE)) {
-        memset(NEW_STRING,Symb,strlen(str)+Amm); // Adding 2 to it so we have 5 left over underscores
+        memset(NEW_STRING,Symb,strlen(str)+Amm); // Adding Amm to it so we have Amm left over underscores
         for(int i = 0; i < strlen(str); i++) {
             memset(&NEW_STRING[i],str[i],1);
         }
