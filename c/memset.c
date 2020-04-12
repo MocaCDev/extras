@@ -1,3 +1,15 @@
+/* 
+    * PURE memory usage,
+    * PURE memory storage,
+    * PURE string usage.
+    
+    * This was just a project I was testing out to see how exactly storage works with
+    * memset and memcpy. If this would be in an actual backend-application this would take
+    * up way to much storage, yet again..just testing it out. We wouldn't want to continously
+    * copy a block of memory into another block of memory. Therefore, strcpy would be much more
+    * useful than copying the block of memory.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,10 +26,8 @@ typedef struct {
 char * GETCAT(char str[], char Symb, int Amm, SaveString *String) {
     static char NEW_STRING[MAX_NEW_STRING_SIZE];
     if(!(strlen(str)>MAX_STRING_SIZE)) {
-        memset(NEW_STRING,Symb,strlen(str)+Amm); // Adding Amm to it so we have Amm left over underscores
-        for(int i = 0; i < strlen(str); i++) {
-            memset(&NEW_STRING[i],str[i],1);
-        }
+        memset(NEW_STRING,Symb,strlen(str)+Amm); //  Adding Amm to it so we have Amm left over underscores
+        memcpy(NEW_STRING,str,strlen(str)); // Setting str to NEW_STRING
         strcpy(String->STRING_TO_SAVE[Index],NEW_STRING);
         Index++;
         return NEW_STRING;
