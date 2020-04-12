@@ -10,10 +10,10 @@ typedef struct {
     char SAVE_TOGETHER[1000];
 } SaveString;
 
-char * GETCAT(char str[], SaveString *String) {
-    static char NEW_STRING[MAX_STRING_SIZE];
+char * GETCAT(char str[], char Symb, int Amm, SaveString *String) {
+    static char NEW_STRING[500];
     if(!(strlen(str)>MAX_STRING_SIZE)) {
-        memset(NEW_STRING,'_',strlen(str)+3); // Adding 2 to it so we have 5 left over underscores
+        memset(NEW_STRING,Symb,strlen(str)+Amm); // Adding 2 to it so we have 5 left over underscores
         for(int i = 0; i < strlen(str); i++) {
             memset(&NEW_STRING[i],str[i],1);
         }
@@ -35,6 +35,19 @@ int main(void) {
     printf("Ammount to get: ");
     scanf("%d",&AmTime);
     
+    // Getting ideals for the GETCAT functions
+    char SymbolToUse;
+    printf("Symbol to parse between each string: ");
+    scanf(" %c",&SymbolToUse);
+    
+    int AmmountOfParseSpaces;
+    printf("How many times to you want the symbol to print between each string? ");
+    scanf("%d",&AmmountOfParseSpaces);
+    if(AmmountOfParseSpaces>5) {
+        fprintf(stderr,"\033[0;34mCannot assign more than 5 symbol spaces.\n\t\033[0;32mReassigned to 5\n\033[0;0m");
+        AmmountOfParseSpaces=5;
+    }
+    
     // Getting input for ammount of AmTime
     char ITEM[MAX_STRING_SIZE];
     if(!(AmTime>400)) { 
@@ -43,7 +56,7 @@ int main(void) {
             scanf("%s",ITEM);
             
             // getting it
-            GETCAT(ITEM,String);
+            GETCAT(ITEM,SymbolToUse,AmmountOfParseSpaces,String);
         }
         for(int i = 0; i < sizeof(String->STRING_TO_SAVE)/sizeof(String->STRING_TO_SAVE[0]); i++) {
             if(!(strcmp(String->STRING_TO_SAVE[i],"")==0))strcat(String->SAVE_TOGETHER,String->STRING_TO_SAVE[i]);
