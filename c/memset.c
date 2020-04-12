@@ -27,7 +27,7 @@ char * GETCAT(char str[], char Symb, int Amm, SaveString *String) {
     static char NEW_STRING[MAX_NEW_STRING_SIZE];
     if(!(strlen(str)>MAX_STRING_SIZE)) {
         memset(NEW_STRING,Symb,strlen(str)+Amm); //  Adding Amm to it so we have Amm left over underscores
-        memcpy(NEW_STRING,str,strlen(str)); // Setting str to NEW_STRING
+        memcpy(NEW_STRING,str,strlen(str)); // Setting NEW_STRING to str
         strcpy(String->STRING_TO_SAVE[Index],NEW_STRING);
         Index++;
         return NEW_STRING;
