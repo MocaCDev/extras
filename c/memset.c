@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_STRING_SIZE 50
+#define MAX_STRING_SIZE 400
+#define MAX_NEW_STRING_SIZE 500
 static int Index;
 
 typedef struct {
@@ -11,7 +12,7 @@ typedef struct {
 } SaveString;
 
 char * GETCAT(char str[], char Symb, int Amm, SaveString *String) {
-    static char NEW_STRING[500];
+    static char NEW_STRING[MAX_NEW_STRING_SIZE];
     if(!(strlen(str)>MAX_STRING_SIZE)) {
         memset(NEW_STRING,Symb,strlen(str)+Amm); // Adding Amm to it so we have Amm left over underscores
         for(int i = 0; i < strlen(str); i++) {
