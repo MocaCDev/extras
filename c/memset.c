@@ -37,20 +37,21 @@ int main(void) {
     
     // Getting input for ammount of AmTime
     char ITEM[MAX_STRING_SIZE];
-    if(!(AmTime>399)) { 
+    if(!(AmTime>400)) { 
         for(int i = 0; i < AmTime; i++) {
-            printf("INPUT: ");
+            printf("INPUT #%d: ",i+1);
             scanf("%s",ITEM);
             
             // getting it
             GETCAT(ITEM,String);
         }
-    }
+        for(int i = 0; i < sizeof(String->STRING_TO_SAVE)/sizeof(String->STRING_TO_SAVE[0]); i++) {
+            if(!(strcmp(String->STRING_TO_SAVE[i],"")==0))strcat(String->SAVE_TOGETHER,String->STRING_TO_SAVE[i]);
+            else break;
+        }
     
-    for(int i = 0; i < sizeof(String->STRING_TO_SAVE)/sizeof(String->STRING_TO_SAVE[0]); i++) {
-        if(!(strcmp(String->STRING_TO_SAVE[i],"")==0))strcat(String->SAVE_TOGETHER,String->STRING_TO_SAVE[i]);
-        else break;
+        printf("Done!\n%s",String->SAVE_TOGETHER);
+    } else {
+        fprintf(stderr,"\033[3;31mMax is 400, you assigned %d",AmTime);
     }
-    
-    printf("Done!\n%s",String->SAVE_TOGETHER);
 }
