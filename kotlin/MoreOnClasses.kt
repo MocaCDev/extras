@@ -2,9 +2,9 @@ var StaticId: Int = 1 // one by default
 var NameData = mutableListOf<String?>()
 var IdData = mutableListOf<Int?>()
 
-class SetupUser(
+class SetupUser(	
 	val UserName: String? = null,
-  val UserId: Int? = null
+    val UserId: Int? = null
 ) {
   constructor(username:String) : this("$username",StaticId++)
   constructor(userid:Int) : this("UNKNOWN$StaticId",userid)
