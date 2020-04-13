@@ -1,12 +1,12 @@
 class SetupUser (
-	val UserName:String="Unknwon"
+	UserName:String="Unknown"
 ) {
-    fun PrintName(): String {
-        return "Username: $UserName"
+    val UserName = UserName
+    init {
+        println("USER CREATED\nUSERNAME -> $UserName")
     }
 }
 
 fun main() {
     val NewUser = SetupUser("AIDAN");
-    println(NewUser.PrintName())
 }
