@@ -8,6 +8,7 @@ class SetupUser(
 ) {
   constructor(username:String) : this("$username",StaticId++)
   constructor(userid:Int) : this("UNKNOWN$StaticId",userid)
+  constructor() : this("UNKNOWN$StaticId",StaticId++)
     
   init {
     if(this.UserName == "UNKNOWN$StaticId") {
@@ -29,8 +30,13 @@ fun ParseArray(nameToParse:List<String?>, idToParse:List<Int?>) {
 }
 
 fun main() {    
-  val User = SetupUser("JOHN")
+  val User = SetupUser()
+  val User2 = SetupUser()
 
   // We want to parse through the NameData/IdData Lists
   ParseArray(NameData,IdData)
+  
+  val Something = listOf(true, "yes", listOf("sure","nah","why not"), 1, 2, false)
+  
+  Something.filterIsInstance<List<String>>().forEach{ item -> item.forEach{itemItem -> println(itemItem)}}
 }
