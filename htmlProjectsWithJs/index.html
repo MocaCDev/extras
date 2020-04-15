@@ -1,27 +1,34 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     
     <h1 style="text-align:center">THIS WEBSITE ONLY TAKES IN 1-9, 10-99</h1>
-    <h4>Preview:</br>This website takes a list of numbers, adds a default value of 1 to each item, or if you can add your own number, than spits the number back out</h4>
-    <span style="font-size:12px">If there is a zero in the "During parse", it is due to the fact that the back-end has replaced a duplicate number with zero</span>
+    <div class="BodyPage">
+      <hr><div class="move-over">
+        <h4 class="margin-top" style="color:white">Preview:</br>This website takes a list of numbers, adds a default value of 1 to each item, or if you can add your own number, than spits the number back out</br>Side Note: For some reason the algorithm taking place in the back-end will not pick up on numbers such as 100,200 etc, but if you have a number such like 401, it will delete 40 and use 1 as you input! Pretty cool huh!</h4></br></br>
+        <span style="font-size:16px;color:white">1 -> If there is a zero in the "During parse", it is due to the fact that the back-end has replaced a duplicate number with zero</br><i style="font-size:16px;color:white">2 -> If there are duplicates in the list, they'll be deleted</i></br><i style="font-size:16px">3 -> If there is a number greater than 99 it will be deleted</i></br><i style="font-size:16px">4 -> Make sure to put a space in between each number. Also keep note you can have as many numbers as you want, just keep it under 99!</i></br><i style="font-size:16px">4 -> Cannot have decimal numbers!</i></span>
+        </br></br>
+        <div style="color:darkturquoise">
+        <h3><i id="NoInput"></i></h3>
+        <code><i id="userInput"></i></code>
+        <code><i id="IncrementBy"></i></code>
+        <code><i id="ListDuringParse"></i></code>
+        <!-- This is if there are duplicates -->
+        <code><i id="Removed"></i></code>
+        <code><i id='output'></i></code>
 
-    <h3><i id="NoInput"></i></h3>
-    <code><i id="userInput"></i></code>
-    <code><i id="IncrementBy"></i></code>
-    <code><i id="ListDuringParse"></i></code>
-    <!-- This is if there are duplicates -->
-    <code><i id="Removed"></i></code>
-    <code><i id='output'></i></code>
-
-    <!-- Most likely going to be a too large of a number error -->
-    <h3><i id="ParseError"></i></h3>
+        <!-- Most likely going to be a too large of a number error -->
+        <h3><i id="ParseError"></i></h3>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
