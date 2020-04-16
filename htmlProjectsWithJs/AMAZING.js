@@ -2,6 +2,23 @@ let API;
 let AmmountClicked;
 let INFORMATION;
 
+const RemoveBtn = () => {
+  // Creating a "Hide Information" button
+  let NewBtn = document.createElement('button');
+  NewBtn.className='button';
+  let Information = document.createTextNode('Hide Information');
+  NewBtn.appendChild(Information);
+  let SpanElement = document.getElementById('HideBtn');
+  SpanElement.appendChild(NewBtn);
+
+  document.getElementById('HideBtn').onclick = function(){
+    let REMOVE = document.getElementById('GetInfo');
+    let REMOVE2 = document.getElementById('HideBtn');
+    let REMOVE3 = document.getElementById('ShowInfo');
+    REMOVE.remove();REMOVE2.remove();REMOVE3.remove();
+  }
+};
+
 class MakeMiniApi {
   constructor(UserInp, Output, IncrementBy) {
     this.UserInp = UserInp;
@@ -36,6 +53,7 @@ $(function(){
       AmmountClicked++;
       if(AmmountClicked=1) {
         document.getElementById('ShowInfo').innerHTML = `RETURNED {SORTED_INPUT:${INFORMATION.SORTED_INPUT},OUTPUT:${INFORMATION.OUTPUT},INCREMEMT_BY:${INFORMATION.INCREMENT_BY}}`.fixed().big();
+        RemoveBtn();
       }
     }
     console.log(API.PRINT());
@@ -43,23 +61,7 @@ $(function(){
     API = new MakeMiniApi('No Input','No Input','No Input');
     document.getElementById('GetInfo').onclick = function(){
       document.getElementById('ShowInfo').innerHTML = `NO INFORMATION FOUND</br>{SORTED_INPUT:'${API.PRINT().SORTED_INPUT}',OUTPUT:'${API.PRINT().OUTPUT}',INCREMEMT_BY:'${API.PRINT().INCREMENT_BY}'}`.fontcolor('red').fixed().big();
-
-      // Creating a "Hide Information" button
-      let NewBtn = document.createElement('button');
-      NewBtn.className='button';
-      let Information = document.createTextNode('Hide Information');
-      NewBtn.appendChild(Information);
-      let SpanElement = document.getElementById('HideBtn');
-      SpanElement.appendChild(NewBtn);
-      console.log('DONE');
-
-      document.getElementById('HideBtn').onclick = function(){
-        document.getElementById('ShowInfo').innerHTML='';
-        
-        let REMOVE = document.getElementById('GetInfo');
-        let REMOVE2 = document.getElementById('HideBtn');
-        REMOVE.remove();REMOVE2.remove();
-      }
+      RemoveBtn();
     }
     console.log(API.PRINT());
   }
