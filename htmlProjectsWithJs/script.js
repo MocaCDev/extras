@@ -1,8 +1,10 @@
 let UserInput = prompt("Enter numbers"); // Getting numbers
 let Increment = prompt("Increment By: ");
 let FoundNumbers = []; // Appending numbers found
+let NumbersBefore;
 let ErrorNumber;
 let IncrementEach;
+let ButtonCicked;
 
 if(Increment) {
   IncrementEach=parseInt(Increment);
@@ -26,7 +28,7 @@ if(UserInput==="") {
           let Number = UserInput[i-2]+UserInput[i-1];
           FoundNumbers.push(parseInt(Number));
         } else {
-          /* Since i-2 is undefined i-1 should be a numbers */
+          /* Since i-2 is undefined i-1 should be a number */
           ErrorNumber = UserInput[i-1];
         }
       } else {
@@ -35,13 +37,13 @@ if(UserInput==="") {
             FoundNumbers.push(parseInt(ErrorNumber))
           without the if statement, but it is more efficient if we do it this way
         */
-        console.log(parseInt(UserInput[i-1]));
         if(ErrorNumber!=null) {
           FoundNumbers.push(parseInt(ErrorNumber));
         }
         FoundNumbers.push(parseInt(UserInput[i-1]));
       }
     }
+    NumbersBefore = FoundNumbers;
   }
 } else {
   document.getElementById("NoInput").innerHTML = "Clicked \"CANCEL\"</br>User did not input anything".fontcolor('white').bold().fixed();
@@ -51,7 +53,7 @@ if(UserInput==="") {
 // Sorting numbers
 FoundNumbers.sort();
 
-// Remving NaN from the list
+// Removing NaN from the list
 for(let i = 0; i < FoundNumbers.length; i++) {
   if(isNaN(FoundNumbers[i])) {
     FoundNumbers[i]=0;
