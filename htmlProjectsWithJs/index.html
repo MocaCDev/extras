@@ -6,6 +6,7 @@
     <title>Just Something</title>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   </head>
   <body bodystyle>
     
@@ -13,7 +14,7 @@
       <h1 class="title">Just something</br></br><hr padd-between><span middle>THIS WEBSITE ONLY TAKES IN 1-9, 10-99</span></h1>
       <hr><div class="move-over">
         <h4 class="margin-top" style="color:white">Preview:</br>This website takes a list of numbers, adds a default value of 1 to each item, or if you can add your own number, than spits the number back out</br>Side Note: For some reason the algorithm taking place in the back-end will not pick up on numbers such as 100,200 etc, but if you have a number such like 401, it will delete 40 and use 1 as you input! Pretty cool huh!</h4></br></br><h3>RULES</h3>
-        <span style="font-size:16px;color:white">1 -> If there is a zero in the "During parse", it is due to the fact that the back-end has replaced a duplicate number with zero</br><i style="font-size:16px;color:white">2 -> If there are duplicates in the list, they'll be deleted</i></br><i style="font-size:16px">3 -> If there is a number greater than 99 it will be deleted</i></br><i style="font-size:16px">4 -> Make sure to put a space in between each number. Also keep note you can have as many numbers as you want, just keep it under 99!</i></br><i style="font-size:16px">5 -> Cannot have decimal numbers!</i></span>
+        <span style="font-size:16px;color:white">1 -> If there is a zero in the "During parse", it is due to the fact that the back-end has replaced a duplicate number with zero</br><i style="font-size:16px;color:white">2 -> If there are duplicates in the list, they'll be deleted</i></br><i style="font-size:16px">3 -> If there is a number greater than 99 it will be deleted and replaced with 0</i></br><i style="font-size:16px">4 -> Make sure to put a space in between each number. Also keep note you can have as many numbers as you want, just keep it under 99!</i></br><i style="font-size:16px">5 -> Cannot have decimal numbers!</i></span>
         </br></br>
         <div style="color:darkred">
         <h3><i id="NoInput" style="font-size:20px"></i></h3>
@@ -28,11 +29,15 @@
         <h3><i id="ParseError"></i></h3>
       </div></br></br>
 
+      <button id='GetInfo' type="submit" name="GetInfo" value="enter" button>Show Information</button>
+      <h3><i id='ShowInfo' style="font-size:14px;color:wheat"></i></h3></br>
+
       <div class="footer">
         <footer>COPYRIGHT CTALENT/ARACADERISE(GetSetuffDone)</br><i style="font-size:12px">All Rights Reserved</i></footer>
       </div>
     </div>
 
+    <script type="module" src="./AMAZING.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
