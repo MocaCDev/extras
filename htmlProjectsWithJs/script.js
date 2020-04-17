@@ -12,6 +12,14 @@ if(Increment) {
   IncrementEach=1; // DEFAULT
 }
 
+// Function used to check if a number is NaN
+const CheckNaN = (CHECK) => {
+  if(isNaN(CHECK)) {
+    document.getElementById('ParseError').innerHTML = `</br>The item inputted is not an integer`.fontcolor('red').big().fixed();
+    throw new Error(`Bad input value`);
+  }
+}
+
 if(UserInput==="") {
   document.getElementById("NoInput").innerHTML = "Clicked \"OK\".</br>User did not input anything".fontcolor('white').bold().fixed();
   throw new Error("No input");
@@ -19,27 +27,21 @@ if(UserInput==="") {
   UserInput += ' ';
 
   document.getElementById("userInput").innerHTML = `User input: ${UserInput}`.bold().fixed();
-  document.getElementById('IncrementBy').innerHTML = `</br>Incrementing by: ${IncrementEach}`.bold().fixed();
 
   for(let i = 0; i < UserInput.length; i++) {
     if(UserInput[i]==' ') {
       if(UserInput[i-2]!=' '&&UserInput[i-1]!=' ') {
+        CheckNaN(parseInt(UserInput[i-1]));
         if(UserInput[i-2]!=undefined) {
           let Number = UserInput[i-2]+UserInput[i-1];
           FoundNumbers.push(parseInt(Number));
         } else {
-          /* Since i-2 is undefined i-1 should be a number */
-          ErrorNumber = UserInput[i-1];
+          // Since i-2 is undefined i-1 should be a number 
+          ErrorNumber = parseInt(UserInput[i-1]);
+          FoundNumbers.push(ErrorNumber);
         }
       } else {
-        /*
-          We could've just left:
-            FoundNumbers.push(parseInt(ErrorNumber))
-          without the if statement, but it is more efficient if we do it this way
-        */
-        if(ErrorNumber!=null) {
-          FoundNumbers.push(parseInt(ErrorNumber));
-        }
+        CheckNaN(parseInt(UserInput[i-1]));
         FoundNumbers.push(parseInt(UserInput[i-1]));
       }
     }
@@ -49,6 +51,9 @@ if(UserInput==="") {
   document.getElementById("NoInput").innerHTML = "Clicked \"CANCEL\"</br>User did not input anything".fontcolor('white').bold().fixed();
   throw new Error("No input");
 }
+
+// Located outside the if statement otherwise it would show even though the user inputted a value other than a integer
+document.getElementById('IncrementBy').innerHTML = `</br>Incrementing by: ${IncrementEach}`.bold().fixed();
 
 // Sorting numbers
 FoundNumbers.sort();
@@ -70,13 +75,9 @@ for(let i = 0; i < FoundNumbers.length; i++) {
   }
 }
 
-FoundNumbers = FoundNumbers.filter(index => {
-  return index > 0;
-});
+FoundNumbers = FoundNumbers.filter(index => index > 0);
 
-FoundNumbers = FoundNumbers.map(index => {
-  return index + IncrementEach;
-});
+FoundNumbers = FoundNumbers.map(index => index + IncrementEach);
 
 if(FoundNumbers[0]!=null) {
   document.getElementById('output').innerHTML = `</br><hr style='width:50%'>Output: [${FoundNumbers}]`.fontcolor('darkred').bold().fixed();
