@@ -1,12 +1,31 @@
+/* 
+  This file was intended to work with buttons,
+  the console, and creating a basic API of the information being gathered
+*/
+
 let API;
 let AmmountClicked;
 let INFORMATION;
 
+// HANDING EXITING THE PAGE
+window.addEventListener('beforeunload', (e)=>{
+  e.preventDefault();
+  e.returnValue = '';
+});
+
+// If the "EXIT" button is clicked, the window will close
+document.getElementById('EXIT').onclick = function(){
+  let askToLeave = confirm("Are you sure you want to leave?");
+  if(askToLeave) {
+    window.close();
+  }
+}
+
 const RemoveBtn = () => {
   // Creating a "Hide Information" button
   let NewBtn = document.createElement('button');
-  NewBtn.className='button';
-  let Information = document.createTextNode('Hide Information');
+  NewBtn.className='DelButton';
+  let Information = document.createTextNode('Delete Information');
   NewBtn.appendChild(Information);
   let SpanElement = document.getElementById('HideBtn');
   SpanElement.appendChild(NewBtn);
@@ -45,23 +64,26 @@ class MakeMiniApi {
 }
 
 $(function(){
+  // Function used when we show the user the API information
+  const ShowApiInfo = (API) => {
+    document.getElementById('ShowInfo').innerHTML = `RETURNED {SORTED_INPUT:${API.PRINT().SORTED_INPUT},OUTPUT:${API.PRINT().OUTPUT},INCREMEMT_BY:${API.PRINT().INCREMENT_BY}}`.fixed().big();
+    RemoveBtn();
+  };
+  console.log(FoundNumbers[0]);
   if(FoundNumbers[0]!=null) {
     API = new MakeMiniApi(NumbersBefore,FoundNumbers,IncrementEach);
-    INFORMATION = API.PRINT();
 
     document.getElementById('GetInfo').onclick = function(){
       AmmountClicked++;
       if(AmmountClicked=1) {
-        document.getElementById('ShowInfo').innerHTML = `RETURNED {SORTED_INPUT:${INFORMATION.SORTED_INPUT},OUTPUT:${INFORMATION.OUTPUT},INCREMEMT_BY:${INFORMATION.INCREMENT_BY}}`.fixed().big();
-        RemoveBtn();
+        ShowApiInfo(API);
       }
     }
     console.log(API.PRINT());
   } else {
     API = new MakeMiniApi('No Input','No Input','No Input');
     document.getElementById('GetInfo').onclick = function(){
-      document.getElementById('ShowInfo').innerHTML = `NO INFORMATION FOUND</br>{SORTED_INPUT:'${API.PRINT().SORTED_INPUT}',OUTPUT:'${API.PRINT().OUTPUT}',INCREMEMT_BY:'${API.PRINT().INCREMENT_BY}'}`.fontcolor('red').fixed().big();
-      RemoveBtn();
+      ShowApiInfo(API);
     }
     console.log(API.PRINT());
   }
