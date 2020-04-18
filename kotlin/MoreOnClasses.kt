@@ -4,7 +4,7 @@ var IdData = mutableListOf<Int?>()
 
 class SetupUser(	
 	val UserName: String? = null,
-    val UserId: Int? = null
+  	val UserId: Int? = null
 ) {
   constructor(username:String) : this("$username",StaticId++)
   constructor(userid:Int) : this("UNKNOWN$StaticId",userid)
@@ -29,9 +29,19 @@ fun ParseArray(nameToParse:List<String?>, idToParse:List<Int?>) {
   idToParse.forEachIndexed{ ind, item -> println("ID: index $ind -> value $item")}
 }
 
+// Just practicing vararg arguments
+fun ThisIsAmazing(vararg Name: List<String>) {
+    Name.forEach{index -> println(index)}
+}
+
 fun main() {    
   val User = SetupUser()
   val User2 = SetupUser()
+  
+  val FirstName = listOf("Aidan","Halie")
+  val LastName = listOf("White","Buster")
+  
+  ThisIsAmazing(FirstName,LastName)
 
   // We want to parse through the NameData/IdData Lists
   ParseArray(NameData,IdData)
