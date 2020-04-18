@@ -38,13 +38,13 @@ fun main() {
   val User = SetupUser()
   val User2 = SetupUser()
   
-  val FirstName = listOf("ARACADERISE","GetStuffDone")
-  val LastName = listOf("BRO","SKOOTSKOOT")
+  val FirstName = listOf("Aidan","Halie")
+  val LastName = listOf("White","Buster")
   
   ThisIsAmazing(FirstName,LastName)
 
   // We want to parse through the NameData/IdData Lists
-  ParseArray(NameData,IdData)
+  ParseArray(nameToParse=NameData,idToParse=IdData)
   
   val Something = listOf(true, "yes", listOf("sure","nah","why not"), 1, 2, false)
   
