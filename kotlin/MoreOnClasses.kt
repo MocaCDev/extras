@@ -38,8 +38,8 @@ fun main() {
   val User = SetupUser()
   val User2 = SetupUser()
   
-  val FirstName = listOf("Aidan","Halie")
-  val LastName = listOf("White","Buster")
+  val FirstName = listOf("ARACADERISE","GetStuffDone")
+  val LastName = listOf("BRO","SKOOTSKOOT")
   
   ThisIsAmazing(FirstName,LastName)
 
