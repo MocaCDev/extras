@@ -63,8 +63,8 @@ fun main() {
     for(i in 0..AddedNames.size) {
         if(i != AddedNames.size) {
         	if(AddedNames[i]==AddedNames[i]) {
-            	AddedNames.removeAt(i)
-                break
+            		AddedNames.removeAt(i)
+                	break
         	}
         }
     }
