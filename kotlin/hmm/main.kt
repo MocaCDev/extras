@@ -29,9 +29,6 @@ class Sort (
         
         if(FoundSymbol!=true) {
             this.UserName.forEachIndexed{ ind, item -> AddedNames.add(item[ind])}
-            GetVals.add(FoundSymbol)
-        } else {
-            GetVals.add(FoundSymbol)
         }
     }
     
