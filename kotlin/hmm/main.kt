@@ -13,8 +13,6 @@ class Sort (
         this.UserName.forEachIndexed{ ind,item ->
         	for(i in 0..item[ind].length) {
                 if(item[ind][i]!=LookFor) {
-                    println(item[ind][i])
-                    
                     // If else statement needed so we don't get an error
                     if(i==item[ind].length-1)break
                     else continue
@@ -27,9 +25,18 @@ class Sort (
             }
         }
         
-        if(FoundSymbol!=true) {
-            this.UserName.forEachIndexed{ ind, item -> AddedNames.add(item[ind])}
-        }
+        this.UserName.forEachIndexed{ ind,item -> AddedNames.add(item[ind])}
+    }
+    
+    fun RETURN_LENGTH() : List<Int> {
+        val Length = mutableListOf<Int>()
+        
+        this.UserName.forEachIndexed{ ind, item -> Length.add(item[ind].length)}
+        
+        return Length
+    }
+    fun RETURN_NAMES() : Array<out List<String>> {
+        return this.UserName
     }
     
     // This is the init of the function
@@ -46,9 +53,20 @@ class Sort (
 
 fun main() {
     if(FoundSymbol!=true) {
-        val SymbolCatcher = Sort()
+        val LENGTH:List<Int> = Sort().RETURN_LENGTH()
+        val Users: Array<out List<String>> = Sort().RETURN_NAMES()
     } else {
         println("ALREADY DONE")
+    }
+    
+    // Deleting duplicates
+    for(i in 0..AddedNames.size) {
+        if(i != AddedNames.size) {
+        	if(AddedNames[i]==AddedNames[i]) {
+            	AddedNames.removeAt(i)
+                break
+        	}
+        }
     }
     
     AddedNames.forEach{ item -> println(item)}
