@@ -14,8 +14,12 @@ class Sort (
         	for(i in 0..item[ind].length) {
                 if(item[ind][i]!=LookFor) {
                     println(item[ind][i])
-                    continue
-                } else {
+                    
+                    // If else statement needed so we don't get an error
+                    if(i==item[ind].length-1)break
+                    else continue
+                }
+                else {
                     println("FOUND on index of string $i, index of list: $ind, value: "+item[ind][i])
                     FoundSymbol=true
                     break
@@ -42,7 +46,7 @@ class Sort (
 
 fun main() {
     if(FoundSymbol!=true) {
-        val SymbolCatcher = Sort(listOf("aidan_5554","hbuster95"))
+        val SymbolCatcher = Sort()
     } else {
         println("ALREADY DONE")
     }
