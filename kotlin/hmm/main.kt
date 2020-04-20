@@ -12,11 +12,10 @@ class Sort (
     fun AddName() {
         this.UserName.forEachIndexed{ ind,item ->
         	for(i in 0..item[ind].length) {
-                	if(item[ind][i]!=LookFor) {
+                if(item[ind][i]!=LookFor) {
                     println(item[ind][i])
                     continue
-                }
-                else {
+                } else {
                     println("FOUND on index of string $i, index of list: $ind, value: "+item[ind][i])
                     FoundSymbol=true
                     break
