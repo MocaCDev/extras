@@ -21,7 +21,8 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
     Then, if byteOutput[0] is -1(which it should always be -1), it will parse through the string
     again, only then adding in 2 bits of memory both being zero.
     
-    If StrictBit is true, then the following argument will be the size of bits you want to check
+    If StrictBit is true, then the macro will check for MAX_BIT_SIZE, and if the total bit size passes
+    MAX_BIT_SIZE, everything is going to be reset
 */
 #define MakeByte(outOfString,byteOutput,StrictBit) \
     /* Setting size if null */\
