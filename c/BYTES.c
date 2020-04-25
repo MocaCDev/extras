@@ -5,6 +5,7 @@
 
 int 
 len(char *String);
+static char *CopiedString;
 //int ByteLength(char *String);
 
 /*
@@ -18,7 +19,6 @@ len(char *String);
 #define MakeByte(outOfString,byteOutput,StrictBit) \
     /* Setting size if null */\
     static int Total;\
-    static size_t Size;\
     if(byteOutput==NULL) {\
         byteOutput=malloc(strlen(outOfString)*sizeof(int));\
     }\
@@ -46,10 +46,14 @@ len(char *String);
     if(StrictBit){\
         /*Checking to see if there is more than 10000 bytes*/\
         if(Total>10000) {\
+            /*Copying string*/\
+            strcpy(CopiedString,outOfString);\
             /*Assigning the string to an empty string*/\
             strcpy(outOfString,"");\
             /*Assigning bytes to zero*/\
             Total=0;\
+            /*Freeing memory out of byteOutput since bytes are erased*/\
+            free(byteOutput);\
             printf("No bits aquired");\
         } else {\
             printf("TOTAL: %d\n",Total);\
@@ -66,7 +70,6 @@ int main(void) {
     int LENGTH = len(STRING);
     
     MakeByte(STRING,Bytes,true);
-
 }
 
 int
