@@ -5,7 +5,7 @@
 
 int 
 len(char *String);
-static char *CopiedString;
+static char CopiedString[1000];
 //int ByteLength(char *String);
 
 /*
@@ -15,12 +15,14 @@ static char *CopiedString;
     
     Then, if byteOutput[0] is -1(which it should always be -1), it will parse through the string
     again, only then adding in 2 bits of memory both being zero.
+    
+    If StrictBit is true, then the following argument will be the size of bits you want to check
 */
 #define MakeByte(outOfString,byteOutput,StrictBit) \
     /* Setting size if null */\
     static int Total;\
     if(byteOutput==NULL) {\
-        byteOutput=malloc(strlen(outOfString)*sizeof(int));\
+        byteOutput=malloc(strlen(outOfString)*sizeof(int*));\
     }\
     for(int i = 0;i < strlen(outOfString); i++) {\
         byteOutput[i]=i-1;\
@@ -45,15 +47,15 @@ static char *CopiedString;
     }\
     if(StrictBit){\
         /*Checking to see if there is more than 10000 bytes*/\
-        if(Total>10000) {\
+        if(Total>100) {\
             /*Copying string*/\
-            strcpy(CopiedString,outOfString);\
+            memcpy(CopiedString,outOfString,sizeof(outOfString));\
             /*Assigning the string to an empty string*/\
             strcpy(outOfString,"");\
             /*Assigning bytes to zero*/\
             Total=0;\
             /*Freeing memory out of byteOutput since bytes are erased*/\
-            free(byteOutput);\
+            if(byteOutput!=NULL) free(byteOutput);\
             printf("No bits aquired");\
         } else {\
             printf("TOTAL: %d\n",Total);\
