@@ -5,6 +5,8 @@
 #include <stdbool.h>
 
 #define MAX_STRING_LENGTH     9000
+/* 99 million bits! Which is 12499999.875 bytes, which is 12 megabytes */
+#define MAX_BIT_SIZE          99999999 
 
 int 
 len(char *String);
@@ -50,7 +52,7 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
     }\
     if(StrictBit){\
         /*Checking to see if there is more than 10000 bytes*/\
-        if(Total>999999) {\
+        if(Total>MAX_BIT_SIZE) {\
             /*Copying string*/\
             memcpy(CopiedString,outOfString,sizeof(outOfString));\
             /*Assigning the string to an empty string*/\
