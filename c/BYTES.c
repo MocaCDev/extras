@@ -51,7 +51,7 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
         }\
     }\
     if(StrictBit){\
-        /*Checking to see if there is more than 10000 bytes*/\
+        /*Checking to see if there is more than 99999999 bytes*/\
         if(Total>MAX_BIT_SIZE) {\
             /*Copying string*/\
             memcpy(CopiedString,outOfString,sizeof(outOfString));\
