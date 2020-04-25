@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include <stdbool.h>
+
+#define MAX_STRING_LENGTH     9000
 
 int 
 len(char *String);
-static char CopiedString[1000];
+static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a string allowed*/
 //int ByteLength(char *String);
 
 /*
@@ -47,7 +50,7 @@ static char CopiedString[1000];
     }\
     if(StrictBit){\
         /*Checking to see if there is more than 10000 bytes*/\
-        if(Total>100) {\
+        if(Total>999999) {\
             /*Copying string*/\
             memcpy(CopiedString,outOfString,sizeof(outOfString));\
             /*Assigning the string to an empty string*/\
@@ -58,16 +61,20 @@ static char CopiedString[1000];
             if(byteOutput!=NULL) free(byteOutput);\
             printf("No bits aquired");\
         } else {\
-            printf("TOTAL: %d\n",Total);\
+            printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
         }\
     } else {\
-        printf("TOTAL: %d\n",Total);\
+        printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
     }
     
 
 int main(void) {
-    char STRING[40] = "YESSIR THAT's CORRECT";
+    char STRING[MAX_STRING_LENGTH];
     int *Bytes;
+    
+    // Getting String
+    printf("STRING: ");
+    fgets(STRING,MAX_STRING_LENGTH,stdin);
     
     int LENGTH = len(STRING);
     
