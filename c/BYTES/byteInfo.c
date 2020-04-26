@@ -85,4 +85,6 @@ for(int i = 0; i < bytes; i++) {\
     if(i==bytes-1) MemAbstTotal+=outcomeBytes[i]+1;\
 }\
 if(returnAsBits) printf("Total bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
-printf("from: %d\nto: %d",bytes,MemAbstTotal)
+printf("from: %d\nto: %d",bytes,MemAbstTotal);\
+/*Assigning bytes to the new ammount of bytes*/\
+bytes=MemAbstTotal;\
