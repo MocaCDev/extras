@@ -69,7 +69,8 @@ static int MemAbstTotal;
 /* 
     You can either add bytes or remove bytes
 */
-#define MemoryAbstract(bytes,fromBit,outcomeBytes) \
+#define MemoryAbstract(bytes,fromBit,outcomeBytes,returnAsBits) \
+/*Making bytes into bits*/\
 if(outcomeBytes==NULL) outcomeBytes=malloc(bytes*sizeof(int));\
 for(int i = 0; i < bytes; i++) {\
     /* Always adds, if negative..will subtract */\
@@ -80,6 +81,8 @@ for(int i = 0; i < bytes; i++) {\
         if(!(i+fromBit)<=0) outcomeBytes[i]=i+fromBit;\
         continue;\
     }\
-    if(i==bytes-1) MemAbstTotal+=outcomeBytes[i];\
+    /* For some reason it always comes one off, so we just defaulty add one */\
+    if(i==bytes-1) MemAbstTotal+=outcomeBytes[i]+1;\
 }\
-printf("from: %d bytes\nto:%d bytes\n",bytes,MemAbstTotal);
+if(returnAsBits) printf("Total bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
+printf("from: %d\nto: %d",bytes,MemAbstTotal)
