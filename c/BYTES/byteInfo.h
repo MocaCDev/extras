@@ -46,6 +46,10 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
             }\
         }\
     }\
+		if(Total<50) {\
+			fprintf(stderr,"\033[0;31mERR on line %d\nBits below 50\nInstead got %d bits\n",__LINE__,Total);\
+			exit(EXIT_FAILURE);\
+		}\
     if(StrictBit){\
         /*Checking to see if there is more than 99999999 bytes*/\
         if(Total>MAX_BIT_SIZE) {\
@@ -87,7 +91,7 @@ for(int i = 0; i < bytes; i++) {\
     /* Checking for negatives */\
     if(outcomeBytes[i]<=0) {\
         outcomeBytes=malloc(bytes+outcomeBytes[i]*sizeof(int));\
-        if(!(i+fromBit)<=0) outcomeBytes[i]=i+fromBit;\
+        if(!(i+fromBit<=0)) outcomeBytes[i]=i+fromBit;\
         continue;\
     }\
     /* For some reason it always comes one off, so we just defaulty add one */\
