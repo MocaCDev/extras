@@ -1,3 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+
 #define MAX_STRING_LENGTH     9000
 #define MAX_BIT_SIZE          99999999
 
