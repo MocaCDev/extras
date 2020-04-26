@@ -19,7 +19,7 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
     If StrictBit is true, then the macro will check for MAX_BIT_SIZE, and if the total bit size passes
     MAX_BIT_SIZE, everything is going to be reset
 */
-#define MakeByte(outOfString,byteOutput,StrictBit) \
+#define MakeByte(outOfString,byteOutput,StrictBit,bitsAfter) \
     /* Setting size if null */\
     static int Total;\
     if(byteOutput==NULL) {\
@@ -59,9 +59,11 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
             if(byteOutput!=NULL) free(byteOutput);\
             printf("No bits aquired");\
         } else {\
+            bitsAfter=Total;\
             printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
         }\
     } else {\
+        bitsAfter=Total;\
         printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
     }
 
