@@ -19,7 +19,7 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
     If StrictBit is true, then the macro will check for MAX_BIT_SIZE, and if the total bit size passes
     MAX_BIT_SIZE, everything is going to be reset
 */
-#define MakeByte(outOfString,byteOutput,StrictBit,bitsAfter) \
+#define MakeByte(outOfString,byteOutput,StrictBit,bytesAfter) \
     /* Setting size if null */\
     static int Total;\
     if(byteOutput==NULL) {\
@@ -59,21 +59,28 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
             if(byteOutput!=NULL) free(byteOutput);\
             printf("No bits aquired");\
         } else {\
-            bitsAfter=Total;\
+            bytesAfter=Total/8;\
             printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
         }\
     } else {\
-        bitsAfter=Total;\
+        bytesAfter=Total/8;\
         printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
     }
 
 static int MemAbstTotal;
 /* 
-    You can either add bytes or remove bytes
+    You can either add bytes or remove bytes.
+    If you have array that is already storing data, and want to use,
+    then you can..but all data will be released and new memory will be assigned.
 */
 #define MemoryAbstract(bytes,fromBit,outcomeBytes,returnAsBits) \
 /*Making bytes into bits*/\
 if(outcomeBytes==NULL) outcomeBytes=malloc(bytes*sizeof(int));\
+/* Allocating block of memory anyway, just in case of repetition*/\
+else {\
+    free(outcomeBytes);\
+    outcomeBytes=malloc(bytes*sizeof(int));\
+}\
 for(int i = 0; i < bytes; i++) {\
     /* Always adds, if negative..will subtract */\
     outcomeBytes[i]=i+fromBit;\
@@ -86,7 +93,7 @@ for(int i = 0; i < bytes; i++) {\
     /* For some reason it always comes one off, so we just defaulty add one */\
     if(i==bytes-1) MemAbstTotal+=outcomeBytes[i]+1;\
 }\
-if(returnAsBits) printf("Total bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
-printf("from: %d\nto: %d",bytes,MemAbstTotal);\
+if(returnAsBits) printf("\n\nTotal bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
+printf("\nfrom: %d\nto: %d",bytes,MemAbstTotal);\
 /*Assigning bytes to the new ammount of bytes*/\
 bytes=MemAbstTotal;
