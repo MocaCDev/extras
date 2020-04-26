@@ -1,3 +1,5 @@
+#define MAX_BIT_SIZE          99999999
+
 static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a string allowed*/
 //int ByteLength(char *String);
 
