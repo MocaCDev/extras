@@ -2,8 +2,6 @@
 #define MAX_BIT_SIZE          99999999
 
 static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a string allowed*/
-//int ByteLength(char *String);
-
 /*
     This macro takes in a string, an array of integers, parses through each character
     of the string as a "bit", then assigns that index, or "bit", minus one into the
@@ -61,6 +59,10 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
         printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
     }
 
+static int MemAbstTotal;
+/* 
+    You can either add bytes or remove bytes
+*/
 #define MemoryAbstract(bytes,fromBit,outcomeBytes) \
 if(outcomeBytes==NULL) outcomeBytes=malloc(bytes*sizeof(int));\
 for(int i = 0; i < bytes; i++) {\
@@ -69,8 +71,9 @@ for(int i = 0; i < bytes; i++) {\
     /* Checking for negatives */\
     if(outcomeBytes[i]<=0) {\
         outcomeBytes=malloc(bytes+outcomeBytes[i]*sizeof(int));\
-        if(!(i+fromBit)<0) outcomeBytes[i]=i+fromBit;\
+        if(!(i+fromBit)<=0) outcomeBytes[i]=i+fromBit;\
         continue;\
     }\
-    printf("%d\n",outcomeBytes[i]);\
-}
+    if(i==bytes-1) MemAbstTotal+=outcomeBytes[i];\
+}\
+printf("from: %d bytes\nto:%d bytes\n",bytes,MemAbstTotal);
