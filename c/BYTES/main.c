@@ -1,3 +1,5 @@
+#include "byteInfo.h"
+
 int 
 len(char *String);
 
