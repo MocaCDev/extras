@@ -85,19 +85,28 @@ else {\
     free(outcomeBytes);\
     outcomeBytes=malloc(bytes*sizeof(int));\
 }\
-for(int i = 0; i < bytes; i++) {\
-    /* Always adds, if negative..will subtract */\
-    outcomeBytes[i]=i+fromBit;\
-    /* Checking for negatives */\
-    if(outcomeBytes[i]<=0) {\
-        outcomeBytes=malloc(bytes+outcomeBytes[i]*sizeof(int));\
-        if(!(i+fromBit<=0)) outcomeBytes[i]=i+fromBit;\
-        continue;\
-    }\
-    /* For some reason it always comes one off, so we just defaulty add one */\
-    if(i==bytes-1) MemAbstTotal+=outcomeBytes[i]+1;\
+static int Err;\
+if(fromBit+bytes<=0) {\
+  Err=1;\
 }\
-if(returnAsBits) printf("\n\nTotal bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
-printf("\nfrom: %d\nto: %d",bytes,MemAbstTotal);\
-/*Assigning bytes to the new ammount of bytes*/\
-bytes=MemAbstTotal;
+if(Err!=1) {\
+  for(int i = 0; i < bytes; i++) {\
+      /* Always adds, if negative..will subtract */\
+      outcomeBytes[i]=i+fromBit;\
+      /* Checking for negatives */\
+      if(outcomeBytes[i]<=0) {\
+          outcomeBytes=malloc(bytes+outcomeBytes[i]*sizeof(int));\
+          if(!(i+fromBit<=0)) outcomeBytes[i]=i+fromBit;\
+          continue;\
+      }\
+      /* For some reason it always comes one off, so we just defaulty add one */\
+      if(i==bytes-1) MemAbstTotal+=outcomeBytes[i]+1;\
+  }\
+  if(returnAsBits) printf("\n\nTotal bits(out of %d bytes): %d\nTotal bits after(out of %d bytes): %d\n\n",bytes,bytes*8,MemAbstTotal,MemAbstTotal*8);\
+  printf("\nfrom: %d\nto: %d",bytes,MemAbstTotal);\
+  /*Assigning bytes to the new ammount of bytes*/\
+  bytes=MemAbstTotal;\
+} else {\
+  printf("\n\033[0;31mERR: value of fromBit(%d) subtracted into bytes(%d) returns value below zero, thusly returning %d\n",fromBit,bytes,fromBit+bytes);\
+  exit(EXIT_FAILURE);\
+}
