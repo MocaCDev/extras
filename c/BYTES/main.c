@@ -6,14 +6,18 @@ len(char *String);
 int main(void) {
     char STRING[MAX_STRING_LENGTH];
     int *Bytes;
+    int BYTES;
+
+		/*New way of creating arrays!*/
+		mIntBitArr(900, COUNT);
+		mIntAssign(900, 40);
     
     // Getting String
     printf("STRING: ");
     fgets(STRING,MAX_STRING_LENGTH,stdin);
     
-    int LENGTH = len(STRING);
-    
-    MakeByte(STRING,Bytes,true);
+    MakeByte(STRING,Bytes,true,BYTES);
+    MemoryAbstract(BYTES,-1000,Bytes,true);
 }
 
 int
