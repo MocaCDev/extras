@@ -26,8 +26,8 @@ static int X;// Assigning X to x below. Used for mIntAssign
 	X=x;\
 	printf("created i_%s\n",#y)
 #define mIntAssign(atIndex,assignToNum) \
-/*If the index is less than zero, we will asign a number to each index*/\
 if(!(X<=0)) {\
+	/*If the index is less than zero, we will asign a number to each index*/\
 	if(atIndex<0) {\
 		for(int i=0;i<=X;i++) {\
 			Y[i]=assignToNum+i;\
