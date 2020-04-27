@@ -4,6 +4,45 @@
 #include <math.h>
 #include <stdbool.h>
 
+/* 
+
+	THE FOLLOWING MACROS ARE TO STRICTLY ASSIGN BITS TO EACH
+	VARIABLE, EITHER GLOBAL OR LOCAL, SO WE DON'T EXCEED/TAKE UP
+	TOO MUCH MEMORY
+
+	TYPE: integer
+	INFORMATION:
+		mIntBitArr:
+			- Creating int of a variable i_##y(y being the name)
+			- Assigning size of array to the variable
+		mIntAssign:
+			- Assigning an index of the array to a number
+*/
+static int *Y;// Assigning Y to y below
+static int X;// Assigning X to x below. Used for mIntAssign
+#define mIntBitArr(x,y) \
+	int *i_##y=malloc(x*sizeof(int));\
+	Y=i_##y;\
+	X=x;\
+	printf("created i_%s\n",#y)
+#define mIntAssign(atIndex,assignToNum) \
+/*If the index is less than zero, we will asign a number to each index*/\
+if(!(X<=0)) {\
+	if(atIndex<0) {\
+		for(int i=0;i<=X;i++) {\
+			Y[i]=assignToNum+i;\
+			if(Y[i]==X) X-=Y[i];\
+		}\
+	}\
+	else if(atIndex>X) {\
+		Y[500]=assignToNum;\
+		X-=1;/*One less bit*/\
+	}\
+	else Y[atIndex]=assignToNum;X-=1;/*One less bit*/\
+} else {\
+	printf("Cannot assign any more numbers to the array. It is of max length.\n");\
+}
+
 #define MAX_STRING_LENGTH     9000
 #define MAX_BIT_SIZE          99999999
 
