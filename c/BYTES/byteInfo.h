@@ -21,9 +21,9 @@
 static int *Y;// Assigning Y to y below
 static int X;// Assigning X to x below. Used for mIntAssign
 #define mIntBitArr(x,y) \
-	int *i_##y=malloc(x*sizeof(int));\
+	int i_##y[x+1];/*Adding one so we have a max array*/\
 	Y=i_##y;\
-	X=x;\
+	X=x;/*Subtracting one, else it would be one above max*/\
 	printf("created i_%s\n",#y)
 #define mIntAssign(atIndex,assignToNum) \
 if(!(X<=0)) {\
@@ -34,8 +34,8 @@ if(!(X<=0)) {\
 			if(Y[i]==X) X-=Y[i];\
 		}\
 	}\
-	else if(atIndex>X) {\
-		Y[500]=assignToNum;\
+	else if(atIndex>X-1) {\
+		Y[X]=assignToNum;\
 		X-=1;/*One less bit*/\
 	}\
 	else Y[atIndex]=assignToNum;X-=1;/*One less bit*/\
