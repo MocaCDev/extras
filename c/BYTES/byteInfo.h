@@ -31,14 +31,21 @@ if(!(X<=0)) {\
 	if(atIndex<0) {\
 		for(int i=0;i<=X;i++) {\
 			Y[i]=assignToNum+1;\
-			if(Y[i]==X) X-=Y[i];\
+			if(Y[i]==X-1);X-=Y[i];\
 		}\
 	}\
 	else if(atIndex>X-1) {\
-		Y[X]=assignToNum;\
-		X--;/*One less bit*/\
+		if(!(Y[X]>0)) {\
+			Y[X]=assignToNum;\
+			X--;/*One less bit*/\
+		}\
 	}\
-	else Y[atIndex]=assignToNum;X-1;/*One less bit*/\
+	else {\
+		if(!(Y[atIndex]>0)) {\
+			Y[atIndex]=assignToNum;\
+			X-1;/*One less bit*/\
+		}\
+	}\
 } else {\
 	printf("Cannot assign any more numbers to the array. It is of max length.\n");\
 }
