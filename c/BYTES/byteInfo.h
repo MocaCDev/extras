@@ -23,7 +23,7 @@ static int X;// Assigning X to x below. Used for mIntAssign
 #define mIntBitArr(x,y) \
 	int i_##y[x+1];/*Adding one so we have a max array*/\
 	Y=i_##y;\
-	X=x;/*Subtracting one, else it would be one above max*/\
+	X=x;\
 	printf("created i_%s\n",#y)
 #define mIntAssign(atIndex,assignToNum) \
 if(!(X<=0)) {\
