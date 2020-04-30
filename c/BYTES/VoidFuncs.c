@@ -38,13 +38,16 @@ void checkName(const char *checkFor) {
 		if(strcmp(checkFor,Types[i])==0) {
 
 #ifdef Bytes
-		ErrStatus=0;// Meaning it is successful
-		break;
+			ErrStatus=0;// Meaning it is successful
+			break;
 #endif
 		}
 	}
 	if(ErrStatus==0) {
 #if !defined(TYPE)
+#define TYPE        checkFor
+#elif defined(TYPE)
+#undef TYPE
 #define TYPE        checkFor
 #endif
 	}
