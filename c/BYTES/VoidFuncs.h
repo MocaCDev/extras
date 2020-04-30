@@ -12,7 +12,7 @@ for(int i = 0; i < ammount;i++) {\
 					checkName(arg[i+2]);\
 				} else {\
 					/* Default: -file */\
-					static const char DefaultType[8]="-file";\
+					static const char DefaultType[6]="-file";\
 					checkName(DefaultType);\
 				}\
 			} else {\
