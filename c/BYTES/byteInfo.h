@@ -27,7 +27,7 @@ static int X;// Assigning X to x below. Used for mIntAssign
 	X=x;\
 	printf("created i_%s\n",#y)
 #define mIntAssign(atIndex,assignToNum) \
-if(!(X<=0)) {\
+if(!(X==0)) {\
 	/*If the index is less than zero, we will asign a number to each index*/\
 	if(atIndex<0) {\
 		for(int i=0;i<=X;i++) {\
@@ -67,40 +67,40 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
     MAX_BIT_SIZE, everything is going to be reset
 */
 #define MakeByte(outOfString,byteOutput,StrictBit,bytesAfter) \
-    /* Setting size if null */\
-    static int Total;\
-    if(byteOutput==NULL) {\
-        byteOutput=malloc(strlen(outOfString)*sizeof(int*));\
-    }\
-    for(int i = 0;i < strlen(outOfString); i++) {\
-        byteOutput[i]=i-1;\
-        if(i==strlen(outOfString)-1) break;\
-    }\
-    if(byteOutput[0]==-1) {\
+/* Setting size if null */\
+static int Total;\
+if(byteOutput==NULL) {\
+  byteOutput=malloc(strlen(outOfString)*sizeof(int*));\
+}\
+for(int i = 0;i < strlen(outOfString); i++) {\
+  byteOutput[i]=i-1;\
+  if(i==strlen(outOfString)-1) break;\
+}\
+if(byteOutput[0]==-1) {\
 	int ErrStatus;/*1 if i is >= 100*/\
 	int Index;/*This will be used to check for every 100 bits*/\
-        for(int i = 0;i < strlen(outOfString); i++) {\
-						Index=i;\
-            if(!(Index==100)) {\
-                byteOutput[i]=byteOutput[i]+2;\
-            } else {\
-		ErrStatus=1;\
-                byteOutput[i] = byteOutput[i]+4;/*Adding 4 bits of memory to every hundred bits*/\
-		/* We are checking every 100, so we reset Index to zero to check another 100 */\
-		Index=0;\
-		continue;\
-            }\
-            Total+=byteOutput[i];\
-            if(i==strlen(outOfString)-1) {\
-                /* adding 2 more bits of memory */\
-                byteOutput[strlen(outOfString)+1]=0;\
-                byteOutput[strlen(outOfString)+2]=0;\
-		if(ErrStatus==1) Total+=4;/*Adding 4 to Total since we've added 4 bits of memory for every 100*/\
-                else Total+=2;/*Adding 2 to Total since there is 2 extra bits of memory*/\
-                break;\
-            }\
-        }\
+  for(int i = 0;i < strlen(outOfString); i++) {\
+		Index=i;\
+    if(!(Index==100)) {\
+      byteOutput[i]=byteOutput[i]+2;\
+    } else {\
+			ErrStatus=1;\
+      byteOutput[i] = byteOutput[i]+4;/*Adding 4 bits of memory to every hundred bits*/\
+			/* We are checking every 100, so we reset Index to zero to check another 100 */\
+			Index=0;\
+			continue;\
     }\
+    Total+=byteOutput[i];\
+    if(i==strlen(outOfString)-1) {\
+      /* adding 2 more bits of memory */\
+      byteOutput[strlen(outOfString)+1]=0;\
+      byteOutput[strlen(outOfString)+2]=0;\
+			if(ErrStatus==1) Total+=4;/*Adding 4 to Total since we've added 4 bits of memory for every 100*/\
+      else Total+=2;/*Adding 2 to Total since there is 2 extra bits of memory*/\
+      break;\
+    }\
+  }\
+}\
 		if(Total<50) {\
 			fprintf(stderr,"\033[0;31mERR on line %d\nBits below 50\nInstead got %d bits\n",__LINE__,Total);\
 			exit(EXIT_FAILURE);\
