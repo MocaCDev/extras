@@ -93,7 +93,7 @@ if(byteOutput[0]==-1) {\
 		Total+=byteOutput[i];\
 		if(i==strlen(outOfString)-1) {\
 			if(ErrStatus==1) {\
-				/* adding 4 more bits of memory */
+				/* adding 4 more bits of memory */\
 				byteOutput[strlen(outOfString)+1]=0;\
 				byteOutput[strlen(outOfString)+2]=0;\
 				byteOutput[strlen(outOfString)+3]=0;\
