@@ -111,12 +111,12 @@ if(byteOutput[0]==-1) {\
 		}\
   	}\
 }\
-		if(Total<50) {\
-			fprintf(stderr,"\033[0;31mERR on line %d\nBits below 50\nInstead got %d bits\n",__LINE__,Total);\
-			exit(EXIT_FAILURE);\
-		}\
-    if(StrictBit){\
-        /*Checking to see if there is more than 99999999 bytes*/\
+if(Total<50) {\
+	fprintf(stderr,"\033[0;31mERR on line %d\nBits below 50\nInstead got %d bits\n",__LINE__,Total);\
+	exit(EXIT_FAILURE);\
+}\
+if(StrictBit){\
+ 	/*Checking to see if there is more than 99999999 bytes*/\
         if(Total>MAX_BIT_SIZE) {\
             /*Copying string*/\
             memcpy(CopiedString,outOfString,sizeof(outOfString));\
@@ -127,14 +127,14 @@ if(byteOutput[0]==-1) {\
             /*Freeing memory out of byteOutput since bytes are erased*/\
             if(byteOutput!=NULL) free(byteOutput);\
             printf("No bits aquired");\
-        } else {\
+       	} else {\
             bytesAfter=Total/8;\
             printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
-        }\
-    } else {\
-        bytesAfter=Total/8;\
+       	}\
+} else {\
+	bytesAfter=Total/8;\
         printf("TOTAL BITS: %d\nBYTES:%d",Total,Total/8);\
-    }
+}
 
 static int MemAbstTotal;
 /* 
