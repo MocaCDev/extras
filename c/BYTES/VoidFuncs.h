@@ -1,7 +1,7 @@
 void CreateByte(int ofAmmount);
 void checkName(const char *CheckFor);
 
-// We was arguments to be a pre-processor directive so it isn't ran at runtime
+// We want arguments to be a pre-processor directive so it isn't ran at runtime
 #define PARSE_ARGS(ammount,arg) \
 for(int i = 0; i < ammount;i++) {\
 	if(!(strcmp(arg[i],"./main")==0)) {\
