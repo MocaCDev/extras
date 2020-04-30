@@ -77,25 +77,25 @@ static char CopiedString[MAX_STRING_LENGTH]; /*9000 is the total length of a str
         if(i==strlen(outOfString)-1) break;\
     }\
     if(byteOutput[0]==-1) {\
-				int ErrStatus;/*1 if i is >= 100*/\
-				int Index;/*This will be used to check for every 100 bits*/\
+	int ErrStatus;/*1 if i is >= 100*/\
+	int Index;/*This will be used to check for every 100 bits*/\
         for(int i = 0;i < strlen(outOfString); i++) {\
 						Index=i;\
             if(!(Index==100)) {\
                 byteOutput[i]=byteOutput[i]+2;\
             } else {\
-								ErrStatus=1;\
+		ErrStatus=1;\
                 byteOutput[i] = byteOutput[i]+4;/*Adding 4 bits of memory to every hundred bits*/\
-								/* We are checking every 100, so we reset Index to zero to check another 100 */\
-								Index=0;\
-								continue;\
+		/* We are checking every 100, so we reset Index to zero to check another 100 */\
+		Index=0;\
+		continue;\
             }\
             Total+=byteOutput[i];\
             if(i==strlen(outOfString)-1) {\
                 /* adding 2 more bits of memory */\
                 byteOutput[strlen(outOfString)+1]=0;\
                 byteOutput[strlen(outOfString)+2]=0;\
-								if(ErrStatus==1) Total+=4;/*Adding 4 to Total since we've added 4 bits of memory for every 100*/\
+		if(ErrStatus==1) Total+=4;/*Adding 4 to Total since we've added 4 bits of memory for every 100*/\
                 else Total+=2;/*Adding 2 to Total since there is 2 extra bits of memory*/\
                 break;\
             }\
