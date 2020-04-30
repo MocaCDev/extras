@@ -3,9 +3,12 @@
 /* 
 	Every function declared in this file are for command-line-arguments.
 
+	Functions with no white space between them usually are for the same CLA(Command-Line-Argument)
+
 	None return anything
 */
 
+// -makeByte
 const char * const Types[] = {
 	"-file",
 	"-integer",
@@ -13,9 +16,6 @@ const char * const Types[] = {
 	"-characters"
 };
 
-/* 
-	Functions with no white space between them usually are for the same CLA(Command-Line-Argument)
-*/
 static int bytes=0; // zero by default
 void CreateByte(int ofAmmount) {
 	// CREATES ONE BYTE
@@ -54,3 +54,5 @@ void checkName(const char *checkFor) {
 
 	printf("Type assigned with %d bytes: \t%s\n\n",Bytes,TYPE);
 }
+
+// TO-DO: Add more functionality for more CLA'S
