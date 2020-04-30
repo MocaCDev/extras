@@ -3,7 +3,10 @@
 int 
 len(char *String);
 
-int main(void) {
+int main(int a, char **args) {
+
+		PARSE_ARGS(a, args);
+
     char STRING[MAX_STRING_LENGTH];
     int *Bytes;
     int BYTES;
