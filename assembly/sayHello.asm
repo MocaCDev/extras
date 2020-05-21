@@ -47,10 +47,8 @@ section .text
         mov [ebp], edx
         mov [esp], ebx
         
-        ; re-calling push_ to push onto the stack
         ; adding bytes to new stack element
         ; calling the kernel(interrupt call, 80h, 0x80..)
-        call push_
         call addByte
         call kernCall
         
