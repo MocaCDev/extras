@@ -18,7 +18,8 @@ section .text
         mov edx, length
         mov ebx, 1
         
-        call kernCall
+        call kernCall ; interrupt call..
+        call exit
         
         ret
     
