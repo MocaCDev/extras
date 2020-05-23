@@ -1,0 +1,11 @@
+{
+    "name": "MooMooMiniMod",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "matches": ["https://moomoo.io/*"],
+            "js": ["Mod.js"]
+        }
+    ]
+}
