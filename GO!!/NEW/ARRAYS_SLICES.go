@@ -37,4 +37,16 @@ func main() {
 		}
 	}
 	f.Println(arr2[0][0][0][0][1])
+
+	/* SLICES */
+
+	b := make([]int,5,5)
+
+	for i := 0; i < cap(b); i++ {
+		b[i] = i+1
+	}
+
+	b = append(b, b[0]*b[0],b[1]*b[1],b[2]*b[2])
+
+	f.Println(b)
 }
