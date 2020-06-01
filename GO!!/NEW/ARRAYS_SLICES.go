@@ -4,6 +4,23 @@ import (
 	f"fmt"
 )
 
+func add(a []int, b int) (returned int) {
+	defer func (a []int, b int) {
+		f.Println("\n\033[1;32mARG A:",a,"ARG B:",b)
+		for i := 0; i < len(a); i++ {
+			a[i] -= a[i]
+		}
+		b-=b
+		f.Println("\033[1;34mARG A(NOW):",a,"ARG B(NOW):",b,"\033[0;0m")
+	}(a,b)
+
+	for i := 0; i < len(a); i++ {	
+		returned += a[i] + b
+	}
+
+	return
+}
+
 func main() {
 
 	ammount := 5
@@ -40,13 +57,25 @@ func main() {
 
 	/* SLICES */
 
-	b := make([]int,5,5)
+	b := make([]int, 5, 10)
 
 	for i := 0; i < cap(b); i++ {
-		b[i] = i+1
+		if i > 0 && i < len(b) {
+			b[i] = i*i
+		} else {
+			b = append(b,(i+1)*(i+1))
+		}
 	}
 
 	b = append(b, b[0]*b[0],b[1]*b[1],b[2]*b[2])
 
-	f.Println(b)
+	if cap(b) > len(b) {
+		f.Printf("\033[0;31mERROR: ")
+	}
+
+	f.Println(b,"CAPACITY IS",len(b))
+
+	a := add(b[1:4],2)
+
+	f.Println("\nRESULT OF add FUNCTION:",a)
 }
