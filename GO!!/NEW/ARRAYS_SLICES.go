@@ -69,13 +69,22 @@ func main() {
 
 	b = append(b, b[0]*b[0],b[1]*b[1],b[2]*b[2])
 
+	f.Println("\nSIMILAR INDEXES:")
+	for i, element := range b {
+		for j, element2 := range b {
+			if j > i && element == element2 {
+				f.Println("INDEX:",i,j,"VALUE:",element)
+			}
+		}
+	}
+
 	if cap(b) > len(b) {
-		f.Printf("\033[0;31mERROR: ")
+		f.Print("\n\033[0;31mERROR: ")
 	}
 
 	f.Println(b,"CAPACITY IS",len(b))
 
 	a := add(b[1:4],2)
 
-	f.Println("\nRESULT OF add FUNCTION:",a)
+	f.Println("\nRESULT OF add FUNCTION:",a,"\n\n")
 }
