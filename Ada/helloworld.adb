@@ -14,8 +14,10 @@ begin
         else
             Put("N is");
             Put(N);
+            New_Line;
         end if;
     else
         Put(N);
+        New_Line;
     end if;
 end HelloWorld;
