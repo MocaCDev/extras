@@ -1,44 +1,39 @@
 section .text
     global _start
-    global print
-    global action
-    extern printf
-    
-    %define system_call int 0x80
-    
-    action:
-        ; setting up the "Hello World" variable
-        mov ecx, msg
-        mov edx, len
-        mov eax, 4
-        mov ebx, 1
+    %define sys_call int 0x80
+    %macro stdin 2
+        mov eax, 3 ; read
+        mov ebx, 0 ; stdin
+        mov ecx, %1
+        mov edx, %2+%2-1 ; Add the total length of the string by the length of the screen subracted by one(removing byte for the \0)
+        sys_call
+    %endmacro%
+    %macro stdout 2
+        mov ecx, %2
+        mov esi, input
+        mov edi, string
+        cld
+        rep movsb
+        sys_call
         
-        ;call printf
-        system_call
-        
-        mov ecx, msg2
-        mov edx, len2
-        mov eax, 4
-        mov ebx, 1
-        system_call
-        ret
-    
-    print:
-        msg db "Hello World", 0xa
-        len equ $ - msg
-        
-        msg2 db "Hello world 2", 0xa
-        len2 equ $ - msg2
-        ret
-    
-    _start:
-        
-        call action
-        
-        
-        mov eax, 1
-        mov ebx, 0
-        system_call
+        mov ecx, string
+        mov ebx, %2
+        mov eax, 4 ; output
+        mov ebx, 1 ; stdout
+        sys_call
+    %endmacro%
 
-segment .rodata
-    call print
+_start:
+
+    stdin input, len
+    
+    stdout input, len
+    
+    mov eax, 1
+    mov ebx, 0
+    sys_call
+
+segment .bss
+    input resq 5
+    len equ $ - input
+    string resq 5
