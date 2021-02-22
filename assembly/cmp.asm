@@ -3,10 +3,10 @@ section .text
     %define sys_call int 0x80
     
     %macro stdout 2
-        mov ecx, %1
-        mov edx, %2
-        mov eax, 4
-        mov ebx, 1
+        mov ecx, %1         ; buffer
+        mov edx, %2         ; len
+        mov eax, 4          ; stdout
+        mov ebx, 1          ; stdout
         sys_call
     %endmacro%
     
@@ -26,6 +26,7 @@ section .text
             stdout %1, %2
             sys_call
         End:                ; otherwise we exit
+            mov eax, 1
             sys_call
         
     %endmacro%
@@ -33,11 +34,6 @@ section .text
 _start:
 
     stdin buffer, len, '0'
-    
-    ;mov ecx, buffer
-    ;mov eax, 4
-    ;mov ebx, 1
-    ;sys_call
     
     mov eax, 1
     sys_call
