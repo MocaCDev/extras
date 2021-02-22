@@ -26,6 +26,11 @@ section .text
             stdout %1, %2
             sys_call
         End:                ; otherwise we exit
+            mov ecx, error
+            mov edx, error_len
+            mov eax, 4
+            mov ebx, 1
+            sys_call
             mov eax, 1
             sys_call
         
@@ -33,11 +38,13 @@ section .text
 
 _start:
 
-    stdin buffer, len, '0'
+    stdin buffer, len, '1'
     
     mov eax, 1
     sys_call
-
+section .rodata
+    error db "Stdin was assigned NOT to print out the buffer. :'("
+    error_len equ $ - error
 section .bss
     buffer resq 6
     len equ $ - buffer
