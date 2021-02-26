@@ -3,11 +3,32 @@ section .text
     %define sys_call int 0x80
     
     %macro stdout 2
-        mov ecx, %1         ; buffer
-        mov edx, %2         ; len
-        mov eax, 4          ; stdout
-        mov ebx, 1          ; stdout
+        mov ecx, %2
+        mov esi, %1
+        mov edi, string_buffer
+        cld
+        rep movsb
         sys_call
+        
+        cmp edi, %1                        ; should have the stdout buffer
+        je print_
+        jmp exit
+        
+        print_:
+            mov ecx, string_buffer         ; buffer
+            mov edx, %2                    ; len
+            mov eax, 4                     ; stdout
+            mov ebx, 1                     ; stdout
+            jmp done_
+        exit:
+            mov ecx, pbe
+            mov edx, pbe_len
+            mov eax, 4
+            mov ebx, 1
+            sys_call
+        done_:
+            sys_call
+            
     %endmacro%
     
     %macro stdin 3
@@ -30,10 +51,6 @@ section .text
             mov edx, error_len
             mov eax, 4
             mov ebx, 1
-            sys_call
-            mov eax, 1
-            sys_call
-        
         end:
             sys_call
         
@@ -48,6 +65,9 @@ _start:
 section .rodata
     error db "Stdin was assigned NOT to print out the buffer. :'("
     error_len equ $ - error
+    pbe db "There was an error printing the buffered stdout"
+    pbe_len equ $ - pbe
 section .bss
-    buffer resq 6
+    string_buffer resq          15      
+    buffer        resq          15
     len equ $ - buffer
