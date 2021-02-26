@@ -24,7 +24,7 @@ section .text
         
         print:
             stdout %1, %2
-            sys_call
+            jmp end
         End:                ; otherwise we exit
             mov ecx, error
             mov edx, error_len
@@ -34,11 +34,14 @@ section .text
             mov eax, 1
             sys_call
         
+        end:
+            sys_call
+        
     %endmacro%
 
 _start:
 
-    stdin buffer, len, '1'
+    stdin buffer, len, '0'
     
     mov eax, 1
     sys_call
