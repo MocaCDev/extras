@@ -3,16 +3,22 @@ section .text
     %define sys_call int 0x80
     
     %macro stdout 2
+    
         mov ecx, %2
-        mov esi, %1
-        mov edi, string_buffer
-        cld
-        rep movsb
-        sys_call
+        cmp ecx, '0'
+        je exit
+        jmp c
         
-        cmp edi, %1                        ; should have the stdout buffer
-        je print_
-        jmp exit
+        c:
+            mov esi, %1
+            mov edi, string_buffer
+            cld
+            rep movsb
+            sys_call
+            
+            cmp edi, %1                        ; should have the stdout buffer
+            je print_
+            jmp exit
         
         print_:
             mov ecx, string_buffer         ; buffer
@@ -65,9 +71,9 @@ _start:
 section .rodata
     error db "Stdin was assigned NOT to print out the buffer. :'("
     error_len equ $ - error
-    pbe db "There was an error printing the buffered stdout"
+    pbe db "There was an error printing the buffered stdout. Either it was empty, or overflowed."
     pbe_len equ $ - pbe
 section .bss
-    string_buffer resq          15      
-    buffer        resq          15
-    len equ $ - buffer
+    string_buffer resq          155     
+    buffer        resq          155
+    len           equ           $ - buffer
