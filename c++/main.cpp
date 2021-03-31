@@ -3,22 +3,39 @@
 #define age 16
 #define Name "Aidan"
 
+class Secret
+{
+    private:
+        std::string password_to_save;
+    public:
+        
+        std::string set(std::string pass)
+        {
+            password_to_save = pass;
+            return password_to_save;
+        }
+        std::string show_password()
+        {
+           return password_to_save; 
+        }
+};
+
 class boo
 { 
     private:
-        std::string password;
+        Secret s;
     public:
         int a;
         std::string name;
         
         int is_true(std::string name);
-        void set_pass(std::string new_pass)
+        std::string get_pass()
         {
-            password = new_pass;
+            return s.show_password();
         }
-        std::string print_pass()
+        void void_it_out(std::string pass)
         {
-            return password;
+            s.set(pass);
         }
 };
 
@@ -39,9 +56,9 @@ int main()
     std::cout << a.a << "\n" << a.name << std::endl;
     if(a.is_true(a.name) == 1)
     {
-        std::cout << "Hello, Aidan! You are admin!";
-        a.set_pass("adminadmin24");
-        std::cout << "Password now set.\n" << a.print_pass() << std::endl;
+        std::cout << "Hello, Aidan! You are admin!\n";
+        a.void_it_out("adminadmin24");
+        std::cout << "Password now set.\n" << a.get_pass() << std::endl;
     }
     
 }
