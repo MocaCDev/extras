@@ -1,62 +1,47 @@
 #include <iostream>
-#include <string>
-#include <vector>
 
-std::vector<std::string> push(std::vector<std::string> strings, std::string new_string)
-{
-    strings.push_back(new_string);
-    std::cout << "Vector size is now: " << strings.size() << std::endl;
-    return strings;
-}
+#define age 16
+#define Name "Aidan"
 
-std::vector<std::string> push_multiple(std::vector<std::string> to_push, std::vector<std::string> vector)
+class boo
+{ 
+    private:
+        std::string password;
+    public:
+        int a;
+        std::string name;
+        
+        int is_true(std::string name);
+        void set_pass(std::string new_pass)
+        {
+            password = new_pass;
+        }
+        std::string print_pass()
+        {
+            return password;
+        }
+};
+
+int boo::is_true(std::string name)
 {
-    for(int i = 0; i < to_push.size(); i++)
+    if(name == "Aidan")
     {
-        vector.push_back(to_push[i]);
+        return 1; // true
     }
-    return vector;
-}
-
-std::vector<int> push_length_for_all(std::vector<std::string> all, std::vector<int> lengths)
-{
-    for(int i = 0; i < all.size(); i++)
-    {
-        lengths.push_back(all[i].size());
-    }
-    return lengths;
-}
-
-std::vector<int> push_lenght(std::vector<std::string> strings, std::vector<int> lengths)
-{
-    std::cout << "Pushing length for newest element: " << strings[strings.size()-1] << std::endl;
-    lengths.push_back(strings[strings.size()-1].size());
-    return lengths;
-}
-
-void for_eachS(std::vector<std::string> vector)
-{
-    for(int i = 0; i < vector.size(); i++)
-    {
-        std::cout << i+1 << ". " <<vector[i] << std::endl;
-    }
-}
-
-void for_eachI(std::vector<int> vector, std::vector<std::string> corel)
-{
-    for(int i = 0; i < vector.size(); i++)
-    {
-        std::cout << i+1 << ". " << corel[i] << " -> LEN = " << vector[i] << std::endl;
-    }
+    return 0; // false
 }
 
 int main()
 {
-    std::vector<std::string> names = {"bob","jeff","ted"};
-    std::vector<std::string> strings;
-    std::vector<int> string_lengths;
-    strings = push_multiple(names,strings);
-    string_lengths = push_length_for_all(strings,string_lengths);
-    for_eachS(strings);
-    for_eachI(string_lengths, strings);
+    boo a;
+    a.a = age;
+    a.name = Name;
+    std::cout << a.a << "\n" << a.name << std::endl;
+    if(a.is_true(a.name) == 1)
+    {
+        std::cout << "Hello, Aidan! You are admin!";
+        a.set_pass("adminadmin24");
+        std::cout << "Password now set.\n" << a.print_pass() << std::endl;
+    }
+    
 }
