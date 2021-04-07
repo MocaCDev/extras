@@ -4,7 +4,7 @@
 #define header_size 16
 #define bpp 3
 #define info_header_size 40
-#define image_alignment_size 1 // aligned at 1 bit.
+#define image_alignment_size 240 // 240 bits is plenty for rendering a image
 
 
 unsigned char *fileHeader(int height, int width)
@@ -64,13 +64,16 @@ unsigned char *configure_midpoint(int height, int width)
    return new_sequence;
 }
 
-short int configure_aligned_image(unsigned char* sequence)
+int configure_aligned_image(unsigned char* sequence)
 {
-    if(sequence[19] > image_alignment_size)
-    {
-        return ((sequence[19] * sequence[18]) % 3) % 2;
-    }
-    return sequence[19];
+    /* Lets figure out the alignment size of the image. */
+    int aligned_size = 0;
+
+    aligned_size += ((sequence[17] + sequence[18] + sequence[19]) ^ sequence[5]) > image_alignment_size ? 
+        ((sequence[17] + sequence[18] + sequence[19]) ^ sequence[5]) - (header_size + info_header_size) :
+        (sequence[17] + sequence[18] + sequence[19]) ^ sequence[5];
+
+    return aligned_size;
 }
 
 int main()
@@ -86,6 +89,8 @@ int main()
         /* Give a new value to the header variable. */
         header = configure_midpoint(255, 450);
         fwrite(header, 1, header_size * info_header_size, file);
+
+        printf("%d", configure_aligned_image(header));
 
         fclose(file);
     }
