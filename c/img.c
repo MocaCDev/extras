@@ -63,7 +63,7 @@ void create_image(FILE* file, char *colors, int length, int width)
 			unsigned char new_sequence[ 2 ] = { image[(i * b) / 2], 0x00 };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
-    fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
+    		fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
 	}
 
 	fclose(file);
