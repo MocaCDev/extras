@@ -21,8 +21,8 @@ int configure_height(int width, int l)
 void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 {
 	char info_header[  ] = { 
-    'B', 'M'
-  };
+    		'B', 'M'
+  	};
 
 	int height = configure_height(width, length);
 	int paddedw = r4(width);
