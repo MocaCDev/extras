@@ -37,7 +37,7 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 		0x104e23, 0x104e23, 0, 0 // high resolution
 	};
 
-  	unsigned char *padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*padding));
+  	unsigned char *exceeded_padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*exceeded_padding));
 
 	header[0] = sizeof(info_header) + sizeof(header) + size;
 
@@ -49,8 +49,8 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
     		{
       			for(int w = 0; w < width; w++)
       			{
-        			padding[i + x + w] = (unsigned char)(0x00);
-       				padding[i * x + w] = (unsigned char)(image[i * x] + 1);
+        			exceeded_padding[i + x + w] = (unsigned char)(0x00);
+       				exceeded_padding[i * x + w] = (unsigned char)(image[i * x] + 1);
       			}
     		}
   	}
@@ -91,7 +91,7 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 	{
 		for(int b = 0; b < bpp; b++) // 3 bytes per pixel. We will fill each part of the image with the full 3 bytes. whether or not it is needed(this will change how the image looks).
 		{
-			unsigned char new_sequence[ 5 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[1 - (i + (bpp * (width * height)))], padding[i * b] };
+			unsigned char new_sequence[ 5 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[1 - (i + (bpp * (width * height)))], exceeded_padding[i * b] };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
     		fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding. Double Padding to style the image up?
