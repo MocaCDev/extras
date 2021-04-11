@@ -21,8 +21,8 @@ int configure_height(int width, int l)
 void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 {
 	char info_header[  ] = { 
-    		'B', 'M'
-  	};
+    'B', 'M'
+  };
 
 	int height = configure_height(width, length);
 	int paddedw = r4(width);
@@ -37,23 +37,23 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 		0x104e23, 0x104e23, 0, 0 // high resolution
 	};
 
-  	unsigned char *exceeded_padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*exceeded_padding));
+  unsigned char *padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*padding));
 
 	header[0] = sizeof(info_header) + sizeof(header) + size;
 
 	char* image = (char*)malloc(size * sizeof(char*));
 
-  	for(int i = 0; i < paddedw; i++)
-  	{
-    		for(int x = 0; x < 3; x++) // padding for each byte of the image
-    		{
-      			for(int w = 0; w < width; w++)
-      			{
-        			exceeded_padding[i + x + w] = (unsigned char)(0x00);
-       				exceeded_padding[i * x + w] = (unsigned char)(image[i * x] + 1);
-      			}
-    		}
-  	}
+  for(int i = 0; i < paddedw; i++)
+  {
+    for(int x = 0; x < 3; x++) // padding for each byte of the image
+    {
+      for(int w = 0; w < width; w++)
+      {
+        padding[i + x + w] = (unsigned char)(0x00);
+        padding[i * x + w] = (unsigned char)(image[i * x] + 1);
+      }
+    }
+  }
 
 	//int size_ = size * sizeof(char*);
 	for(int i = 0; i < size; i++) image[i] = 0x00;
@@ -91,10 +91,10 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 	{
 		for(int b = 0; b < bpp; b++) // 3 bytes per pixel. We will fill each part of the image with the full 3 bytes. whether or not it is needed(this will change how the image looks).
 		{
-			unsigned char new_sequence[ 5 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[1 - (i + (bpp * (width * height)))], exceeded_padding[i * b] };
+			unsigned char new_sequence[ 5 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[1 - (i + (bpp * (width * height)))], padding[i * b] };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
-    		fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding. Double Padding to style the image up?
+    fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
 	}
 
 	fclose(file);
@@ -129,4 +129,6 @@ int main()
 	} // copied from documentation.
 
 	create_image(file,rgb,3*5*8, 20, 3);
+
+  if(file) printf("Image Created Successfully!\n");
 }
