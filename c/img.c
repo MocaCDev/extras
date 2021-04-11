@@ -21,8 +21,8 @@ int configure_height(int width, int l)
 void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 {
 	char info_header[  ] = { 
-    		'B', 'M'
-  	};
+    'B', 'M'
+  };
 
 	int height = configure_height(width, length);
 	int paddedw = r4(width);
@@ -43,17 +43,17 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 
 	char* image = (char*)malloc(size * sizeof(char*));
 
-	  for(int i = 0; i < paddedw; i++) // padded width for every 3 bytes of the image
-	  {
-	    for(int x = 0; x < 3; x++) // padding for each byte of the image
-	    {
-	      for(int w = 0; w < width; w++)
-	      {
-		padding[i + x] = (unsigned char)(0x00);
-		padding[i * x] = (unsigned char)(image[i * x] + 1);
-	      }
-	    }
-	  }
+  	for(int i = 0; i < paddedw; i++)
+  	{
+    		for(int x = 0; x < 3; x++) // padding for each byte of the image
+    		{
+      			for(int w = 0; w < width; w++)
+      			{
+        			padding[i + x + w] = (unsigned char)(0x00);
+       				padding[i * x + w] = (unsigned char)(image[i * x] + 1);
+      			}
+    		}
+  	}
 
 	//int size_ = size * sizeof(char*);
 	for(int i = 0; i < size; i++) image[i] = 0x00;
