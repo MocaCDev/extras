@@ -61,7 +61,7 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 					image[index] = colors[2 * (bpp + (i * width + x) * ((2 - c) * bpp))];
 				} else
 				{
-					image[index] = colors[3*(i * width + x) + (2 - c)];
+					image[index] = colors[3*(i * width + x) + (2 - c)]; // render it normally
 				}
 			}
 		}
@@ -73,7 +73,7 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 	{
 		for(int b = 0; b < bpp; b++) // 3 bytes per pixel. We will fill each part of the image with the full 3 bytes. whether or not it is needed(this will change how the image looks).
 		{
-			unsigned char new_sequence[ 2 ] = { image[(i * b) / 2], 0x00 };
+			unsigned char new_sequence[ 4 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[i - (i + (bpp * (width * height)))] };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
     fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
