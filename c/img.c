@@ -18,7 +18,7 @@ int configure_height(int width, int l)
 	return (l / 3) / width;
 }
 
-void create_image(FILE* file, char *colors, int length, int width)
+void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 {
 	char info_header[ 2 ] = { 'B', 'M' };
 	int height = configure_height(width, length);
@@ -49,7 +49,20 @@ void create_image(FILE* file, char *colors, int length, int width)
 				int index = i * paddedw + x * 3 + c;
 				//printf("%c\n",colors[3*(i * width + x) + (2 - c)]);
 
-				image[index] = colors[3*(i * width + x) + (2 - c)];
+				if(dimmed == 0)
+				{
+					image[index] = colors[3* (i * width + x) * (2 - c) / ((i * c) + width)];
+				} else if(dimmed == 1) // higher resolution
+				{
+					image[index] = colors[4 * (i * width + x) * (1 - c) + (4 * (i * c) + width)];
+				} else if(dimmed == 2) // assign each rgb value dependable on the bytes per pixel
+				{
+					//image[index] = colors[2 * (i * width + x) * (2 - c) * (bpp + paddedw)];
+					image[index] = colors[2 * (bpp + (i * width + x) * ((2 - c) * bpp))];
+				} else
+				{
+					image[index] = colors[3*(i * width + x) + (2 - c)];
+				}
 			}
 		}
 	}
@@ -63,7 +76,7 @@ void create_image(FILE* file, char *colors, int length, int width)
 			unsigned char new_sequence[ 2 ] = { image[(i * b) / 2], 0x00 };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
-    		fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
+    fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
 	}
 
 	fclose(file);
@@ -97,5 +110,5 @@ int main()
 		}
 	} // copied from documentation.
 
-	create_image(file,rgb,3*5*8, 20);
+	create_image(file,rgb,3*5*8, 20, 3);
 }
