@@ -94,7 +94,7 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 			unsigned char new_sequence[ 5 ] = { image[(i * b)], image[(i * b) - 1], image[(i * b) - 2], image[1 - (i + (bpp * (width * height)))], padding[i * b] };
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
-    fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
+    		fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding. Double Padding to style the image up?
 	}
 
 	fclose(file);
