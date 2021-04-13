@@ -7,14 +7,14 @@ const char padding[ 3 ] = { 0x00, 0x00, 0x00 }; // padding for the image. Writte
 
 int r4(int x)
 {
-	return x % 4 == 0 ? x : x -x % 4 + 4;
+    return x % 4 == 0 ? x : x -x % 4 + 4;
 }
 
 int configure_height(int width, int l)
 {
 	if(width % 4 == 0)
 	{
-    return 4 + (width + l) / 10;
+        	return 4 + (width + l) / 10;
 	}
 	return (l / 3) / width;
 }
@@ -22,8 +22,8 @@ int configure_height(int width, int l)
 void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 {
 	char info_header[  ] = { 
-    'B', 'M'
-  };
+        	'B', 'M'
+    	};
 
 	int height = 5 + configure_height(width, length);
 	int paddedw = r4(width);
@@ -38,27 +38,27 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 		0x002F23, 0x002F23, 0, 0 // high resolution
 	};
 
-  unsigned char *exceeded_padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*padding));
+    	unsigned char *exceeded_padding = (unsigned char*)malloc(paddedw * 3 * width * sizeof(*padding));
 
 	header[0] = sizeof(info_header) + sizeof(header) + size;
 
 	char* image = (char*)malloc((size + height) * sizeof(char*));
 
-  for(int i = 0; i < paddedw; i++)
-  {
-    for(int x = 0; x < 3; x++) // padding for each byte of the image
-    {
-      for(int w = 0; w < width; w++)
-      {
-        exceeded_padding[i + x + w] = (unsigned char)(0x00);
-        exceeded_padding[i * x + w] = (unsigned char)(image[i * x] + 1);
-      }
-      if(!(exceeded_padding[i] > 0x00))
-      {
-        exceeded_padding[i] = 0x00; // everything else is 0x00.
-      }
-    }
-  }
+    	for(int i = 0; i < paddedw; i++)
+    	{
+        	for(int x = 0; x < 3; x++) // padding for each byte of the image
+        	{
+            		for(int w = 0; w < width; w++)
+            		{
+                		exceeded_padding[i + x + w] = (unsigned char)(0x00);
+                		exceeded_padding[i * x + w] = (unsigned char)(image[i * x] + 1);
+            		}
+            		if(!(exceeded_padding[i] > 0x00))
+            		{
+                		exceeded_padding[i] = 0x00; // everything else is 0x00.
+            		}
+        	}
+    	}
 
 	//int size_ = size * sizeof(char*);
 	for(int i = 0; i < size; i++) image[i] = 0x00;
@@ -81,14 +81,14 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 				} else if(dimmed == 2) // assign each rgb value dependable on the bytes per pixel
 				{
 					//image[index] = colors[2 * (i * width + x) * (2 - c) * (bpp + paddedw)];
-          for(int b = 0; b < bpp; b++)
-          {
-					  image[index + (b * bpp)] = colors[(bpp * b) * (i * width + c) * (2 - c)];
-          }
+                    			for(int b = 0; b < bpp; b++)
+                    			{
+						image[index + (b * bpp)] = colors[(bpp * b) * (i * width + c) * (2 - c)];
+                    			}
 				} else
 				{
 					image[index] = colors[3*(i * width + x) + (2 - c)]; // render it normally
-				}
+			    	}
 			}
 		}
 	}
@@ -103,18 +103,18 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 
 			fwrite(&new_sequence, sizeof(new_sequence), 1, file);
 		}
-    fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
+        	fwrite(&padding, sizeof(padding), 1, file); // 3 bytes of the image have been written. Put in some padding
 	}
 
 	fclose(file);
 
-  free(image);
-  free(exceeded_padding);
+    	free(image);
+    	free(exceeded_padding);
 
-  if((info_header[0] & size) == 0)
-  {
-    printf("Image Created!!\n");
-  }
+    	if((info_header[0] & size) == 0)
+    	{
+        	printf("Image Created!!\n");
+    	}
 }
 
 /*
@@ -122,39 +122,39 @@ void create_image(FILE* file, char *colors, int length, int width, int dimmed)
 */
 void read_image(FILE* file)
 {
-  fseek(file, 0, SEEK_END);
-  size_t filesize = ftell(file);
-  fseek(file, 0, SEEK_SET);
+    fseek(file, 0, SEEK_END);
+    size_t filesize = ftell(file);
+    fseek(file, 0, SEEK_SET);
 
-  int height = 0;
-  int width = 0;
-  int base_on = 0;
+    int height = 0;
+    int width = 0;
+    int base_on = 0;
 
-  char *info_header = (char*)calloc(2, sizeof(*info_header));
+    char *info_header = (char*)calloc(2, sizeof(*info_header));
 
-  if(filesize > 0)
-  {
-    char* file_info = (char *)calloc(filesize, sizeof(*file_info));
-    fread(file_info, filesize, 1, file);
-
-    for(int i = 0; i < 2; i++)
+    if(filesize > 0)
     {
-      info_header[i] = file_info[i];
-    }
-    for(int i = 0; i < filesize; i++)
-    {
-      if(isdigit(file_info[i]))
-      {
-        base_on = (int)file_info[i];
-      }
-    }
+        char* file_info = (char *)calloc(filesize, sizeof(*file_info));
+        fread(file_info, filesize, 1, file);
 
-    if(base_on > 0)
-    {
-      width = (2 * (base_on * base_on)) / 2;
-      height = configure_height(width, base_on * base_on);
+        for(int i = 0; i < 2; i++)
+        {
+            info_header[i] = file_info[i];
+        }
+        for(int i = 0; i < filesize; i++)
+        {
+            if(isdigit(file_info[i]))
+            {
+                base_on = (int)file_info[i];
+            }
+        }
+
+        if(base_on > 0)
+        {
+            width = (2 * (base_on * base_on)) / 2;
+            height = configure_height(width, base_on * base_on);
+        }
     }
-  }
 }
 
 int main()
