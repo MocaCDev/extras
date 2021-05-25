@@ -5,6 +5,7 @@ import (
     "log"
     "io/ioutil"
     "encoding/json"
+    "path/filepath"
     "fmt"
 )
 
@@ -93,19 +94,24 @@ func setup(path string) *FileInfo {
 }
 
 func (info *FileInfo) read_dir() []string {
-    var all_files []string
 
     files, err := ioutil.ReadDir(info.dir)
 
     if err != nil {
         info._error(err, "Couldn't read" + info.dir)
+        return nil
     }
 
     for _, f := range files {
-        all_files = append(all_files, f.Name())
-    }
+        p, e := filepath.Abs(f.Name())
 
-    info.all_files = all_files
+        if e != nil {
+            info._error(e, e.Error())
+            info.all_files = append(info.all_files, f.Name())
+        } else {
+            info.all_files = append(info.all_files, p)
+        }
+    }
 
     return info.all_files
 }
@@ -127,12 +133,14 @@ func (info *FileInfo) check_errors() {
         panic(info.errors[info.err_count - 1])
     }
 
-    var deleted []string
     if len(info.to_delete) > 0 {
-        deleted = info.to_delete
+        fmt.Println("Successfull! Deleted: ")
+        for i := range info.to_delete {
+            fmt.Println((i + 1), " -> ", info.to_delete[i])
+        }
+    } else {
+        fmt.Println("Successfully went through the directory!")
     }
-
-    fmt.Println("Successfull! Deleted", deleted)
 }
 
 func (info *FileInfo) remove(filename string, size int) {
@@ -147,32 +155,25 @@ func (info *FileInfo) remove(filename string, size int) {
 }
 
 func (info *FileInfo) check_sizes() {
+    dir, _ := os.Getwd()
     for i := range info.all_files {
 
         file, err := os.Stat(info.all_files[i])
 
         if err != nil {
-            dir, _ := os.Getwd()
-            path := dir + "/" + info.all_files[i]
-
-            file, err = os.Stat(path)
-
-            if err != nil {
-                info._error(err, err.Error())
-                continue;
-            }
+            info._error(err, err.Error())
+            continue;
         }
 
         if file.IsDir() {
-
-            files, _e := ioutil.ReadDir(info.dir + "/" + info.all_files[i])
+            files, _e := ioutil.ReadDir(info.all_files[i])
 
             if _e != nil {
                 goto check
             }
 
             for _, f := range files {
-                F, e := os.Stat(info.dir + "/" + f.Name())
+                F, e := os.Stat(dir + "/" + f.Name())
 
                 if e != nil {
                     info._error(e, e.Error())
@@ -200,11 +201,21 @@ func (info *FileInfo) check_sizes() {
     info.check_errors()
 }
 
+func (info *FileInfo) convert_to_json() []byte {
+    JI := JSONInfo{Dir: info.dir, All_file: info.all_files, To_delete: info.to_delete, Err_count: info.err_count, Success_count: info.success_count}
+    i, e := json.MarshalIndent(JI, "", "\t")
+
+    if e != nil {
+        log.Fatal(e)
+    }
+
+    return i
+}
+
 func main() {
-    info := setup("/home/runner")
+    info := setup("/home/runner/ToRemove")
     info.read_dir()
     info.check_sizes()
 
-    fmt.Println(info)
-
+    fmt.Println("\nINFO:\n",string(info.convert_to_json()))
 }
