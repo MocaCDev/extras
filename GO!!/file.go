@@ -154,15 +154,33 @@ func (info *FileInfo) remove(filename string, size int) {
     info.success(s)
 }
 
+func (info *FileInfo) try_base(path string) string {
+    dir := filepath.Base(path)
+
+    /*_, err := os.Stat(dir)
+
+    if err != nil {
+        info._error(err, err.Error())
+        return ""
+    }*/
+
+    return dir
+}
+
 func (info *FileInfo) check_sizes() {
     dir, _ := os.Getwd()
     for i := range info.all_files {
 
-        file, err := os.Stat(info.all_files[i])
+        file, err := os.Stat(info.try_base(info.all_files[i]))
 
         if err != nil {
-            info._error(err, err.Error())
-            continue;
+            // info.all_files[i] has the absolute path
+            file, err = os.Stat(info.all_files[i])
+
+            if err != nil {
+                info._error(err, err.Error())
+                continue;
+            }
         }
 
         if file.IsDir() {
@@ -173,19 +191,37 @@ func (info *FileInfo) check_sizes() {
             }
 
             for _, f := range files {
-                F, e := os.Stat(dir + "/" + f.Name())
+                p, _e := filepath.Abs(f.Name())
 
-                if e != nil {
-                    info._error(e, e.Error())
-                    continue
+                if _e != nil {
+                    F, e := os.Stat(dir + "/" + f.Name())
+
+                    if e != nil {
+                        info._error(e, e.Error())
+                        continue
+                    }
+
+                    if F.Size()/1024/1024 > 1 {
+                        info.to_delete = append(info.to_delete, info.dir + "/" + info.all_files[i])
+                        info.remove(info.to_delete[len(info.to_delete) - 1], int(file.Size()))
+                    }
+
+                    info.success("Successfully read " + info.dir + "/" + f.Name())
+                } else {
+                    F, e := os.Stat(p)
+
+                    if e != nil {
+                        info._error(e, e.Error())
+                        continue
+                    }
+
+                    if F.Size()/1024/1024 > 1 {
+                        info.to_delete = append(info.to_delete, info.dir + "/" + info.all_files[i])
+                        info.remove(info.to_delete[len(info.to_delete) - 1], int(file.Size()))
+                    }
+
+                    info.success("Successfully read " + info.dir + "/" + f.Name())
                 }
-
-                if F.Size()/1024/1024 > 1 {
-                    info.to_delete = append(info.to_delete, info.dir + "/" + info.all_files[i])
-                    info.remove(info.to_delete[len(info.to_delete) - 1], int(file.Size()))
-                }
-
-                info.success("Successfully read " + info.dir + "/" + f.Name())
             }
         }
 
