@@ -248,10 +248,22 @@ func (info *FileInfo) convert_to_json() []byte {
     return i
 }
 
-func main() {
-    info := setup("/home/runner/ToRemove")
+/*
+ * Helper function to go ahead
+ * and do all needed ideals to
+ * clear files larger than 1mb.
+
+ * You'd be surprised just how much this helps
+ * with keeping sizes of files down.
+ */
+func (info *FileInfo) do_all() {
     info.read_dir()
     info.check_sizes()
 
     fmt.Println("\nINFO:\n",string(info.convert_to_json()))
+}
+
+func main() {
+    info := setup("/home/runner/ToRemove")
+    info.do_all()
 }
