@@ -106,8 +106,8 @@ func (info *FileInfo) read_dir() []string {
         p, e := filepath.Abs(f.Name())
 
         if e != nil {
-            info._error(e, e.Error())
-            info.all_files = append(info.all_files, f.Name())
+            info.all_files = append(info.all_files, f.Name()) // append just the name.
+            continue
         } else {
             info.all_files = append(info.all_files, p)
         }
